@@ -9,6 +9,7 @@ toc_footers:
 
 includes:
   - teams
+  - inventories
   - errors
 
 search: true

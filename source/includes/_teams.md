@@ -3,7 +3,7 @@
 ## Get All Teams
 
 ```shell
-curl "http://my-test.scinote.net/api/v1/teams"
+curl "https://my-test.scinote.net/api/v1/teams"
   -H "Authorization: Bearer qwerty123456..."
 ```
 > The above command returns JSON structured like this:
@@ -31,11 +31,11 @@ curl "http://my-test.scinote.net/api/v1/teams"
         }
     ],
     "links": {
-        "self": "http://my-test.scinote.net/api/v1/teams?page%5Bnumber%5D=1&page%5Bsize%5D=10",
-        "first": "http://my-test.scinote.net/api/v1/teams?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+        "self": "https://my-test.scinote.net/api/v1/teams?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+        "first": "https://my-test.scinote.net/api/v1/teams?page%5Bnumber%5D=1&page%5Bsize%5D=10",
         "prev": null,
         "next": null,
-        "last": "http://my-test.scinote.net/api/v1/teams?page%5Bnumber%5D=1&page%5Bsize%5D=10"
+        "last": "https://my-test.scinote.net/api/v1/teams?page%5Bnumber%5D=1&page%5Bsize%5D=10"
     }
 }
 ```
@@ -44,12 +44,12 @@ This endpoint retrieves all teams user is member of.
 
 ### HTTP Request
 
-`GET http://my-test.scinote.net/api/v1/teams`
+`GET https://my-test.scinote.net/api/v1/teams`
 
 ## Get a Specific Team
 
 ```shell
-curl "http://my-test.scinote.net/api/v1/teams/1"
+curl "https://my-test.scinote.net/api/v1/teams/1"
   -H "Authorization: Bearer qwerty123456..."
 ```
 
@@ -73,7 +73,7 @@ This endpoint retrieves a specific team.
 
 ### HTTP Request
 
-`GET http://my-test.scinote.net/api/v1/teams/<ID>`
+`GET https://my-test.scinote.net/api/v1/teams/<ID>`
 
 ### URL Parameters
 
