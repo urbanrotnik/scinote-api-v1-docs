@@ -170,6 +170,7 @@ curl "http://my-test.scinote.net/api/v1/teams/1/inventories/1/columns"
 ```
 
 This endpoint retrieves columns from specific inventory.
+Also by default includes inventory list items for each list data type column.
 
 ### HTTP Request
 
@@ -265,6 +266,7 @@ curl "http://my-test.scinote.net/api/v1/teams/1/inventories/1/items"
 ```
 
 This endpoint retrieves items from specific inventory.
+Also by default includes inventory cells.
 
 ### HTTP Request
 
