@@ -10,6 +10,9 @@ toc_footers:
 includes:
   - teams
   - inventories
+  - projects
+  - experiments
+  - tasks
   - errors
 
 search: true
