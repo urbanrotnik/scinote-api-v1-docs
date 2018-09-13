@@ -195,11 +195,11 @@ curl "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/tasks"
       }
    ],
    "links" : {
-      "last" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments/1/tasks?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+      "last" : "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/tasks?page%5Bnumber%5D=1&page%5Bsize%5D=10",
       "prev" : null,
       "next" : null,
-      "first" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments/1/tasks?page%5Bnumber%5D=1&page%5Bsize%5D=10",
-      "self" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments/1/tasks?page%5Bnumber%5D=1&page%5Bsize%5D=10"
+      "first" : "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/tasks?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+      "self" : "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/tasks?page%5Bnumber%5D=1&page%5Bsize%5D=10"
    }
 }
 ```
@@ -312,11 +312,11 @@ curl "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/tasks/1
       }
    ],
    "links" : {
-      "first" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments/1/tasks/1/task_inventory_rows?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+      "first" : "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/tasks/1/task_inventory_rows?page%5Bnumber%5D=1&page%5Bsize%5D=10",
       "prev" : null,
-      "self" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments/1/tasks/1/task_inventory_rows?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+      "self" : "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/tasks/1/task_inventory_rows?page%5Bnumber%5D=1&page%5Bsize%5D=10",
       "next" : null,
-      "last" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments/1/tasks/1/task_inventory_rows?page%5Bnumber%5D=1&page%5Bsize%5D=10"
+      "last" : "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/tasks/1/task_inventory_rows?page%5Bnumber%5D=1&page%5Bsize%5D=10"
    }
 }
 ```
@@ -382,7 +382,7 @@ TASK_ID | The ID of the task to retrieve inventory rows from
 ID | The ID of the inventory row to retrieve
 
 
-## Get User Tasks entity from Tasks
+## Get User Tasks relations data from Tasks
 
 ```shell
 curl "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/tasks/1/user_tasks"
@@ -412,15 +412,15 @@ curl "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/tasks/1
    ],
    "links" : {
       "next" : null,
-      "last" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments/1/tasks/1/user_tasks?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+      "last" : "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/tasks/1/user_tasks?page%5Bnumber%5D=1&page%5Bsize%5D=10",
       "prev" : null,
-      "self" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments/1/tasks/1/user_tasks?page%5Bnumber%5D=1&page%5Bsize%5D=10",
-      "first" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments/1/tasks/1/user_tasks?page%5Bnumber%5D=1&page%5Bsize%5D=10"
+      "self" : "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/tasks/1/user_tasks?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+      "first" : "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/tasks/1/user_tasks?page%5Bnumber%5D=1&page%5Bsize%5D=10"
    }
 }
 ```
 
-This endpoint retrieves all User Task entities from a specified task.
+This endpoint retrieves all User Task relations from a specified task.
 
 ### HTTP Request
 
@@ -433,9 +433,9 @@ Parameter | Description
 TEAM_ID | The ID of the team to retrieve projects from
 PROJECT_ID | The ID of the project to retrieve experiments from
 EXPERIMENT_ID | The ID of the experiment to retrieve tasks from
-TASK_ID | The ID of the task to retrieve User Task entities from
+TASK_ID | The ID of the task to retrieve User Task relations from
 
-## Get a specific User Task entity from a specific Task
+## Get a specific User Task relation data from a specific Task
 
 ```shell
 curl "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/tasks/1/user_tasks/1"
@@ -464,7 +464,7 @@ curl "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/tasks/1
 }
 ```
 
-This endpoint retrieves a specific User Task entity, that belongs to a specific task.
+This endpoint retrieves a specific User Task relation, that belongs to a specific task.
 
 ### HTTP Request
 
@@ -477,8 +477,8 @@ Parameter | Description
 TEAM_ID | The ID of the team to retrieve projects from
 PROJECT_ID | The ID of the project to retrieve experiments from
 EXPERIMENT_ID | The ID of the experiment to retrieve tasks from
-TASK_ID | The ID of the task to retrieve User Task entities from
-ID | The ID of the User Task entity to retrieve
+TASK_ID | The ID of the task to retrieve User Task relations from
+ID | The ID of the User Task relation to retrieve
 
 ## Get Task Tags from a specific Task
 
@@ -510,10 +510,10 @@ curl "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/tasks/1
    ],
    "links" : {
       "next" : null,
-      "self" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments/1/tasks/1/task_tags?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+      "self" : "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/tasks/1/task_tags?page%5Bnumber%5D=1&page%5Bsize%5D=10",
       "prev" : null,
-      "last" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments/1/tasks/1/task_tags?page%5Bnumber%5D=1&page%5Bsize%5D=10",
-      "first" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments/1/tasks/1/task_tags?page%5Bnumber%5D=1&page%5Bsize%5D=10"
+      "last" : "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/tasks/1/task_tags?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+      "first" : "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/tasks/1/task_tags?page%5Bnumber%5D=1&page%5Bsize%5D=10"
    }
 }
 ```
@@ -602,24 +602,22 @@ curl "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/tasks/1
          },
          "attributes" : {
             "nr_of_linked_children" : 0,
-            "added_by_id" : null,
             "protocol_type" : "unlinked",
             "authors" : null,
             "team_id" : 1,
             "my_module_id" : 1,
             "name" : null,
-            "description" : null,
-            "parent_id" : null
+            "description" : null
          },
          "id" : "1"
       }
    ],
    "links" : {
-      "self" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments/1/tasks/1/protocols?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+      "self" : "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/tasks/1/protocols?page%5Bnumber%5D=1&page%5Bsize%5D=10",
       "next" : null,
       "prev" : null,
-      "last" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments/1/tasks/1/protocols?page%5Bnumber%5D=1&page%5Bsize%5D=10",
-      "first" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments/1/tasks/1/protocols?page%5Bnumber%5D=1&page%5Bsize%5D=10"
+      "last" : "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/tasks/1/protocols?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+      "first" : "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/tasks/1/protocols?page%5Bnumber%5D=1&page%5Bsize%5D=10"
    }
 }
 ```
@@ -657,9 +655,7 @@ curl "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/tasks/1
          "protocol_type" : "unlinked",
          "authors" : null,
          "nr_of_linked_children" : 0,
-         "added_by_id" : null,
          "my_module_id" : 1,
-         "parent_id" : null,
          "description" : null
       },
       "type" : "protocols",
@@ -707,39 +703,89 @@ curl "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/tasks/2
          "relationships" : {
             "my_module" : {
                "data" : {
-                  "id" : "2",
+                  "id" : "1",
                   "type" : "tasks"
                }
             }
          },
-         "id" : "2",
-         "type" : "results",
          "attributes" : {
-            "result_text" : {
-               "result_id" : 2,
-               "id" : 1,
-               "text" : "There are many biological replicates we harvested for each type of sample (code-names):\n\n* OSH/5\n\n* DWO/1\n\n* DWO/5\n\n* OSH/1"
+            "result_text" : null,
+            "my_module_id" : 1,
+            "result_table" : {
+               "result_id" : 1,
+               "table_id" : 1,
+               "id" : 1
             },
-            "name" : "Number of samples",
+            "result_asset" : null,
+            "user_id" : 1,
+            "name" : "Experimental design",
+            "archived" : false
+         },
+         "type" : "results",
+         "id" : "1"
+      },
+      {
+         "attributes" : {
+            "user_id" : 1,
+            "name" : "Terrific result",
+            "result_text" : {
+               "result_id" : 6,
+               "id" : 3,
+               "text" : "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\" \"http://www.w3.org/TR/REC-html40/loose.dtd\">\n<html><body><p>amazing work team, really solid work</p></body></html>"
+            },
+            "my_module_id" : 1,
             "result_asset" : null,
             "result_table" : null,
-            "my_module_id" : 2,
-            "archived" : false,
-            "user_id" : 1
+            "archived" : false
+         },
+         "relationships" : {
+            "my_module" : {
+               "data" : {
+                  "type" : "tasks",
+                  "id" : "1"
+               }
+            }
+         },
+         "type" : "results",
+         "id" : "6"
+      },
+      {
+         "id" : "7",
+         "type" : "results",
+         "attributes" : {
+            "my_module_id" : 1,
+            "result_text" : null,
+            "result_asset" : {
+               "id" : 1,
+               "asset_id" : 1,
+               "result_id" : 7
+            },
+            "result_table" : null,
+            "user_id" : 1,
+            "name" : "Im including an image of the gene doing gene things.",
+            "archived" : false
+         },
+         "relationships" : {
+            "my_module" : {
+               "data" : {
+                  "type" : "tasks",
+                  "id" : "1"
+               }
+            }
          }
       }
    ],
    "links" : {
-      "first" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments/1/tasks/2/results?page%5Bnumber%5D=1&page%5Bsize%5D=10",
       "prev" : null,
-      "self" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments/1/tasks/2/results?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+      "last" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments/1/tasks/1/results?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+      "self" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments/1/tasks/1/results?page%5Bnumber%5D=1&page%5Bsize%5D=10",
       "next" : null,
-      "last" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments/1/tasks/2/results?page%5Bnumber%5D=1&page%5Bsize%5D=10"
+      "first" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments/1/tasks/1/results?page%5Bnumber%5D=1&page%5Bsize%5D=10"
    }
 }
 ```
 
-This endpoint retrieves all results (includes attributes from text, asset and table result), that are part of a specific task.
+This endpoint retrieves all results (includes attributes from text, asset and table result if present), that are part of a specific task.
 
 ### HTTP Request
 
@@ -792,7 +838,7 @@ curl "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/tasks/2
 }
 ```
 
-This endpoint retrieves a specific result (includes attributes from text, asset and table result), that are part of a specific task.
+This endpoint retrieves a specific result (includes attributes from text, asset and table result if present), that are part of a specific task.
 
 ### HTTP Request
 
@@ -843,9 +889,9 @@ curl "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/tasks/2
    ],
    "links" : {
       "prev" : null,
-      "last" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments/1/tasks/2/outputs?page%5Bnumber%5D=1&page%5Bsize%5D=10",
-      "self" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments/1/tasks/2/outputs?page%5Bnumber%5D=1&page%5Bsize%5D=10",
-      "first" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments/1/tasks/2/outputs?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+      "last" : "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/tasks/2/outputs?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+      "self" : "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/tasks/2/outputs?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+      "first" : "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/tasks/2/outputs?page%5Bnumber%5D=1&page%5Bsize%5D=10",
       "next" : null
    }
 }
@@ -955,10 +1001,10 @@ curl "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/tasks/2
    ],
    "links" : {
       "next" : null,
-      "self" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments/1/tasks/2/inputs?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+      "self" : "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/tasks/2/inputs?page%5Bnumber%5D=1&page%5Bsize%5D=10",
       "prev" : null,
-      "first" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments/1/tasks/2/inputs?page%5Bnumber%5D=1&page%5Bsize%5D=10",
-      "last" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments/1/tasks/2/inputs?page%5Bnumber%5D=1&page%5Bsize%5D=10"
+      "first" : "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/tasks/2/inputs?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+      "last" : "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/tasks/2/inputs?page%5Bnumber%5D=1&page%5Bsize%5D=10"
    }
 }
 ```
@@ -1041,3 +1087,4 @@ Task1 -> Task2 -> Task3 -> Task4
 Where -> signifies that the left task is the parent of the right connecting task.
 Then the get call for outputs of Task1, would give us Task2, and then inputs call for the same task wouldn't return anything, because Task1 doesn't have any parent tasks.
 By the same logic, the outputs call to Task4 wouldn't return anything, because Task4 does not have children, but the inputs call to it would return Task3
+The outputs call to Task3 would return Task4, because Task3 has a child and its Task4, and the inputs call to Task3 would return Task2, because Task2 is a parent of Task3.

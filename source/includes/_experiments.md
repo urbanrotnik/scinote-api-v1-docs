@@ -16,17 +16,16 @@ curl "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments"
          "attributes" : {
             "name" : "My first experiment",
             "description" : "This is my very first experiment",
-            "created_by_id" : 1,
             "archived" : false
          },
          "id" : "1"
       }
    ],
    "links" : {
-      "first" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+      "first" : "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments?page%5Bnumber%5D=1&page%5Bsize%5D=10",
       "prev" : null,
-      "self" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments?page%5Bnumber%5D=1&page%5Bsize%5D=10",
-      "last" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+      "self" : "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+      "last" : "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments?page%5Bnumber%5D=1&page%5Bsize%5D=10",
       "next" : null
    }
 }
@@ -60,7 +59,6 @@ curl "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1"
       "type" : "experiments",
       "id" : "1",
       "attributes" : {
-         "created_by_id" : 1,
          "archived" : false,
          "name" : "My first experiment",
          "description" : "This is my very first experiment"
@@ -112,16 +110,15 @@ curl "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/task_gr
          },
          "type" : "task_groups",
          "attributes" : {
-            "created_by_id" : null,
             "experiment_id" : 1
          }
       }
    ],
    "links" : {
-      "self" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments/1/task_groups?page%5Bnumber%5D=1&page%5Bsize%5D=10",
-      "first" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments/1/task_groups?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+      "self" : "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/task_groups?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+      "first" : "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/task_groups?page%5Bnumber%5D=1&page%5Bsize%5D=10",
       "prev" : null,
-      "last" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments/1/task_groups?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+      "last" : "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/task_groups?page%5Bnumber%5D=1&page%5Bsize%5D=10",
       "next" : null
    }
 }
@@ -138,7 +135,7 @@ This endpoint retrieves task groups from specific experiment.
 Parameter | Description
 --------- | -----------
 TEAM_ID | The ID of the team to retrieve project from
-PROJECT_ID | The ID of the project to retrieve comments from
+PROJECT_ID | The ID of the project to retrieve experiments from
 EXPERIMENT_ID | The ID of the experiment to retrieve task groups from
 
 ## Get a specific Task Group from a specific Experiment
@@ -163,7 +160,6 @@ curl "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/task_gr
          }
       },
       "attributes" : {
-         "created_by_id" : null,
          "experiment_id" : 1
       },
       "id" : "1"
@@ -199,32 +195,168 @@ curl "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/connect
 {
    "data" : [
       {
-         "type" : "reports",
+         "attributes" : {
+            "input_id" : 2,
+            "output_id" : 1
+         },
+         "type" : "connections",
          "relationships" : {
-            "project" : {
+            "output_task" : {
                "data" : {
-                  "type" : "projects",
-                  "id" : "1"
+                  "id" : "1",
+                  "type" : "tasks"
+               }
+            },
+            "input_task" : {
+               "data" : {
+                  "type" : "tasks",
+                  "id" : "2"
+               }
+            }
+         },
+         "id" : "1"
+      },
+      {
+         "id" : "2",
+         "type" : "connections",
+         "relationships" : {
+            "input_task" : {
+               "data" : {
+                  "type" : "tasks",
+                  "id" : "3"
+               }
+            },
+            "output_task" : {
+               "data" : {
+                  "id" : "2",
+                  "type" : "tasks"
                }
             }
          },
          "attributes" : {
-            "description" : "My first report description!",
-            "project_id" : 1,
-            "name" : "My very first report"
+            "input_id" : 3,
+            "output_id" : 2
+         }
+      },
+      {
+         "id" : "3",
+         "type" : "connections",
+         "relationships" : {
+            "output_task" : {
+               "data" : {
+                  "id" : "3",
+                  "type" : "tasks"
+               }
+            },
+            "input_task" : {
+               "data" : {
+                  "type" : "tasks",
+                  "id" : "4"
+               }
+            }
          },
-         "id" : "2"
+         "attributes" : {
+            "input_id" : 4,
+            "output_id" : 3
+         }
+      },
+      {
+         "id" : "4",
+         "relationships" : {
+            "input_task" : {
+               "data" : {
+                  "id" : "5",
+                  "type" : "tasks"
+               }
+            },
+            "output_task" : {
+               "data" : {
+                  "type" : "tasks",
+                  "id" : "4"
+               }
+            }
+         },
+         "type" : "connections",
+         "attributes" : {
+            "input_id" : 5,
+            "output_id" : 4
+         }
+      },
+      {
+         "attributes" : {
+            "output_id" : 5,
+            "input_id" : 6
+         },
+         "type" : "connections",
+         "relationships" : {
+            "input_task" : {
+               "data" : {
+                  "id" : "6",
+                  "type" : "tasks"
+               }
+            },
+            "output_task" : {
+               "data" : {
+                  "type" : "tasks",
+                  "id" : "5"
+               }
+            }
+         },
+         "id" : "5"
+      },
+      {
+         "attributes" : {
+            "output_id" : 6,
+            "input_id" : 7
+         },
+         "relationships" : {
+            "input_task" : {
+               "data" : {
+                  "id" : "7",
+                  "type" : "tasks"
+               }
+            },
+            "output_task" : {
+               "data" : {
+                  "type" : "tasks",
+                  "id" : "6"
+               }
+            }
+         },
+         "type" : "connections",
+         "id" : "6"
+      },
+      {
+         "id" : "7",
+         "type" : "connections",
+         "relationships" : {
+            "output_task" : {
+               "data" : {
+                  "type" : "tasks",
+                  "id" : "7"
+               }
+            },
+            "input_task" : {
+               "data" : {
+                  "id" : "8",
+                  "type" : "tasks"
+               }
+            }
+         },
+         "attributes" : {
+            "output_id" : 7,
+            "input_id" : 8
+         }
       }
    ],
    "links" : {
-      "next" : null,
-      "self" : "http://my-test.scinote.net/api/v1/teams/1/projects/1/reports?page%5Bnumber%5D=1&page%5Bsize%5D=10",
-      "first" : "http://my-test.scinote.net/api/v1/teams/1/projects/1/reports?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+      "self" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments/1/connections/?page%5Bnumber%5D=1&page%5Bsize%5D=10",
       "prev" : null,
-      "last" : "http://my-test.scinote.net/api/v1/teams/1/projects/1/reports?page%5Bnumber%5D=1&page%5Bsize%5D=10"
+      "next" : null,
+      "last" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments/1/connections/?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+      "first" : "http://0.0.0.0:3000/api/v1/teams/1/projects/1/experiments/1/connections/?page%5Bnumber%5D=1&page%5Bsize%5D=10"
    }
 }
-
 ```
 
 This endpoint retrieves canvas task connections from an experiment, (the flow of tasks from the experiment canvas view).
@@ -253,12 +385,26 @@ curl "http://my-test.scinote.net/api/v1/teams/1/projects/1/experiments/1/connect
 ```json
 {
    "data" : {
+      "type" : "connections",
+      "id" : "1",
+      "relationships" : {
+         "input_task" : {
+            "data" : {
+               "type" : "tasks",
+               "id" : "2"
+            }
+         },
+         "output_task" : {
+            "data" : {
+               "id" : "1",
+               "type" : "tasks"
+            }
+         }
+      },
       "attributes" : {
          "output_id" : 1,
          "input_id" : 2
-      },
-      "id" : "1",
-      "type" : "connections"
+      }
    }
 }
 ```

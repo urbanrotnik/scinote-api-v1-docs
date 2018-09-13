@@ -88,7 +88,7 @@ curl "http://my-test.scinote.net/api/v1/teams/1/projects/1"
 
 ```
 
-This endpoint retrieves a specific project.
+This endpoint retrieves a specific project from a specific team.
 
 ### HTTP Request
 
@@ -101,7 +101,7 @@ Parameter | Description
 TEAM_ID | The ID of the team to retrieve project from
 ID | The ID of the project to retrieve
 
-## Get UserProject entities from specific project
+## Get UserProject relations data from specific project
 
 ```shell
 curl "http://my-test.scinote.net/api/v1/teams/1/projects/1/user_projects"
@@ -141,7 +141,7 @@ curl "http://my-test.scinote.net/api/v1/teams/1/projects/1/user_projects"
 
 ```
 
-This endpoint retrieves UserProject entities (users related to project data) from specific project.
+This endpoint retrieves UserProject relations (users related to project data) from specific project.
 
 ### HTTP Request
 
@@ -152,9 +152,9 @@ This endpoint retrieves UserProject entities (users related to project data) fro
 Parameter | Description
 --------- | -----------
 TEAM_ID | The ID of the team to retrieve project from
-PROJECT_ID | The ID of the project to retrieve UserProject entities from
+PROJECT_ID | The ID of the project to retrieve UserProject relations from
 
-## Get a specific UserProject entity from specific project
+## Get a specific UserProject relation data from specific project
 
 ```shell
 curl "http://my-test.scinote.net/api/v1/teams/1/projects/1/user_projects/1"
@@ -184,7 +184,7 @@ curl "http://my-test.scinote.net/api/v1/teams/1/projects/1/user_projects/1"
 }
 ```
 
-This endpoint retrieves a specific UserProject entity (users related to project data) from specific project.
+This endpoint retrieves a specific UserProject relation (users related to project data) from specific project.
 
 ### HTTP Request
 
@@ -195,8 +195,8 @@ This endpoint retrieves a specific UserProject entity (users related to project 
 Parameter | Description
 --------- | -----------
 TEAM_ID | The ID of the team to retrieve project from
-PROJECT_ID | The ID of the project to retrieve UserProject entities from
-ID | The ID of the UserProject entity to retrieve.
+PROJECT_ID | The ID of the project to retrieve UserProject relations from
+ID | The ID of the UserProject relation to retrieve.
 
 ## Get Comments from specific project
 
