@@ -23,24 +23,55 @@ This API documentation page was created with [Slate](https://github.com/lord/sla
 
 # Authentication
 
+SciNote uses JWT tokens to allow access to the API and OAuth 2 protocol for token generation using authorization code flow.
+
+First, it is needed to get authorization code at this endpoint: GET /oauth/authorize, please see example of such request.
+
+> To get an authorization code, use this code:
+
+```shell
+curl https://server-name/oauth/authorize?client_id=<client_id>&<redirect_uri>&response_type=code
+```
+> Where `<client_id>` is your application registration id, `<redirect_uri>` your application redirect URI.
+
+> The above command redirects back to your application with authorization code
+
+Now you can get a new access token at /oauth/token with POST request. Once it expires, use refresh token to get new access token.
+
+Post here with authorization code for `authorization_code` grant type or `refresh_token` for refresh token type. This corresponds to the token endpoint, section 3.2 of the OAuth 2 RFC
+
 > To get an access token, use this code:
 
 ```shell
-curl -d '{"grant_type": "password", "email": "<your_email>", "password": "<your_password>"}'
-  -H "Content-Type: application/json" https://my-test.scinote.net/api/auth/token
+curl -F grant_type=authorization_code \
+-F client_id=<client_app_id> \
+-F client_secret=<client_app_secret> \
+-F code=<authorization_code> \
+-F redirect_uri=<client_app_redirect_url> \
+-X POST https://server-name/oauth/token
 ```
-> Make sure to replace `<your_email>` and `<your_password>` with your user's credentials.
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-    "token_type": "bearer",
-    "access_token": "qwerty123456..."
+    "access_token":"qwerty123456...",
+    "token_type":"bearer",
+    "expires_in":7200,
+    "refresh_token":"qwerty123456..."}
 }
 ```
 
-SciNote uses JWT tokens to allow access to the API. You can get a new access token at https://my-test.scinote.net/api/auth/token.
+> And for renewal, use this code:
+
+```shell
+curl -F grant_type=refresh_token \
+-F client_id=<client_app_id> \
+-F client_secret=<client_app_secret> \
+-F refresh_token=<refresh_token> \
+-F redirect_uri=<client_app_redirect_url> \
+-X POST https://server-name/oauth/token
+```
 
 SciNote expects for the API access token to be included in all API requests to the server in a header that looks like the following:
 
