@@ -10,6 +10,7 @@ toc_footers:
 includes:
   - teams
   - inventories
+  - inventory_column_list_items
   - errors
 
 search: true
