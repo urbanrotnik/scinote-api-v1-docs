@@ -11,6 +11,7 @@ includes:
   - teams
   - inventories
   - inventory_column_list_items
+  - results
   - errors
 
 search: true

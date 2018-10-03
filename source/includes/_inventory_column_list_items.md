@@ -3,7 +3,7 @@
 ## Get List Items
 
 ```shell
-curl "http://server-name/api/v1/teams/1/inventories/1/columns/1/list_items"
+curl "https://server-name/api/v1/teams/1/inventories/1/columns/1/list_items"
   -H "Authorization: Bearer qwerty123456..."
 ```
 
@@ -35,11 +35,11 @@ curl "http://server-name/api/v1/teams/1/inventories/1/columns/1/list_items"
         }
     ],
     "links": {
-        "self": "http://server-name/api/v1/teams/1/inventories/1/columns/1/list_items?page%5Bnumber%5D=1&page%5Bsize%5D=10",
-        "first": "http://server-name/api/v1/teams/1/inventories/1/columns/1/list_items?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+        "self": "https://server-name/api/v1/teams/1/inventories/1/columns/1/list_items?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+        "first": "https://server-name/api/v1/teams/1/inventories/1/columns/1/list_items?page%5Bnumber%5D=1&page%5Bsize%5D=10",
         "prev": null,
         "next": null,
-        "last": "http://server-name/api/v1/teams/1/inventories/1/columns/1/list_items?page%5Bnumber%5D=1&page%5Bsize%5D=10"
+        "last": "https://server-name/api/v1/teams/1/inventories/1/columns/1/list_items?page%5Bnumber%5D=1&page%5Bsize%5D=10"
     }
 }
 ```
@@ -61,7 +61,7 @@ COLUMN_ID | The ID of the column(with list data type) in specified inventory to 
 ## Get List Item
 
 ```shell
-curl "http://server-name/api/v1/teams/1/inventories/1/columns/1/list_items/1"
+curl "https://server-name/api/v1/teams/1/inventories/1/columns/1/list_items/1"
   -H "Authorization: Bearer qwerty123456..."
 ```
 
@@ -98,7 +98,7 @@ ID | The ID of the list item
 
 ```shell
 curl -X POST \
-  http://server-name/api/v1/teams/1/inventories/1/columns/1/list_items \
+  https://server-name/api/v1/teams/1/inventories/1/columns/1/list_items \
   -H 'Authorization: Bearer qwerty123456...' \
   -H 'Content-Type: application/vnd.api+json' \
   -d '{
@@ -158,7 +158,7 @@ data | yes | Text value of the list item
 
 ```shell
 curl -X PATCH \
-  http://server-name/api/v1/teams/1/inventories/1/columns/1/list_items/1 \
+  https://server-name/api/v1/teams/1/inventories/1/columns/1/list_items/1 \
   -H 'Authorization: Bearer qwerty123456...' \
   -H 'Content-Type: application/vnd.api+json' \
   -d '{
@@ -223,7 +223,7 @@ data | yes | Text value of the list item
 
 ```shell
 curl -X DELETE \
-  http://server-name/api/v1/teams/1/inventories/1/columns/1/list_items/1 \
+  https://server-name/api/v1/teams/1/inventories/1/columns/1/list_items/1 \
   -H "Authorization: Bearer qwerty123456..."
 ```
 
