@@ -247,16 +247,42 @@
             <a href="#inventories" class="toc-h1 toc-link" data-title="Inventories">Inventories</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-inventories-from-the-specific-team" class="toc-h2 toc-link" data-title="Get All Inventories from the specific team">Get All Inventories from the specific team</a>
+                    <a href="#get-inventories" class="toc-h2 toc-link" data-title="Get Inventories">Get Inventories</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-inventory" class="toc-h2 toc-link" data-title="Get a Specific Inventory">Get a Specific Inventory</a>
-                  </li>
-                  <li>
-                    <a href="#get-columns-from-specific-inventory" class="toc-h2 toc-link" data-title="Get Columns from specific inventory">Get Columns from specific inventory</a>
+                    <a href="#get-inventory" class="toc-h2 toc-link" data-title="Get Inventory">Get Inventory</a>
                   </li>
                   <li>
                     <a href="#get-items-from-specific-inventory" class="toc-h2 toc-link" data-title="Get Items from specific inventory">Get Items from specific inventory</a>
+                  </li>
+                  <li>
+                    <a href="#create-inventory" class="toc-h2 toc-link" data-title="Create Inventory">Create Inventory</a>
+                  </li>
+                  <li>
+                    <a href="#update-inventory" class="toc-h2 toc-link" data-title="Update Inventory">Update Inventory</a>
+                  </li>
+                  <li>
+                    <a href="#delete-inventory" class="toc-h2 toc-link" data-title="Delete Inventory">Delete Inventory</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#inventory-columns" class="toc-h1 toc-link" data-title="Inventory Columns">Inventory Columns</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-columns" class="toc-h2 toc-link" data-title="Get Columns">Get Columns</a>
+                  </li>
+                  <li>
+                    <a href="#get-column" class="toc-h2 toc-link" data-title="Get Column">Get Column</a>
+                  </li>
+                  <li>
+                    <a href="#create-column" class="toc-h2 toc-link" data-title="Create Column">Create Column</a>
+                  </li>
+                  <li>
+                    <a href="#update-column" class="toc-h2 toc-link" data-title="Update Column">Update Column</a>
+                  </li>
+                  <li>
+                    <a href="#delete-column" class="toc-h2 toc-link" data-title="Delete Column">Delete Column</a>
                   </li>
               </ul>
           </li>
@@ -277,6 +303,26 @@
                   </li>
                   <li>
                     <a href="#delete-list-item" class="toc-h2 toc-link" data-title="Delete List Item">Delete List Item</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#inventory-items" class="toc-h1 toc-link" data-title="Inventory Items">Inventory Items</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-items" class="toc-h2 toc-link" data-title="Get Items">Get Items</a>
+                  </li>
+                  <li>
+                    <a href="#get-item" class="toc-h2 toc-link" data-title="Get Item">Get Item</a>
+                  </li>
+                  <li>
+                    <a href="#create-item" class="toc-h2 toc-link" data-title="Create Item">Create Item</a>
+                  </li>
+                  <li>
+                    <a href="#update-item" class="toc-h2 toc-link" data-title="Update Item">Update Item</a>
+                  </li>
+                  <li>
+                    <a href="#delete-item" class="toc-h2 toc-link" data-title="Delete Item">Delete Item</a>
                   </li>
               </ul>
           </li>
@@ -461,7 +507,7 @@ You must replace <code>qwerty123456...</code> with your API access token.
 <td>The ID of the team to retrieve</td>
 </tr>
 </tbody></table>
-<h1 id='inventories'>Inventories</h1><h2 id='get-all-inventories-from-the-specific-team'>Get All Inventories from the specific team</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://my-test.scinote.net/api/v1/teams/1/inventories"</span>
+<h1 id='inventories'>Inventories</h1><h2 id='get-inventories'>Get Inventories</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://my-test.scinote.net/api/v1/teams/1/inventories"</span>
   -H <span class="s2">"Authorization: Bearer qwerty123456..."</span>
 </code></pre>
 <blockquote>
@@ -485,17 +531,17 @@ You must replace <code>qwerty123456...</code> with your API access token.
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://my-test.scinote.net/api/v1/teams/1/inventories?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://my-test.scinote.net/api/v1/teams/1/inventories?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://server-name/api/v1/teams/1/inventories?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://server-name/api/v1/teams/1/inventories?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"prev"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://my-test.scinote.net/api/v1/teams/1/inventories?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="w">
+        </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://server-name/api/v1/teams/1/inventories?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all inventories from the specified team.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://my-test.scinote.net/api/v1/teams/&lt;TEAM_ID&gt;/inventories</code></p>
+<p><code>GET https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -508,7 +554,7 @@ You must replace <code>qwerty123456...</code> with your API access token.
 <td>The ID of the team to retrieve inventories from</td>
 </tr>
 </tbody></table>
-<h2 id='get-a-specific-inventory'>Get a Specific Inventory</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://my-test.scinote.net/api/v1/teams/1/inventories/1"</span>
+<h2 id='get-inventory'>Get Inventory</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://server-name/api/v1/teams/1/inventories/1"</span>
   -H <span class="s2">"Authorization: Bearer qwerty123456..."</span>
 </code></pre>
 <blockquote>
@@ -526,7 +572,7 @@ You must replace <code>qwerty123456...</code> with your API access token.
 </span></code></pre>
 <p>This endpoint retrieves a specific inventory.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://my-test.scinote.net/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;ID&gt;</code></p>
+<p><code>GET http://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -543,109 +589,7 @@ You must replace <code>qwerty123456...</code> with your API access token.
 <td>The ID of the inventory to retrieve</td>
 </tr>
 </tbody></table>
-<h2 id='get-columns-from-specific-inventory'>Get Columns from specific inventory</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://my-test.scinote.net/api/v1/teams/1/inventories/1/columns"</span>
-  -H <span class="s2">"Authorization: Bearer qwerty123456..."</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_columns"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Text Column"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"inventory_list_items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_columns"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"File Column"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"file"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"inventory_list_items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_columns"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"List Column"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"inventory_list_items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                      </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_list_items"</span><span class="w">
-                      </span><span class="p">},</span><span class="w">
-                      </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_list_items"</span><span class="w">
-                      </span><span class="p">}</span><span class="w">
-                    </span><span class="p">]</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"included"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_list_items"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ASF"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_list_items"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GDD"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://my-test.scinote.net/api/v1/teams/1/inventories/1/columns?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://my-test.scinote.net/api/v1/teams/1/inventories/1/columns?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"prev"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://my-test.scinote.net/api/v1/teams/1/inventories/1/columns?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves columns from specific inventory.
-Also by default includes inventory list items for each list data type column.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://my-test.scinote.net/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/columns</code></p>
-<h3 id='url-parameters-3'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>TEAM_ID</td>
-<td>The ID of the team to retrieve inventory from</td>
-</tr>
-<tr>
-<td>INVENTORY_ID</td>
-<td>The ID of the inventory to retrieve columns from</td>
-</tr>
-</tbody></table>
-<h2 id='get-items-from-specific-inventory'>Get Items from specific inventory</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://my-test.scinote.net/api/v1/teams/1/inventories/1/items"</span>
+<h2 id='get-items-from-specific-inventory'>Get Items from specific inventory</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://server-name/api/v1/teams/1/inventories/1/items"</span>
   -H <span class="s2">"Authorization: Bearer qwerty123456..."</span>
 </code></pre>
 <blockquote>
@@ -724,9 +668,9 @@ Also by default includes inventory list items for each list data type column.</p
 </span></code></pre>
 <p>This endpoint retrieves items from specific inventory.
 Also by default includes inventory cells.</p>
-<h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET https://my-test.scinote.net/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/items</code></p>
-<h3 id='url-parameters-4'>URL Parameters</h3>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/items</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -740,6 +684,527 @@ Also by default includes inventory cells.</p>
 <tr>
 <td>INVENTORY_ID</td>
 <td>The ID of the inventory to retrieve items from</td>
+</tr>
+</tbody></table>
+<h2 id='create-inventory'>Create Inventory</h2><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  https://server-name/api/v1/teams/1/inventories <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer qwerty123456...'</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/vnd.api+json'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "data": {
+        "type": "inventories",
+        "attributes": {
+            "name": "Samples"
+        }
+    }
+  }'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventories"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Samples"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint creates new inventory in the team.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>POST https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories</code></p>
+<h3 id='url-parameters-4'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>TEAM_ID</td>
+<td>The ID of the team to retrieve inventory from</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request body</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventories"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Samples"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='inventory-attributes'>Inventory attributes</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>yes</td>
+<td>Name of the column</td>
+</tr>
+</tbody></table>
+<h2 id='update-inventory'>Update Inventory</h2><pre class="highlight shell tab-shell"><code>curl -X PATCH <span class="se">\</span>
+  https://server-name/api/v1/teams/1/inventories/1 <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer qwerty123456...'</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/vnd.api+json'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "data": {
+        "id": "1",
+        "type": "inventories",
+        "attributes": {
+            "name": "Samples 2"
+        }
+    }
+  }'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventories"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Samples 2"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint updates existing inventory in the selected team.
+If submitted attributes are the same and no changes are made for the inventory, server returns empty body with response code 204.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>PATCH https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-5'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>TEAM_ID</td>
+<td>The ID of the team to retrieve inventory from</td>
+</tr>
+<tr>
+<td>ID</td>
+<td>The ID of the inventory</td>
+</tr>
+</tbody></table>
+<h3 id='request-body'>Request body</h3><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventories"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Samples 2"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='inventory-column-attributes'>Inventory column attributes</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>yes</td>
+<td>Name of the column</td>
+</tr>
+</tbody></table>
+<h2 id='delete-inventory'>Delete Inventory</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+  https://server-name/api/v1/teams/1/inventories/1 <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer qwerty123456..."</span>
+</code></pre>
+<blockquote>
+<p>The above command returns empty body with status code 200</p>
+</blockquote>
+
+<p>This endpoint deletes specific inventory.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>DELETE https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-6'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>TEAM_ID</td>
+<td>The ID of the team to retrieve inventory from</td>
+</tr>
+<tr>
+<td>ID</td>
+<td>The ID of the inventory</td>
+</tr>
+</tbody></table>
+<h1 id='inventory-columns'>Inventory Columns</h1><h2 id='get-columns'>Get Columns</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://server-name/api/v1/teams/1/inventories/1/columns"</span>
+  -H <span class="s2">"Authorization: Bearer qwerty123456..."</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_columns"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Text Column"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"inventory_list_items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_columns"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"File Column"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"file"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"inventory_list_items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_columns"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"List Column"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"inventory_list_items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                      </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_list_items"</span><span class="w">
+                      </span><span class="p">},</span><span class="w">
+                      </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_list_items"</span><span class="w">
+                      </span><span class="p">}</span><span class="w">
+                    </span><span class="p">]</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"included"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_list_items"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ASF"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_list_items"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GDD"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://server-name/api/v1/teams/1/inventories/1/columns?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://server-name/api/v1/teams/1/inventories/1/columns?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"prev"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://server-name/api/v1/teams/1/inventories/1/columns?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves columns from specific inventory. Also by default includes list items for list type column.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/columns</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>TEAM_ID</td>
+<td>The ID of the team to retrieve inventory from</td>
+</tr>
+<tr>
+<td>INVENTORY_ID</td>
+<td>The ID of the inventory to retrieve column from</td>
+</tr>
+</tbody></table>
+<h2 id='get-column'>Get Column</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://server-name/api/v1/teams/1/inventories/1/columns/1"</span>
+  -H <span class="s2">"Authorization: Bearer qwerty123456..."</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_columns"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sample type"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"inventory_list_items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_list_items"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_list_items"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves specific column from inventory.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/columns/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>TEAM_ID</td>
+<td>The ID of the team to retrieve inventory from</td>
+</tr>
+<tr>
+<td>INVENTORY_ID</td>
+<td>The ID of the inventory to retrieve column from</td>
+</tr>
+<tr>
+<td>ID</td>
+<td>The ID of the column</td>
+</tr>
+</tbody></table>
+<h2 id='create-column'>Create Column</h2><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  https://server-name/api/v1/teams/1/inventories/1/columns <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer qwerty123456...'</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/vnd.api+json'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "data": {
+        "type": "inventory_columns",
+        "attributes": {
+            "name": "Sample",
+            "data_type": "RepositoryTextValue"
+        }
+    }
+  }'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_columns"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sample"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"inventory_list_items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint creates new column in the inventory.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/columns</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>TEAM_ID</td>
+<td>The ID of the team to retrieve inventory from</td>
+</tr>
+<tr>
+<td>INVENTORY_ID</td>
+<td>The ID of the inventory to retrieve column from</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request body</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_columns"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sample"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RepositoryTextValue"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='inventory-column-attributes'>Inventory column attributes</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>yes</td>
+<td>Name of the column</td>
+</tr>
+<tr>
+<td>data_type</td>
+<td>yes</td>
+<td>Data type of the column</td>
+</tr>
+</tbody></table>
+<h2 id='update-column'>Update Column</h2><pre class="highlight shell tab-shell"><code>curl -X PATCH <span class="se">\</span>
+  https://server-name/api/v1/teams/1/inventories/1/columns/1 <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer qwerty123456...'</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/vnd.api+json'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "data": {
+        "id": "1",
+        "type": "inventory_columns",
+        "attributes": {
+            "name": "Sample 2",
+            "data_type": "RepositoryTextValue"
+        }
+    }
+  }'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_columns"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sample 2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"inventory_list_items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint updates existing list item in selected inventory column.
+If submitted attributes are the same and no changes are made for the item, server returns empty body with response code 204.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>PATCH https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/columns/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-4'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>TEAM_ID</td>
+<td>The ID of the team to retrieve inventory from</td>
+</tr>
+<tr>
+<td>INVENTORY_ID</td>
+<td>The ID of the inventory to retrieve column from</td>
+</tr>
+<tr>
+<td>ID</td>
+<td>The ID of the column</td>
+</tr>
+</tbody></table>
+<h3 id='request-body'>Request body</h3><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_columns"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sample 2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RepositoryTextValue"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='inventory-column-attributes-2'>Inventory column attributes</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>no</td>
+<td>Name of the column</td>
+</tr>
+<tr>
+<td>data_type</td>
+<td>no</td>
+<td>Data type of the column</td>
+</tr>
+</tbody></table>
+<h2 id='delete-column'>Delete Column</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+  https://server-name/api/v1/teams/1/inventories/1/columns/1 <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer qwerty123456..."</span>
+</code></pre>
+<blockquote>
+<p>The above command returns empty body with status code 200</p>
+</blockquote>
+
+<p>This endpoint deletes specific column from the inventory.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>DELETE https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/columns/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-5'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>TEAM_ID</td>
+<td>The ID of the team to retrieve inventory from</td>
+</tr>
+<tr>
+<td>INVENTORY_ID</td>
+<td>The ID of the inventory to retrieve column from</td>
+</tr>
+<tr>
+<td>ID</td>
+<td>The ID of the column</td>
 </tr>
 </tbody></table>
 <h1 id='inventory-column-list-items'>Inventory Column List Items</h1><h2 id='get-list-items'>Get List Items</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://server-name/api/v1/teams/1/inventories/1/columns/1/list_items"</span>
@@ -1031,6 +1496,544 @@ If submitted attributes are the same and no changes are made for the item, serve
 <tr>
 <td>ID</td>
 <td>The ID of the list item</td>
+</tr>
+</tbody></table>
+<h1 id='inventory-items'>Inventory Items</h1><h2 id='get-items'>Get Items</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://server-name/api/v1/teams/1/inventories/1/items"</span>
+  -H <span class="s2">"Authorization: Bearer qwerty123456..."</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_items"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Item 1"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"inventory_cells"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_items"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Item 2"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"inventory_cells"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="w">
+                        </span><span class="p">}</span><span class="w">
+                    </span><span class="p">]</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"included"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"inventory_list_item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"inventory_list_item_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tea leaves"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"column_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#159B5E"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"column_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://server-name/api/v1/teams/1/inventories/1/items?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://server-nam/api/v1/teams/1/inventories/1/items?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"prev"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://server-nam/api/v1/teams/1/inventories/1/items?page%5Bnumber%5D=2&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://server-nam/api/v1/teams/1/inventories/1/items?page%5Bnumber%5D=2&amp;page%5Bsize%5D=10"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves items from specific inventory. Also by default cells are included.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/items</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>TEAM_ID</td>
+<td>The ID of the team to retrieve inventory from</td>
+</tr>
+<tr>
+<td>INVENTORY_ID</td>
+<td>The ID of the inventory to retrieve items from</td>
+</tr>
+</tbody></table>
+<h2 id='get-item'>Get Item</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://server-name/api/v1/teams/1/inventories/1/items/1"</span>
+  -H <span class="s2">"Authorization: Bearer qwerty123456..."</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_items"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POY/3"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"inventory_cells"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"included"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"inventory_list_item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"inventory_list_item_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Potato leaves"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"column_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#6C159E"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"column_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves specific item from the inventory. Cells are included by default.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/items/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>TEAM_ID</td>
+<td>The ID of the team to retrieve inventory from</td>
+</tr>
+<tr>
+<td>INVENTORY_ID</td>
+<td>The ID of the inventory to retrieve item from</td>
+</tr>
+<tr>
+<td>ID</td>
+<td>The ID of the item</td>
+</tr>
+</tbody></table>
+<h2 id='create-item'>Create Item</h2><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  https://server-name/api/v1/teams/1/inventories/1/items <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer qwerty123456...'</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/vnd.api+json'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+   "data": {
+       "type": "inventory_items",
+       "attributes": {
+           "name": "POY/3"
+       }
+   },
+   "included": [
+       {
+           "type": "inventory_cells",
+           "attributes": {
+               "value": 1,
+               "column_id": 1
+           }
+       },
+       {
+           "type": "inventory_cells",
+           "attributes": {
+               "value": "#6C159E",
+               "column_id": 2
+           }
+       }
+   ]
+ }'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_items"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POY/3"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"inventory_cells"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"included"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"inventory_list_item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"inventory_list_item_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Potato leaves"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"column_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#6C159E"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"column_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint creates new item in the inventory, cells can be also added in &#39;included&#39; section.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/items</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>TEAM_ID</td>
+<td>The ID of the team to retrieve inventory from</td>
+</tr>
+<tr>
+<td>INVENTORY_ID</td>
+<td>The ID of the inventory</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request body</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_items"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POY/3"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"included"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"column_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#6C159E"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"column_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='inventory-item-attributes'>Inventory item attributes</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>yes</td>
+<td>Name of the item</td>
+</tr>
+</tbody></table>
+<h3 id='inventory-cell-attributes'>Inventory cell attributes</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>value</td>
+<td>yes</td>
+<td>Content of the cell, depends on column type</td>
+</tr>
+<tr>
+<td>column_id</td>
+<td>yes</td>
+<td>ID of the column</td>
+</tr>
+</tbody></table>
+<h2 id='update-item'>Update Item</h2><pre class="highlight shell tab-shell"><code>curl -X PATCH <span class="se">\</span>
+  https://server-name/api/v1/teams/1/inventories/1/items/1 <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer qwerty123456...'</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/vnd.api+json'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "data": {
+        "id": "1",
+        "type": "inventory_items",
+        "attributes": {
+            "name": "POY/4"
+        }
+    },
+    "included": [
+        {
+            "id": "1",
+            "type": "inventory_cells",
+            "attributes": {
+                "value": 2,
+                "column_id": 1
+            }
+        },
+        {
+            "id": "2",
+            "type": "inventory_cells",
+            "attributes": {
+                "value": "#6C159D",
+                "column_id": 2
+            }
+        }
+    ]
+}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_items"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POY/4"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"inventory_cells"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"included"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"inventory_list_item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"inventory_list_item_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tea leaves (1)"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"column_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#6C159D"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"column_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint updates existing item in selected inventory.
+Also existing cells can be updated by adding them to &#39;included&#39; section.
+If submitted attributes are the same and no changes are made for the item, server returns empty body with response code 204.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>PATCH https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/items/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-4'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>TEAM_ID</td>
+<td>The ID of the team to retrieve inventory from</td>
+</tr>
+<tr>
+<td>INVENTORY_ID</td>
+<td>The ID of the inventory to retrieve item from</td>
+</tr>
+<tr>
+<td>ID</td>
+<td>The ID of the item</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request body</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_items"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POY/4"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"included"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"column_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#6C159D"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"column_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='inventory-item-attributes-2'>Inventory item attributes</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>no</td>
+<td>Name of the item</td>
+</tr>
+</tbody></table>
+<h3 id='inventory-cell-attributes-2'>Inventory cell attributes</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>value</td>
+<td>yes</td>
+<td>Content of the cell, depends on column type</td>
+</tr>
+<tr>
+<td>column_id</td>
+<td>yes</td>
+<td>ID of the column</td>
+</tr>
+</tbody></table>
+<h2 id='delete-item'>Delete Item</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+  https://server-name/api/v1/teams/1/inventories/1/items/1 <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer qwerty123456..."</span>
+</code></pre>
+<blockquote>
+<p>The above command returns empty body with status code 200</p>
+</blockquote>
+
+<p>This endpoint deletes specific item from the inventory.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>DELETE https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/items/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-5'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>TEAM_ID</td>
+<td>The ID of the team to retrieve inventory from</td>
+</tr>
+<tr>
+<td>INVENTORY_ID</td>
+<td>The ID of the inventory to retrieve item from</td>
+</tr>
+<tr>
+<td>ID</td>
+<td>The ID of the item</td>
 </tr>
 </tbody></table>
 <h1 id='results'>Results</h1><h2 id='get-results'>Get Results</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://server-name/api/v1/teams/1/projects/1/experiments/1/tasks/1/results"</span>
