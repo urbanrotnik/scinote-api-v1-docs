@@ -118,7 +118,7 @@ ID | The ID of the inventory to retrieve
 ## Get Items from specific inventory
 
 ```shell
-curl "http://server-name/api/v1/teams/1/inventories/1/items"
+curl "http://<server-name>/api/v1/teams/1/inventories/1/items"
   -H "Authorization: Bearer qwerty123456..."
 ```
 
@@ -202,7 +202,7 @@ Also by default includes inventory cells.
 
 ### HTTP Request
 
-`GET https://server-name/api/v1/teams/<TEAM_ID>/inventories/<INVENTORY_ID>/items`
+`GET https://<server-name>/api/v1/teams/<TEAM_ID>/inventories/<INVENTORY_ID>/items`
 
 ### URL Parameters
 
@@ -360,7 +360,7 @@ name | yes | Name of the column
 
 ```shell
 curl -X DELETE \
-  https://server-name/api/v1/teams/1/inventories/1 \
+  https://<server-name>/api/v1/teams/1/inventories/1 \
   -H "Authorization: Bearer qwerty123456..."
 ```
 
@@ -370,7 +370,7 @@ This endpoint deletes specific inventory.
 
 ### HTTP Request
 
-`DELETE https://server-name/api/v1/teams/<TEAM_ID>/inventories/<ID>`
+`DELETE https://<server-name>/api/v1/teams/<TEAM_ID>/inventories/<ID>`
 
 ### URL Parameters
 
