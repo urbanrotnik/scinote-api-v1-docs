@@ -3,7 +3,7 @@
 ## Get Items
 
 ```shell
-curl "https://server-name/api/v1/teams/1/inventories/1/items"
+curl "https://<server-name>/api/v1/teams/1/inventories/1/items"
   -H "Authorization: Bearer qwerty123456..."
 ```
 
@@ -17,11 +17,6 @@ curl "https://server-name/api/v1/teams/1/inventories/1/items"
             "type": "inventory_items",
             "attributes": {
                 "name": "Item 1"
-            },
-            "relationships": {
-                "inventory_cells": {
-                    "data": []
-                }
             }
         },
         {
@@ -45,47 +40,23 @@ curl "https://server-name/api/v1/teams/1/inventories/1/items"
                 }
             }
         }
-    ],
-    "included": [
-        {
-            "id": "1",
-            "type": "inventory_cells",
-            "attributes": {
-                "value_type": "list",
-                "value": {
-                    "inventory_list_item_id": 1,
-                    "inventory_list_item_name": "Tea leaves"
-                },
-                "column_id": 1
-            }
-        },
-        {
-            "id": "2",
-            "type": "inventory_cells",
-            "attributes": {
-                "value_type": "text",
-                "value": {
-                    "text": "#159B5E"
-                },
-                "column_id": 2
-            }
-        }
-      ],
+    ]
     "links": {
-        "self": "http://server-name/api/v1/teams/1/inventories/1/items?page%5Bnumber%5D=1&page%5Bsize%5D=10",
-        "first": "http://server-nam/api/v1/teams/1/inventories/1/items?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+        "self": "http://<server-name>/api/v1/teams/1/inventories/1/items?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+        "first": "http://<server-name>/api/v1/teams/1/inventories/1/items?page%5Bnumber%5D=1&page%5Bsize%5D=10",
         "prev": null,
-        "next": "http://server-nam/api/v1/teams/1/inventories/1/items?page%5Bnumber%5D=2&page%5Bsize%5D=10",
-        "last": "http://server-nam/api/v1/teams/1/inventories/1/items?page%5Bnumber%5D=2&page%5Bsize%5D=10"
+        "next": "http://<server-name>/api/v1/teams/1/inventories/1/items?page%5Bnumber%5D=2&page%5Bsize%5D=10",
+        "last": "http://<server-name>/api/v1/teams/1/inventories/1/items?page%5Bnumber%5D=2&page%5Bsize%5D=10"
     }
 }
 ```
 
-This endpoint retrieves items from specific inventory. Also by default cells are included.
+This endpoint retrieves items from specific inventory. If `?include=inventory_cells` PATH parameter is provided,
+the inventory cells of the items are also included; otherwise, they are ignored.
 
 ### HTTP Request
 
-`GET https://server-name/api/v1/teams/<TEAM_ID>/inventories/<INVENTORY_ID>/items`
+`GET https://<server-name>/api/v1/teams/<TEAM_ID>/inventories/<INVENTORY_ID>/items(?include=<INCLUDE_CELLS>)`
 
 ### URL Parameters
 
@@ -93,11 +64,12 @@ Parameter | Description
 --------- | -----------
 TEAM_ID | The ID of the team to retrieve inventory from
 INVENTORY_ID | The ID of the inventory to retrieve items from
+INCLUDE_CELLS | if set to `inventory_cells`, inventory cells of the items are also included
 
 ## Get Item
 
 ```shell
-curl "https://server-name/api/v1/teams/1/inventories/1/items/1"
+curl "https://<server-name>/api/v1/teams/1/inventories/1/items/1"
   -H "Authorization: Bearer qwerty123456..."
 ```
 
@@ -121,7 +93,12 @@ curl "https://server-name/api/v1/teams/1/inventories/1/items/1"
                     {
                         "id": "2",
                         "type": "inventory_cells"
+                    },
+                    {
+                        "id": "3",
+                        "type": "inventory_cells"
                     }
+                }
                 ]
             }
         }
@@ -131,7 +108,7 @@ curl "https://server-name/api/v1/teams/1/inventories/1/items/1"
             "id": "1",
             "type": "inventory_cells",
             "attributes": {
-                "value_type": "list",
+                "value_type": "RepositoryListValue",
                 "value": {
                     "inventory_list_item_id": 1,
                     "inventory_list_item_name": "Potato leaves"
@@ -143,11 +120,25 @@ curl "https://server-name/api/v1/teams/1/inventories/1/items/1"
             "id": "2",
             "type": "inventory_cells",
             "attributes": {
-                "value_type": "text",
+                "value_type": "RepositoryTextValue",
                 "value": {
                     "text": "#6C159E"
                 },
                 "column_id": 2
+            }
+        },
+        {
+            "id": "3",
+            "type": "inventory_cells",
+            "attributes": {
+                "value_type": "RepositoryAssetValue",
+                "value": {
+                    "file_id": 1,
+                    "file_name": <file-name>,
+                    "file_size": 38157,
+                    "url": <file-url>
+                },
+                "column_id": 3
             }
         }
     ]
@@ -158,7 +149,7 @@ This endpoint retrieves specific item from the inventory. Cells are included by 
 
 ### HTTP Request
 
-`GET https://server-name/api/v1/teams/<TEAM_ID>/inventories/<INVENTORY_ID>/items/<ID>`
+`GET https://<server-name>/api/v1/teams/<TEAM_ID>/inventories/<INVENTORY_ID>/items/<ID>`
 
 ### URL Parameters
 
@@ -172,7 +163,7 @@ ID | The ID of the item
 
 ```shell
 curl -X POST \
-  https://server-name/api/v1/teams/1/inventories/1/items \
+  https://<server-name>/api/v1/teams/1/inventories/1/items \
   -H 'Authorization: Bearer qwerty123456...' \
   -H 'Content-Type: application/vnd.api+json' \
   -d '{
@@ -258,7 +249,7 @@ This endpoint creates new item in the inventory, cells can be also added in 'inc
 
 ### HTTP Request
 
-`POST https://server-name/api/v1/teams/<TEAM_ID>/inventories/<INVENTORY_ID>/items`
+`POST https://<server-name>/api/v1/teams/<TEAM_ID>/inventories/<INVENTORY_ID>/items`
 
 ### URL Parameters
 
@@ -313,7 +304,7 @@ column_id | yes | ID of the column
 
 ```shell
 curl -X PATCH \
-  https://server-name/api/v1/teams/1/inventories/1/items/1 \
+  https://<server-name>/api/v1/teams/1/inventories/1/items/1 \
   -H 'Authorization: Bearer qwerty123456...' \
   -H 'Content-Type: application/vnd.api+json' \
   -d '{
@@ -404,7 +395,7 @@ If submitted attributes are the same and no changes are made for the item, serve
 
 ### HTTP Request
 
-`PATCH https://server-name/api/v1/teams/<TEAM_ID>/inventories/<INVENTORY_ID>/items/<ID>`
+`PATCH https://<server-name>/api/v1/teams/<TEAM_ID>/inventories/<INVENTORY_ID>/items/<ID>`
 
 ### URL Parameters
 
@@ -464,7 +455,7 @@ column_id | yes | ID of the column
 
 ```shell
 curl -X DELETE \
-  https://server-name/api/v1/teams/1/inventories/1/items/1 \
+  https://<server-name>/api/v1/teams/1/inventories/1/items/1 \
   -H "Authorization: Bearer qwerty123456..."
 ```
 
@@ -474,7 +465,7 @@ This endpoint deletes specific item from the inventory.
 
 ### HTTP Request
 
-`DELETE https://server-name/api/v1/teams/<TEAM_ID>/inventories/<INVENTORY_ID>/items/<ID>`
+`DELETE https://<server-name>/api/v1/teams/<TEAM_ID>/inventories/<INVENTORY_ID>/items/<ID>`
 
 ### URL Parameters
 
