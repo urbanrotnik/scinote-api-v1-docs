@@ -285,7 +285,7 @@ name | yes | Name of the column
 
 ```shell
 curl -X PATCH \
-  https://server-name/api/v1/teams/1/inventories/1 \
+  https://<server-name>/api/v1/teams/1/inventories/1 \
   -H 'Authorization: Bearer qwerty123456...' \
   -H 'Content-Type: application/vnd.api+json' \
   -d '{
@@ -308,6 +308,14 @@ curl -X PATCH \
         "type": "inventories",
         "attributes": {
             "name": "Samples 2"
+        },
+        "relationships": {
+            "created_by": {
+                "data": {
+                    "id": "1",
+                    "type": "users"
+                }
+            }
         }
     }
 }
@@ -318,7 +326,7 @@ If submitted attributes are the same and no changes are made for the inventory, 
 
 ### HTTP Request
 
-`PATCH https://server-name/api/v1/teams/<TEAM_ID>/inventories/<ID>`
+`PATCH https://<server-name>/api/v1/teams/<TEAM_ID>/inventories/<ID>`
 
 ### URL Parameters
 
