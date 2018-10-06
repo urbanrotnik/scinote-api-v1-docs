@@ -3,7 +3,7 @@
 ## Get Columns
 
 ```shell
-curl "https://server-name/api/v1/teams/1/inventories/1/columns"
+curl "https://<server-name>/api/v1/teams/1/inventories/1/columns"
   -H "Authorization: Bearer qwerty123456..."
 ```
 
@@ -19,11 +19,6 @@ curl "https://server-name/api/v1/teams/1/inventories/1/columns"
                 "name": "Text Column",
                 "data_type": "text"
             },
-            "relationships": {
-                "inventory_list_items": {
-                    "data": []
-                }
-            }
         },
         {
             "id": "2",
@@ -32,11 +27,6 @@ curl "https://server-name/api/v1/teams/1/inventories/1/columns"
                 "name": "File Column",
                 "data_type": "file"
             },
-            "relationships": {
-                "inventory_list_items": {
-                    "data": []
-                }
-            }
         },
         {
             "id": "3",
@@ -61,37 +51,21 @@ curl "https://server-name/api/v1/teams/1/inventories/1/columns"
             }
         }
     ],
-    "included": [
-        {
-            "id": "1",
-            "type": "inventory_list_items",
-            "attributes": {
-                "data": "ASF"
-            }
-        },
-        {
-            "id": "2",
-            "type": "inventory_list_items",
-            "attributes": {
-                "data": "GDD"
-            }
-        }
-    ],
     "links": {
-        "self": "https://server-name/api/v1/teams/1/inventories/1/columns?page%5Bnumber%5D=1&page%5Bsize%5D=10",
-        "first": "https://server-name/api/v1/teams/1/inventories/1/columns?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+        "self": "https://<server-name>/api/v1/teams/1/inventories/1/columns?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+        "first": "https://<server-name>/api/v1/teams/1/inventories/1/columns?page%5Bnumber%5D=1&page%5Bsize%5D=10",
         "prev": null,
         "next": null,
-        "last": "https://server-name/api/v1/teams/1/inventories/1/columns?page%5Bnumber%5D=1&page%5Bsize%5D=10"
+        "last": "https://<server-name>/api/v1/teams/1/inventories/1/columns?page%5Bnumber%5D=1&page%5Bsize%5D=10"
     }
 }
 ```
 
-This endpoint retrieves columns from specific inventory. Also by default includes list items for list type column.
+This endpoint retrieves columns from specific inventory. For list type columns, list items relationships are also returned.
 
 ### HTTP Request
 
-`GET https://server-name/api/v1/teams/<TEAM_ID>/inventories/<INVENTORY_ID>/columns`
+`GET https://<server-name>/api/v1/teams/<TEAM_ID>/inventories/<INVENTORY_ID>/columns`
 
 ### URL Parameters
 
@@ -103,7 +77,7 @@ INVENTORY_ID | The ID of the inventory to retrieve column from
 ## Get Column
 
 ```shell
-curl "https://server-name/api/v1/teams/1/inventories/1/columns/1"
+curl "https://<server-name>/api/v1/teams/1/inventories/1/columns/1"
   -H "Authorization: Bearer qwerty123456..."
 ```
 
@@ -132,15 +106,31 @@ curl "https://server-name/api/v1/teams/1/inventories/1/columns/1"
                 ]
             }
         }
-    }
+    },
+    "included": [
+        {
+            "id": "1",
+            "type": "inventory_list_items",
+            "attributes": {
+                "data": "ASF"
+            }
+        },
+        {
+            "id": "2",
+            "type": "inventory_list_items",
+            "attributes": {
+                "data": "GDD"
+            }
+        }
+    ],
 }
 ```
 
-This endpoint retrieves specific column from inventory.
+This endpoint retrieves specific column from inventory. For list type columns, related list items are also included.
 
 ### HTTP Request
 
-`GET https://server-name/api/v1/teams/<TEAM_ID>/inventories/<INVENTORY_ID>/columns/<ID>`
+`GET https://<server-name>/api/v1/teams/<TEAM_ID>/inventories/<INVENTORY_ID>/columns/<ID>`
 
 ### URL Parameters
 
