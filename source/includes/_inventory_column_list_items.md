@@ -3,7 +3,7 @@
 ## Get List Items
 
 ```shell
-curl "https://server-name/api/v1/teams/1/inventories/1/columns/1/list_items"
+curl "https://<server-name>/api/v1/teams/1/inventories/1/columns/1/list_items"
   -H "Authorization: Bearer qwerty123456..."
 ```
 
@@ -35,11 +35,11 @@ curl "https://server-name/api/v1/teams/1/inventories/1/columns/1/list_items"
         }
     ],
     "links": {
-        "self": "https://server-name/api/v1/teams/1/inventories/1/columns/1/list_items?page%5Bnumber%5D=1&page%5Bsize%5D=10",
-        "first": "https://server-name/api/v1/teams/1/inventories/1/columns/1/list_items?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+        "self": "https://<server-name>/api/v1/teams/1/inventories/1/columns/1/list_items?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+        "first": "https://<server-name>/api/v1/teams/1/inventories/1/columns/1/list_items?page%5Bnumber%5D=1&page%5Bsize%5D=10",
         "prev": null,
         "next": null,
-        "last": "https://server-name/api/v1/teams/1/inventories/1/columns/1/list_items?page%5Bnumber%5D=1&page%5Bsize%5D=10"
+        "last": "https://<server-name>/api/v1/teams/1/inventories/1/columns/1/list_items?page%5Bnumber%5D=1&page%5Bsize%5D=10"
     }
 }
 ```
@@ -48,7 +48,7 @@ This endpoint retrieves list items from specific inventory column, only valid fo
 
 ### HTTP Request
 
-`GET https://server-name/api/v1/teams/<TEAM_ID>/inventories/<INVENTORY_ID>/columns/<COLUMN_ID>/list_items`
+`GET https://<server-name>/api/v1/teams/<TEAM_ID>/inventories/<INVENTORY_ID>/columns/<COLUMN_ID>/list_items`
 
 ### URL Parameters
 
@@ -61,7 +61,7 @@ COLUMN_ID | The ID of the column(with list data type) in specified inventory to 
 ## Get List Item
 
 ```shell
-curl "https://server-name/api/v1/teams/1/inventories/1/columns/1/list_items/1"
+curl "https://<server-name>/api/v1/teams/1/inventories/1/columns/1/list_items/1"
   -H "Authorization: Bearer qwerty123456..."
 ```
 
@@ -83,7 +83,7 @@ This endpoint retrieves specific list item from inventory column, only valid for
 
 ### HTTP Request
 
-`GET https://server-name/api/v1/teams/<TEAM_ID>/inventories/<INVENTORY_ID>/columns/<COLUMN_ID>/list_items/<ID>`
+`GET https://<server-name>/api/v1/teams/<TEAM_ID>/inventories/<INVENTORY_ID>/columns/<COLUMN_ID>/list_items/<ID>`
 
 ### URL Parameters
 
@@ -98,7 +98,7 @@ ID | The ID of the list item
 
 ```shell
 curl -X POST \
-  https://server-name/api/v1/teams/1/inventories/1/columns/1/list_items \
+  https://<server-name>/api/v1/teams/1/inventories/1/columns/1/list_items \
   -H 'Authorization: Bearer qwerty123456...' \
   -H 'Content-Type: application/vnd.api+json' \
   -d '{
@@ -129,7 +129,7 @@ This endpoint creates new list item in selected inventory column, only valid for
 
 ### HTTP Request
 
-`POST https://server-name/api/v1/teams/<TEAM_ID>/inventories/<INVENTORY_ID>/columns/<COLUMN_ID>/list_items`
+`POST https://<server-name>/api/v1/teams/<TEAM_ID>/inventories/<INVENTORY_ID>/columns/<COLUMN_ID>/list_items`
 
 ### URL Parameters
 
@@ -158,7 +158,7 @@ data | yes | Text value of the list item
 
 ```shell
 curl -X PATCH \
-  https://server-name/api/v1/teams/1/inventories/1/columns/1/list_items/1 \
+  https://<server-name>/api/v1/teams/1/inventories/1/columns/1/list_items/1 \
   -H 'Authorization: Bearer qwerty123456...' \
   -H 'Content-Type: application/vnd.api+json' \
   -d '{
@@ -191,7 +191,7 @@ If submitted attributes are the same and no changes are made for the item, serve
 
 ### HTTP Request
 
-`PATCH https://server-name/api/v1/teams/<TEAM_ID>/inventories/<INVENTORY_ID>/columns/<COLUMN_ID>/list_items/<ID>`
+`PATCH https://<server-name>/api/v1/teams/<TEAM_ID>/inventories/<INVENTORY_ID>/columns/<COLUMN_ID>/list_items/<ID>`
 
 ### URL Parameters
 
@@ -218,12 +218,11 @@ Attribute | Mandatory| Description
 --------- | -------- | -----------
 data | yes | Text value of the list item
 
-
 ## Delete List Item
 
 ```shell
 curl -X DELETE \
-  https://server-name/api/v1/teams/1/inventories/1/columns/1/list_items/1 \
+  https://<server-name>/api/v1/teams/1/inventories/1/columns/1/list_items/1 \
   -H "Authorization: Bearer qwerty123456..."
 ```
 
@@ -233,7 +232,7 @@ This endpoint deletes specific list item from inventory column.
 
 ### HTTP Request
 
-`DELETE https://server-name/api/v1/teams/<TEAM_ID>/inventories/<INVENTORY_ID>/columns/<COLUMN_ID>/list_items/<ID>`
+`DELETE https://<server-name>/api/v1/teams/<TEAM_ID>/inventories/<INVENTORY_ID>/columns/<COLUMN_ID>/list_items/<ID>`
 
 ### URL Parameters
 
