@@ -222,7 +222,7 @@ curl -X POST \
             "id": "1",
             "type": "inventory_cells",
             "attributes": {
-                "value_type": "list",
+                "value_type": "RepositoryListValue",
                 "value": {
                     "inventory_list_item_id": 1,
                     "inventory_list_item_name": "Potato leaves"
@@ -234,7 +234,7 @@ curl -X POST \
             "id": "2",
             "type": "inventory_cells",
             "attributes": {
-                "value_type": "text",
+                "value_type": "RepositoryTextValue",
                 "value": {
                     "text": "#6C159E"
                 },
@@ -309,7 +309,7 @@ curl -X PATCH \
   -H 'Content-Type: application/vnd.api+json' \
   -d '{
     "data": {
-    	"id": "1",
+        "id": "1",
         "type": "inventory_items",
         "attributes": {
             "name": "POY/4"
@@ -317,7 +317,7 @@ curl -X PATCH \
     },
     "included": [
         {
-        	"id": "1",
+            "id": "1",
             "type": "inventory_cells",
             "attributes": {
                 "value": 2,
@@ -325,7 +325,7 @@ curl -X PATCH \
             }
         },
         {
-        	"id": "2",
+            "id": "2",
             "type": "inventory_cells",
             "attributes": {
                 "value": "#6C159D",
@@ -366,7 +366,7 @@ curl -X PATCH \
             "id": "1",
             "type": "inventory_cells",
             "attributes": {
-                "value_type": "list",
+                "value_type": "RepositoryListValue",
                 "value": {
                     "inventory_list_item_id": 2,
                     "inventory_list_item_name": "Tea leaves (1)"
@@ -378,7 +378,7 @@ curl -X PATCH \
             "id": "2",
             "type": "inventory_cells",
             "attributes": {
-                "value_type": "text",
+                "value_type": "RepositoryTextValue",
                 "value": {
                     "text": "#6C159D"
                 },
@@ -410,7 +410,7 @@ ID | The ID of the item
 ```json
 {
     "data": {
-    	"id": "1",
+        "id": "1",
         "type": "inventory_items",
         "attributes": {
             "name": "POY/4"
@@ -418,7 +418,7 @@ ID | The ID of the item
     },
     "included": [
         {
-        	"id": "1",
+            "id": "1",
             "type": "inventory_cells",
             "attributes": {
                 "value": 2,
@@ -426,7 +426,7 @@ ID | The ID of the item
             }
         },
         {
-        	"id": "2",
+            "id": "2",
             "type": "inventory_cells",
             "attributes": {
                 "value": "#6C159D",
