@@ -215,7 +215,7 @@ INVENTORY_ID | The ID of the inventory to retrieve items from
 
 ```shell
 curl -X POST \
-  https://server-name/api/v1/teams/1/inventories \
+  https://<server-name>/api/v1/teams/1/inventories \
   -H 'Authorization: Bearer qwerty123456...' \
   -H 'Content-Type: application/vnd.api+json' \
   -d '{
@@ -238,6 +238,14 @@ curl -X POST \
         "attributes": {
             "name": "Samples"
         }
+    },
+    "relationships": {
+        "created_by": {
+            "data": {
+                "id": "1",
+                "type": "users"
+            }
+        }
     }
 }
 ```
@@ -246,7 +254,7 @@ This endpoint creates new inventory in the team.
 
 ### HTTP Request
 
-`POST https://server-name/api/v1/teams/<TEAM_ID>/inventories`
+`POST https://<server-name>/api/v1/teams/<TEAM_ID>/inventories`
 
 ### URL Parameters
 
