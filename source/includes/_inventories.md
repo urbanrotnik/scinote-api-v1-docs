@@ -3,7 +3,7 @@
 ## Get Inventories
 
 ```shell
-curl "http://my-test.scinote.net/api/v1/teams/1/inventories"
+curl "http://<server-name>/api/v1/teams/1/inventories"
   -H "Authorization: Bearer qwerty123456..."
 ```
 > The above command returns JSON structured like this:
@@ -16,6 +16,14 @@ curl "http://my-test.scinote.net/api/v1/teams/1/inventories"
             "type": "inventories",
             "attributes": {
                 "name": "Inventory 1"
+            },
+            "relationships": {
+                "created_by": {
+                    "data": {
+                        "id": "1",
+                        "type": "users"
+                    }
+                }
             }
         },
         {
@@ -23,15 +31,23 @@ curl "http://my-test.scinote.net/api/v1/teams/1/inventories"
             "type": "inventories",
             "attributes": {
                 "name": "Inventory 2"
+            },
+            "relationships": {
+                "created_by": {
+                    "data": {
+                        "id": "2",
+                        "type": "users"
+                    }
+                }
             }
         }
     ],
     "links": {
-        "self": "https://server-name/api/v1/teams/1/inventories?page%5Bnumber%5D=1&page%5Bsize%5D=10",
-        "first": "https://server-name/api/v1/teams/1/inventories?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+        "self": "https://<server-name>/api/v1/teams/1/inventories?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+        "first": "https://<server-name>/api/v1/teams/1/inventories?page%5Bnumber%5D=1&page%5Bsize%5D=10",
         "prev": null,
         "next": null,
-        "last": "https://server-name/api/v1/teams/1/inventories?page%5Bnumber%5D=1&page%5Bsize%5D=10"
+        "last": "https://<server-name>/api/v1/teams/1/inventories?page%5Bnumber%5D=1&page%5Bsize%5D=10"
     }
 }
 ```
@@ -40,7 +56,7 @@ This endpoint retrieves all inventories from the specified team.
 
 ### HTTP Request
 
-`GET https://server-name/api/v1/teams/<TEAM_ID>/inventories`
+`GET https://<server-name>/api/v1/teams/<TEAM_ID>/inventories`
 
 ### URL Parameters
 
@@ -51,7 +67,7 @@ TEAM_ID | The ID of the team to retrieve inventories from
 ## Get Inventory
 
 ```shell
-curl "http://server-name/api/v1/teams/1/inventories/1"
+curl "http://<server-name>/api/v1/teams/1/inventories/1"
   -H "Authorization: Bearer qwerty123456..."
 ```
 
@@ -64,8 +80,25 @@ curl "http://server-name/api/v1/teams/1/inventories/1"
         "type": "inventories",
         "attributes": {
             "name": "Inventory 1"
+        },
+        "relationships": {
+            "created_by": {
+                "data": {
+                    "id": "1",
+                    "type": "users"
+                }
+            }
         }
-    }
+    },
+    included": [
+        {
+            "id": "1",
+            "type": "users",
+            "attributes": {
+                <user-attributes>
+            }
+        }
+    ]
 }
 ```
 
@@ -73,7 +106,7 @@ This endpoint retrieves a specific inventory.
 
 ### HTTP Request
 
-`GET http://server-name/api/v1/teams/<TEAM_ID>/inventories/<ID>`
+`GET http://<server-name>/api/v1/teams/<TEAM_ID>/inventories/<ID>`
 
 ### URL Parameters
 
@@ -155,11 +188,11 @@ curl "http://server-name/api/v1/teams/1/inventories/1/items"
         }
     ],
     "links": {
-        "self": "https://my-test.scinote.net/api/v1/teams/1/inventories/1/items?page%5Bnumber%5D=1&page%5Bsize%5D=10",
-        "first": "https://my-test.scinote.net/api/v1/teams/1/inventories/1/items?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+        "self": "https://<server-name>/api/v1/teams/1/inventories/1/items?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+        "first": "https://<server-name>/api/v1/teams/1/inventories/1/items?page%5Bnumber%5D=1&page%5Bsize%5D=10",
         "prev": null,
         "next": null,
-        "last": "https://my-test.scinote.net/api/v1/teams/1/inventories/1/items?page%5Bnumber%5D=1&page%5Bsize%5D=10"
+        "last": "https://<server-name>/api/v1/teams/1/inventories/1/items?page%5Bnumber%5D=1&page%5Bsize%5D=10"
     }
 }
 ```
