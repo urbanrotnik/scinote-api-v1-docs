@@ -29,30 +29,30 @@ This API documentation page was created with [Slate](https://github.com/lord/sla
 
 SciNote uses JWT tokens to allow access to the API and OAuth 2 protocol for token generation using authorization code flow.
 
-First, it is needed to get authorization code at this endpoint: GET /oauth/authorize, please see example of such request.
+First, authorization code needs to be retrieved at the following endpoint: `GET /oauth/authorize`, please see example of such request.
 
 > To get an authorization code, use this code:
 
 ```shell
-curl https://server-name/oauth/authorize?client_id=<client_id>&<redirect_uri>&response_type=code
+curl https://<server-name>/oauth/authorize?client_id=<client-id>&redirect_uri=<redirect-uri>&response_type=code
 ```
-> Where `<client_id>` is your application registration id, `<redirect_uri>` your application redirect URI.
+> Where `<client-id>` is your application registration id, `<redirect-uri>` your application redirect URI.
 
 > The above command redirects back to your application with authorization code
 
-Now you can get a new access token at /oauth/token with POST request. Once it expires, use refresh token to get new access token.
+Now you can get a new access token at `POST /oauth/token` request. Once it expires, use refresh token to get new access token.
 
-Post here with authorization code for `authorization_code` grant type or `refresh_token` for refresh token type. This corresponds to the token endpoint, section 3.2 of the OAuth 2 RFC
+Post here with authorization code for `authorization_code` grant type or `refresh_token` for refresh token type. This corresponds to the token endpoint, section 3.2 of the OAuth 2 RFC.
 
 > To get an access token, use this code:
 
 ```shell
 curl -F grant_type=authorization_code \
--F client_id=<client_app_id> \
--F client_secret=<client_app_secret> \
--F code=<authorization_code> \
--F redirect_uri=<client_app_redirect_url> \
--X POST https://server-name/oauth/token
+-F client_id=<client-app-id> \
+-F client_secret=<client-app-secret> \
+-F code=<authorization-code> \
+-F redirect_uri=<client-app-redirect-url> \
+-X POST https://<server-name>/oauth/token
 ```
 
 > The above command returns JSON structured like this:
@@ -70,11 +70,11 @@ curl -F grant_type=authorization_code \
 
 ```shell
 curl -F grant_type=refresh_token \
--F client_id=<client_app_id> \
--F client_secret=<client_app_secret> \
--F refresh_token=<refresh_token> \
--F redirect_uri=<client_app_redirect_url> \
--X POST https://server-name/oauth/token
+-F client_id=<client-app-id> \
+-F client_secret=<client-app-secret> \
+-F refresh_token=<refresh-token> \
+-F redirect_uri=<client-app-redirect-url> \
+-X POST https://<server-name>/oauth/token
 ```
 
 SciNote expects for the API access token to be included in all API requests to the server in a header that looks like the following:
@@ -87,7 +87,7 @@ You must replace <code>qwerty123456...</code> with your API access token.
 
 # Pagination
 
-This API uses pagination as specified here [JSON API](http://jsonapi.org/format/#fetching-pagination)
+SciNote API uses pagination as specified here [JSON API](http://jsonapi.org/format/#fetching-pagination)
 
 Default page size is 10.
 
