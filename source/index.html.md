@@ -13,6 +13,7 @@ includes:
   - inventory_columns
   - inventory_column_list_items
   - inventory_items
+  - inventory_cells
   - results
   - errors
 
