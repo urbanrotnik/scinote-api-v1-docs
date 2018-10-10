@@ -3,7 +3,7 @@
 ## Get Results
 
 ```shell
-curl "https://server-name/api/v1/teams/1/projects/1/experiments/1/tasks/1/results"
+curl "https://<server-name>/api/v1/teams/1/projects/1/experiments/1/tasks/1/results"
   -H "Authorization: Bearer qwerty123456..."
 ```
 
@@ -17,15 +17,13 @@ curl "https://server-name/api/v1/teams/1/projects/1/experiments/1/tasks/1/result
             "type": "results",
             "attributes": {
                 "name": "Result 1",
-                "user_id": 1,
-                "archived": false,
-                "task_id": 1
+                "archived": false
             },
             "relationships": {
-                "my_module": {
+                "user": {
                     "data": {
                         "id": "1",
-                        "type": "tasks"
+                        "type": "users"
                     }
                 },
                 "text": {
@@ -41,21 +39,41 @@ curl "https://server-name/api/v1/teams/1/projects/1/experiments/1/tasks/1/result
             "type": "results",
             "attributes": {
                 "name": "Result 2",
-                "user_id": 1,
-                "archived": false,
-                "task_id": 1
+                "archived": false
             },
             "relationships": {
-                "my_module": {
+                "user": {
                     "data": {
                         "id": "1",
-                        "type": "tasks"
+                        "type": "users"
                     }
                 },
-                "text": {
+                "table": {
                     "data": {
-                        "id": "2",
-                        "type": "result_texts"
+                        "id": "1",
+                        "type": "result_tables"
+                    }
+                }
+            }
+        },
+        {
+            "id": "3",
+            "type": "results",
+            "attributes": {
+                "name": "Result 3",
+                "archived": false,
+            },
+            "relationships": {
+                "user": {
+                    "data": {
+                        "id": "1",
+                        "type": "users"
+                    }
+                },
+                "file": {
+                    "data": {
+                        "id": "1",
+                        "type": "result_files"
                     }
                 }
             }
@@ -66,23 +84,34 @@ curl "https://server-name/api/v1/teams/1/projects/1/experiments/1/tasks/1/result
             "id": "1",
             "type": "result_texts",
             "attributes": {
-                "text": "Result text 1"
+                "text": "Result 1 Text"
             }
         },
         {
-            "id": "2",
-            "type": "result_texts",
+            "id": "1",
+            "type": "result_tables",
             "attributes": {
-                "text": "Result text 2"
+                "table_id": 1,
+                "table_contents": <table-contents>
             }
         },
+        {
+            "id": "1",
+            "type": "result_files",
+            "attributes": {
+                "file_id": 1,
+                "file_name": <file-name>,
+                "file_size": 69,
+                "url": <file-url>
+            }
+        }
     ],
     "links": {
-        "self": "http://server-name/api/v1/teams/1/projects/1/experiments/1/tasks/1/results?page%5Bnumber%5D=1&page%5Bsize%5D=10",
-        "first": "http://server-name/api/v1/teams/1/projects/1/experiments/1/tasks/1/results?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+        "self": "http://<server-name>/api/v1/teams/1/projects/1/experiments/1/tasks/1/results?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+        "first": "http://<server-name>/api/v1/teams/1/projects/1/experiments/1/tasks/1/results?page%5Bnumber%5D=1&page%5Bsize%5D=10",
         "prev": null,
         "next": null,
-        "last": "http://server-name/api/v1/teams/1/projects/1/experiments/1/tasks/1/results?page%5Bnumber%5D=1&page%5Bsize%5D=10"
+        "last": "http://<server-name>/api/v1/teams/1/projects/1/experiments/1/tasks/1/results?page%5Bnumber%5D=1&page%5Bsize%5D=10"
     }
   }
 ```
@@ -91,7 +120,7 @@ This endpoint retrieves all results from the task. Texts, files and tables are i
 
 ### HTTP Request
 
-`GET https://server-name/api/v1/teams/<TEAM_ID>/projects/<PROJECT_ID>/experiments/<EXPERIMENT_ID>/tasks/<TASK_ID>/results`
+`GET https://<server-name>/api/v1/teams/<TEAM_ID>/projects/<PROJECT_ID>/experiments/<EXPERIMENT_ID>/tasks/<TASK_ID>/results`
 
 ### URL Parameters
 
@@ -105,7 +134,7 @@ TASK_ID | The ID of the task
 ## Get Result
 
 ```shell
-curl "https://server-name/api/v1/teams/1/projects/1/experiments/1/tasks/1/results/1"
+curl "https://<server-name>/api/v1/teams/1/projects/1/experiments/1/tasks/1/results/1"
   -H "Authorization: Bearer qwerty123456..."
 ```
 
@@ -118,15 +147,13 @@ curl "https://server-name/api/v1/teams/1/projects/1/experiments/1/tasks/1/result
         "type": "results",
         "attributes": {
             "name": "Result 1",
-            "user_id": 1,
-            "archived": false,
-            "task_id": 1
+            "archived": false
         },
         "relationships": {
-            "my_module": {
+            "user": {
                 "data": {
                     "id": "1",
-                    "type": "tasks"
+                    "type": "users"
                 }
             },
             "text": {
@@ -142,18 +169,18 @@ curl "https://server-name/api/v1/teams/1/projects/1/experiments/1/tasks/1/result
             "id": "1",
             "type": "result_texts",
             "attributes": {
-                "text": "Result text 1"
+                "text": "Result 1 Text"
             }
         }
     ]
 }
 ```
 
-This endpoint retrieves specific result. Texts, files and tables are included by default.
+This endpoint retrieves specific result. Text, file or table is included by default.
 
 ### HTTP Request
 
-`GET https://server-name/api/v1/teams/<TEAM_ID>/projects/<PROJECT_ID>/experiments/<EXPERIMENT_ID>/tasks/<TASK_ID>/results/<ID>`
+`GET https://<server-name>/api/v1/teams/<TEAM_ID>/projects/<PROJECT_ID>/experiments/<EXPERIMENT_ID>/tasks/<TASK_ID>/results/<ID>`
 
 ### URL Parameters
 
@@ -169,7 +196,7 @@ ID | The ID of the result
 
 ```shell
 curl -X POST \
-  https://server-name/api/v1/teams/1/projects/1/experiments/1/tasks/1/results \
+  https://<server-name>/api/v1/teams/1/projects/1/experiments/1/tasks/1/results \
   -H 'Content-Type: application/vnd.api+json' \
   -d '{
     "data": {
@@ -206,15 +233,13 @@ curl -X POST \
         "type": "results",
         "attributes": {
             "name": "Result 1",
-            "user_id": 1,
-            "archived": false,
-            "task_id": 1
+            "archived": false
         },
         "relationships": {
-            "my_module": {
+            "user": {
                 "data": {
                     "id": "1",
-                    "type": "tasks"
+                    "type": "users"
                 }
             },
             "text": {
@@ -244,7 +269,7 @@ Token should be string without special symbols.
 
 ### HTTP Request
 
-`POST https://server-name/api/v1/teams/<TEAM_ID>/projects/<PROJECT_ID>/experiments/<EXPERIMENT_ID>/tasks/<TASK_ID>/results`
+`POST https://<server-name>/api/v1/teams/<TEAM_ID>/projects/<PROJECT_ID>/experiments/<EXPERIMENT_ID>/tasks/<TASK_ID>/results`
 
 ### URL Parameters
 
