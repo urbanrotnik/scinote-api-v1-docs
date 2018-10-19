@@ -75,6 +75,8 @@ html, body {
   .logo {
     display: block;
     max-width: 100%;
+    margin-left: $nav-padding;
+    margin-top: $nav-padding;
     margin-bottom: $logo-margin;
   }
 

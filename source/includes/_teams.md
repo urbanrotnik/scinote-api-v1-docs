@@ -3,7 +3,7 @@
 ## Get All Teams
 
 ```shell
-curl "https://my-test.scinote.net/api/v1/teams"
+curl "https://<server-name>/api/v1/teams"
   -H "Authorization: Bearer qwerty123456..."
 ```
 > The above command returns JSON structured like this:
@@ -18,6 +18,14 @@ curl "https://my-test.scinote.net/api/v1/teams"
                 "name": "Team 1",
                 "description": "This is team 1",
                 "space_taken": 805809574
+            },
+            "relationships": {
+                "created_by": {
+                    "data": {
+                        "id": "1",
+                        "type": "users"
+                    }
+                }
             }
         },
         {
@@ -27,15 +35,23 @@ curl "https://my-test.scinote.net/api/v1/teams"
                 "name": "Team 2",
                 "description": "This is team 2",
                 "space_taken": 24370008357
+            },
+            "relationships": {
+                "created_by": {
+                    "data": {
+                        "id": "2",
+                        "type": "users"
+                    }
+                }
             }
         }
     ],
     "links": {
-        "self": "https://my-test.scinote.net/api/v1/teams?page%5Bnumber%5D=1&page%5Bsize%5D=10",
-        "first": "https://my-test.scinote.net/api/v1/teams?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+        "self": "https://<server-name>/api/v1/teams?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+        "first": "https://<server-name>/api/v1/teams?page%5Bnumber%5D=1&page%5Bsize%5D=10",
         "prev": null,
         "next": null,
-        "last": "https://my-test.scinote.net/api/v1/teams?page%5Bnumber%5D=1&page%5Bsize%5D=10"
+        "last": "https://<server-name>/api/v1/teams?page%5Bnumber%5D=1&page%5Bsize%5D=10"
     }
 }
 ```
@@ -44,12 +60,12 @@ This endpoint retrieves all teams user is member of.
 
 ### HTTP Request
 
-`GET https://my-test.scinote.net/api/v1/teams`
+`GET https://<server-name>/api/v1/teams`
 
 ## Get a Specific Team
 
 ```shell
-curl "https://my-test.scinote.net/api/v1/teams/1"
+curl "https://<server-name>/api/v1/teams/1"
   -H "Authorization: Bearer qwerty123456..."
 ```
 
@@ -65,7 +81,24 @@ curl "https://my-test.scinote.net/api/v1/teams/1"
             "description": "This is team 1",
             "space_taken": 805809574
         }
-    }
+    },
+    "relationships": {
+        "created_by": {
+            "data": {
+                "id": "1",
+                "type": "users"
+            }
+        }
+    },
+    "included": [
+        {
+            "id": "1",
+            "type": "users",
+            "attributes": {
+                <user-attributes>
+            }
+        }
+    ]
 }
 ```
 
@@ -73,7 +106,7 @@ This endpoint retrieves a specific team.
 
 ### HTTP Request
 
-`GET https://my-test.scinote.net/api/v1/teams/<ID>`
+`GET https://<server-name>/api/v1/teams/<ID>`
 
 ### URL Parameters
 
