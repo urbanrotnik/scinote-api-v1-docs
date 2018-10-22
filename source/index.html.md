@@ -9,6 +9,8 @@ toc_footers:
 
 includes:
   - teams
+  - users
+  - user_identities
   - inventories
   - inventory_columns
   - inventory_column_list_items
