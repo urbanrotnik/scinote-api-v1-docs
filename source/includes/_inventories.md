@@ -3,7 +3,7 @@
 ## Get Inventories
 
 ```shell
-curl "http://<server-name>/api/v1/teams/1/inventories"
+curl "https://<server-name>/api/v1/teams/1/inventories"
   -H "Authorization: Bearer qwerty123456..."
 ```
 > The above command returns JSON structured like this:
@@ -67,7 +67,7 @@ TEAM_ID | The ID of the team to retrieve inventories from
 ## Get Inventory
 
 ```shell
-curl "http://<server-name>/api/v1/teams/1/inventories/1"
+curl "https://<server-name>/api/v1/teams/1/inventories/1"
   -H "Authorization: Bearer qwerty123456..."
 ```
 
@@ -90,7 +90,7 @@ curl "http://<server-name>/api/v1/teams/1/inventories/1"
             }
         }
     },
-    included": [
+    "included": [
         {
             "id": "1",
             "type": "users",
@@ -106,7 +106,7 @@ This endpoint retrieves a specific inventory.
 
 ### HTTP Request
 
-`GET http://<server-name>/api/v1/teams/<TEAM_ID>/inventories/<ID>`
+`GET https://<server-name>/api/v1/teams/<TEAM_ID>/inventories/<ID>`
 
 ### URL Parameters
 
@@ -114,102 +114,6 @@ Parameter | Description
 --------- | -----------
 TEAM_ID | The ID of the team to retrieve inventory from
 ID | The ID of the inventory to retrieve
-
-## Get Items from specific inventory
-
-```shell
-curl "http://<server-name>/api/v1/teams/1/inventories/1/items"
-  -H "Authorization: Bearer qwerty123456..."
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-    "data": [
-      {
-            "id": "1",
-            "type": "inventory_items",
-            "attributes": {
-                "name": "PHH/1"
-            },
-            "relationships": {
-                "inventory_cells": {
-                    "data": [
-                        {
-                            "id": "1",
-                            "type": "inventory_cells"
-                        }
-                    ]
-                }
-            }
-        },
-        {
-            "id": "2",
-            "type": "inventory_items",
-            "attributes": {
-                "name": "PHH/2"
-            },
-            "relationships": {
-                "inventory_cells": {
-                    "data": [
-                        {
-                            "id": "2",
-                            "type": "inventory_cells"
-                        }
-                    ]
-                }
-            }
-        }
-    ],
-    "included": [
-        {
-            "id": "1",
-            "type": "inventory_cells",
-            "attributes": {
-                "data_type": "list",
-                "data": {
-                    "value": "ASF",
-                    "inventory_list_item_id": 1
-                },
-                "column_id": 3
-            }
-        },
-        {
-            "id": "2",
-            "type": "inventory_cells",
-            "attributes": {
-                "data_type": "text",
-                "data": {
-                    "value": "VEGB"
-                },
-                "column_id": 1
-            }
-        }
-    ],
-    "links": {
-        "self": "https://<server-name>/api/v1/teams/1/inventories/1/items?page%5Bnumber%5D=1&page%5Bsize%5D=10",
-        "first": "https://<server-name>/api/v1/teams/1/inventories/1/items?page%5Bnumber%5D=1&page%5Bsize%5D=10",
-        "prev": null,
-        "next": null,
-        "last": "https://<server-name>/api/v1/teams/1/inventories/1/items?page%5Bnumber%5D=1&page%5Bsize%5D=10"
-    }
-}
-```
-
-This endpoint retrieves items from specific inventory.
-Also by default includes inventory cells.
-
-### HTTP Request
-
-`GET https://<server-name>/api/v1/teams/<TEAM_ID>/inventories/<INVENTORY_ID>/items`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-TEAM_ID | The ID of the team to retrieve inventory from
-INVENTORY_ID | The ID of the inventory to retrieve items from
 
 ## Create Inventory
 
@@ -349,11 +253,11 @@ ID | The ID of the inventory
 }
 ```
 
-### Inventory column attributes
+### Inventory attributes
 
 Attribute | Mandatory| Description
 --------- | -------- | -----------
-name | yes | Name of the column
+name | yes | Name of the inventory
 
 
 ## Delete Inventory
