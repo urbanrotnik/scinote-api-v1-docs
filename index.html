@@ -327,6 +327,26 @@
               </ul>
           </li>
           <li>
+            <a href="#inventory-cells" class="toc-h1 toc-link" data-title="Inventory Cells">Inventory Cells</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-cells" class="toc-h2 toc-link" data-title="Get Cells">Get Cells</a>
+                  </li>
+                  <li>
+                    <a href="#get-cell" class="toc-h2 toc-link" data-title="Get Cell">Get Cell</a>
+                  </li>
+                  <li>
+                    <a href="#create-cell" class="toc-h2 toc-link" data-title="Create Cell">Create Cell</a>
+                  </li>
+                  <li>
+                    <a href="#update-cell" class="toc-h2 toc-link" data-title="Update Cell">Update Cell</a>
+                  </li>
+                  <li>
+                    <a href="#delete-item" class="toc-h2 toc-link" data-title="Delete Item">Delete Item</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#results" class="toc-h1 toc-link" data-title="Results">Results</a>
               <ul class="toc-list-h2">
                   <li>
@@ -358,32 +378,32 @@
 <h1 id='authentication'>Authentication</h1>
 <p>SciNote uses JWT tokens to allow access to the API and OAuth 2 protocol for token generation using authorization code flow.</p>
 
-<p>First, it is needed to get authorization code at this endpoint: GET /oauth/authorize, please see example of such request.</p>
+<p>First, authorization code needs to be retrieved at the following endpoint: <code>GET /oauth/authorize</code>, please see example of such request.</p>
 
 <blockquote>
 <p>To get an authorization code, use this code:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl https://server-name/oauth/authorize?client_id<span class="o">=</span>&lt;client_id&gt;&amp;&lt;redirect_uri&gt;&amp;response_type<span class="o">=</span>code
+<pre class="highlight shell tab-shell"><code>curl https://&lt;server-name&gt;/oauth/authorize?client_id<span class="o">=</span>&lt;client-id&gt;&amp;redirect_uri<span class="o">=</span>&lt;redirect-uri&gt;&amp;response_type<span class="o">=</span>code
 </code></pre>
 <blockquote>
-<p>Where <code>&lt;client_id&gt;</code> is your application registration id, <code>&lt;redirect_uri&gt;</code> your application redirect URI.</p>
+<p>Where <code>&lt;client-id&gt;</code> is your application registration id, <code>&lt;redirect-uri&gt;</code> your application redirect URI.</p>
 
 <p>The above command redirects back to your application with authorization code</p>
 </blockquote>
 
-<p>Now you can get a new access token at /oauth/token with POST request. Once it expires, use refresh token to get new access token.</p>
+<p>Now you can get a new access token at <code>POST /oauth/token</code> request. Once it expires, use refresh token to get new access token.</p>
 
-<p>Post here with authorization code for <code>authorization_code</code> grant type or <code>refresh_token</code> for refresh token type. This corresponds to the token endpoint, section 3.2 of the OAuth 2 RFC</p>
+<p>Post here with authorization code for <code>authorization_code</code> grant type or <code>refresh_token</code> for refresh token type. This corresponds to the token endpoint, section 3.2 of the OAuth 2 RFC.</p>
 
 <blockquote>
 <p>To get an access token, use this code:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -F <span class="nv">grant_type</span><span class="o">=</span>authorization_code <span class="se">\</span>
--F <span class="nv">client_id</span><span class="o">=</span>&lt;client_app_id&gt; <span class="se">\</span>
--F <span class="nv">client_secret</span><span class="o">=</span>&lt;client_app_secret&gt; <span class="se">\</span>
--F <span class="nv">code</span><span class="o">=</span>&lt;authorization_code&gt; <span class="se">\</span>
--F <span class="nv">redirect_uri</span><span class="o">=</span>&lt;client_app_redirect_url&gt; <span class="se">\</span>
--X POST https://server-name/oauth/token
+-F <span class="nv">client_id</span><span class="o">=</span>&lt;client-app-id&gt; <span class="se">\</span>
+-F <span class="nv">client_secret</span><span class="o">=</span>&lt;client-app-secret&gt; <span class="se">\</span>
+-F <span class="nv">code</span><span class="o">=</span>&lt;authorization-code&gt; <span class="se">\</span>
+-F <span class="nv">redirect_uri</span><span class="o">=</span>&lt;client-app-redirect-url&gt; <span class="se">\</span>
+-X POST https://&lt;server-name&gt;/oauth/token
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -399,11 +419,11 @@
 <p>And for renewal, use this code:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -F <span class="nv">grant_type</span><span class="o">=</span>refresh_token <span class="se">\</span>
--F <span class="nv">client_id</span><span class="o">=</span>&lt;client_app_id&gt; <span class="se">\</span>
--F <span class="nv">client_secret</span><span class="o">=</span>&lt;client_app_secret&gt; <span class="se">\</span>
--F <span class="nv">refresh_token</span><span class="o">=</span>&lt;refresh_token&gt; <span class="se">\</span>
--F <span class="nv">redirect_uri</span><span class="o">=</span>&lt;client_app_redirect_url&gt; <span class="se">\</span>
--X POST https://server-name/oauth/token
+-F <span class="nv">client_id</span><span class="o">=</span>&lt;client-app-id&gt; <span class="se">\</span>
+-F <span class="nv">client_secret</span><span class="o">=</span>&lt;client-app-secret&gt; <span class="se">\</span>
+-F <span class="nv">refresh_token</span><span class="o">=</span>&lt;refresh-token&gt; <span class="se">\</span>
+-F <span class="nv">redirect_uri</span><span class="o">=</span>&lt;client-app-redirect-url&gt; <span class="se">\</span>
+-X POST https://&lt;server-name&gt;/oauth/token
 </code></pre>
 <p>SciNote expects for the API access token to be included in all API requests to the server in a header that looks like the following:</p>
 
@@ -413,7 +433,7 @@
 You must replace <code>qwerty123456...</code> with your API access token.
 </aside>
 <h1 id='pagination'>Pagination</h1>
-<p>This API uses pagination as specified here <a href="http://jsonapi.org/format/#fetching-pagination">JSON API</a></p>
+<p>SciNote API uses pagination as specified here <a href="http://jsonapi.org/format/#fetching-pagination">JSON API</a></p>
 
 <p>Default page size is 10.</p>
 <h3 id='pagination-parameters'>Pagination Parameters</h3>
@@ -435,7 +455,7 @@ You must replace <code>qwerty123456...</code> with your API access token.
 <td>Number of items returned per page.</td>
 </tr>
 </tbody></table>
-<h1 id='teams'>Teams</h1><h2 id='get-all-teams'>Get All Teams</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://my-test.scinote.net/api/v1/teams"</span>
+<h1 id='teams'>Teams</h1><h2 id='get-all-teams'>Get All Teams</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://&lt;server-name&gt;/api/v1/teams"</span>
   -H <span class="s2">"Authorization: Bearer qwerty123456..."</span>
 </code></pre>
 <blockquote>
@@ -450,6 +470,14 @@ You must replace <code>qwerty123456...</code> with your API access token.
                 </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Team 1"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is team 1"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"space_taken"</span><span class="p">:</span><span class="w"> </span><span class="mi">805809574</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">}</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
@@ -459,22 +487,30 @@ You must replace <code>qwerty123456...</code> with your API access token.
                 </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Team 2"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is team 2"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"space_taken"</span><span class="p">:</span><span class="w"> </span><span class="mi">24370008357</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">}</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://my-test.scinote.net/api/v1/teams?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://my-test.scinote.net/api/v1/teams?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://&lt;server-name&gt;/api/v1/teams?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://&lt;server-name&gt;/api/v1/teams?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"prev"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://my-test.scinote.net/api/v1/teams?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="w">
+        </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://&lt;server-name&gt;/api/v1/teams?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all teams user is member of.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://my-test.scinote.net/api/v1/teams</code></p>
-<h2 id='get-a-specific-team'>Get a Specific Team</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://my-test.scinote.net/api/v1/teams/1"</span>
+<p><code>GET https://&lt;server-name&gt;/api/v1/teams</code></p>
+<h2 id='get-a-specific-team'>Get a Specific Team</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://&lt;server-name&gt;/api/v1/teams/1"</span>
   -H <span class="s2">"Authorization: Bearer qwerty123456..."</span>
 </code></pre>
 <blockquote>
@@ -489,12 +525,29 @@ You must replace <code>qwerty123456...</code> with your API access token.
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is team 1"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"space_taken"</span><span class="p">:</span><span class="w"> </span><span class="mi">805809574</span><span class="w">
         </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"included"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="err">&lt;user-attributes&gt;</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a specific team.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://my-test.scinote.net/api/v1/teams/&lt;ID&gt;</code></p>
+<p><code>GET https://&lt;server-name&gt;/api/v1/teams/&lt;ID&gt;</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -507,7 +560,7 @@ You must replace <code>qwerty123456...</code> with your API access token.
 <td>The ID of the team to retrieve</td>
 </tr>
 </tbody></table>
-<h1 id='inventories'>Inventories</h1><h2 id='get-inventories'>Get Inventories</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://my-test.scinote.net/api/v1/teams/1/inventories"</span>
+<h1 id='inventories'>Inventories</h1><h2 id='get-inventories'>Get Inventories</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://&lt;server-name&gt;/api/v1/teams/1/inventories"</span>
   -H <span class="s2">"Authorization: Bearer qwerty123456..."</span>
 </code></pre>
 <blockquote>
@@ -520,6 +573,14 @@ You must replace <code>qwerty123456...</code> with your API access token.
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventories"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Inventory 1"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">}</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
@@ -527,21 +588,29 @@ You must replace <code>qwerty123456...</code> with your API access token.
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventories"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Inventory 2"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">}</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://server-name/api/v1/teams/1/inventories?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://server-name/api/v1/teams/1/inventories?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://&lt;server-name&gt;/api/v1/teams/1/inventories?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://&lt;server-name&gt;/api/v1/teams/1/inventories?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"prev"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://server-name/api/v1/teams/1/inventories?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="w">
+        </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://&lt;server-name&gt;/api/v1/teams/1/inventories?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all inventories from the specified team.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories</code></p>
+<p><code>GET https://&lt;server-name&gt;/api/v1/teams/&lt;TEAM_ID&gt;/inventories</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -554,7 +623,7 @@ You must replace <code>qwerty123456...</code> with your API access token.
 <td>The ID of the team to retrieve inventories from</td>
 </tr>
 </tbody></table>
-<h2 id='get-inventory'>Get Inventory</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://server-name/api/v1/teams/1/inventories/1"</span>
+<h2 id='get-inventory'>Get Inventory</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://&lt;server-name&gt;/api/v1/teams/1/inventories/1"</span>
   -H <span class="s2">"Authorization: Bearer qwerty123456..."</span>
 </code></pre>
 <blockquote>
@@ -566,13 +635,30 @@ You must replace <code>qwerty123456...</code> with your API access token.
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventories"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Inventory 1"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">included</span><span class="s2">": [
+        {
+            "</span><span class="err">id</span><span class="s2">": "</span><span class="mi">1</span><span class="s2">",
+            "</span><span class="err">type</span><span class="s2">": "</span><span class="err">users</span><span class="s2">",
+            "</span><span class="err">attributes</span><span class="s2">": {
+                &lt;user-attributes&gt;
+            }
+        }
+    ]
+}
 </span></code></pre>
 <p>This endpoint retrieves a specific inventory.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;ID&gt;</code></p>
+<p><code>GET http://&lt;server-name&gt;/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -589,7 +675,7 @@ You must replace <code>qwerty123456...</code> with your API access token.
 <td>The ID of the inventory to retrieve</td>
 </tr>
 </tbody></table>
-<h2 id='get-items-from-specific-inventory'>Get Items from specific inventory</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://server-name/api/v1/teams/1/inventories/1/items"</span>
+<h2 id='get-items-from-specific-inventory'>Get Items from specific inventory</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://&lt;server-name&gt;/api/v1/teams/1/inventories/1/items"</span>
   -H <span class="s2">"Authorization: Bearer qwerty123456..."</span>
 </code></pre>
 <blockquote>
@@ -658,18 +744,18 @@ You must replace <code>qwerty123456...</code> with your API access token.
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://my-test.scinote.net/api/v1/teams/1/inventories/1/items?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://my-test.scinote.net/api/v1/teams/1/inventories/1/items?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://&lt;server-name&gt;/api/v1/teams/1/inventories/1/items?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://&lt;server-name&gt;/api/v1/teams/1/inventories/1/items?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"prev"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://my-test.scinote.net/api/v1/teams/1/inventories/1/items?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="w">
+        </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://&lt;server-name&gt;/api/v1/teams/1/inventories/1/items?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves items from specific inventory.
 Also by default includes inventory cells.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/items</code></p>
+<p><code>GET https://&lt;server-name&gt;/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/items</code></p>
 <h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -687,7 +773,7 @@ Also by default includes inventory cells.</p>
 </tr>
 </tbody></table>
 <h2 id='create-inventory'>Create Inventory</h2><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
-  https://server-name/api/v1/teams/1/inventories <span class="se">\</span>
+  https://&lt;server-name&gt;/api/v1/teams/1/inventories <span class="se">\</span>
   -H <span class="s1">'Authorization: Bearer qwerty123456...'</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/vnd.api+json'</span> <span class="se">\</span>
   -d <span class="s1">'{
@@ -709,12 +795,20 @@ Also by default includes inventory cells.</p>
         </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Samples"</span><span class="w">
         </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint creates new inventory in the team.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>POST https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories</code></p>
+<p><code>POST https://&lt;server-name&gt;/api/v1/teams/&lt;TEAM_ID&gt;/inventories</code></p>
 <h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -754,7 +848,7 @@ Also by default includes inventory cells.</p>
 </tr>
 </tbody></table>
 <h2 id='update-inventory'>Update Inventory</h2><pre class="highlight shell tab-shell"><code>curl -X PATCH <span class="se">\</span>
-  https://server-name/api/v1/teams/1/inventories/1 <span class="se">\</span>
+  https://&lt;server-name&gt;/api/v1/teams/1/inventories/1 <span class="se">\</span>
   -H <span class="s1">'Authorization: Bearer qwerty123456...'</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/vnd.api+json'</span> <span class="se">\</span>
   -d <span class="s1">'{
@@ -776,6 +870,14 @@ Also by default includes inventory cells.</p>
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventories"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Samples 2"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -783,7 +885,7 @@ Also by default includes inventory cells.</p>
 <p>This endpoint updates existing inventory in the selected team.
 If submitted attributes are the same and no changes are made for the inventory, server returns empty body with response code 204.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>PATCH https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;ID&gt;</code></p>
+<p><code>PATCH https://&lt;server-name&gt;/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-5'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -824,7 +926,7 @@ If submitted attributes are the same and no changes are made for the inventory, 
 </tr>
 </tbody></table>
 <h2 id='delete-inventory'>Delete Inventory</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
-  https://server-name/api/v1/teams/1/inventories/1 <span class="se">\</span>
+  https://&lt;server-name&gt;/api/v1/teams/1/inventories/1 <span class="se">\</span>
   -H <span class="s2">"Authorization: Bearer qwerty123456..."</span>
 </code></pre>
 <blockquote>
@@ -833,7 +935,7 @@ If submitted attributes are the same and no changes are made for the inventory, 
 
 <p>This endpoint deletes specific inventory.</p>
 <h3 id='http-request-6'>HTTP Request</h3>
-<p><code>DELETE https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;ID&gt;</code></p>
+<p><code>DELETE https://&lt;server-name&gt;/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-6'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -850,7 +952,7 @@ If submitted attributes are the same and no changes are made for the inventory, 
 <td>The ID of the inventory</td>
 </tr>
 </tbody></table>
-<h1 id='inventory-columns'>Inventory Columns</h1><h2 id='get-columns'>Get Columns</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://server-name/api/v1/teams/1/inventories/1/columns"</span>
+<h1 id='inventory-columns'>Inventory Columns</h1><h2 id='get-columns'>Get Columns</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://&lt;server-name&gt;/api/v1/teams/1/inventories/1/columns"</span>
   -H <span class="s2">"Authorization: Bearer qwerty123456..."</span>
 </code></pre>
 <blockquote>
@@ -863,78 +965,38 @@ If submitted attributes are the same and no changes are made for the inventory, 
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_columns"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Text Column"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="w">
+                </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RepositoryTextValue"</span><span class="w">
             </span><span class="p">},</span><span class="w">
-            </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"inventory_list_items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-            </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_columns"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"File Column"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"file"</span><span class="w">
+                </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RepositoryAssetValue"</span><span class="w">
             </span><span class="p">},</span><span class="w">
-            </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"inventory_list_items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-            </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_columns"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"List Column"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"inventory_list_items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                      </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_list_items"</span><span class="w">
-                      </span><span class="p">},</span><span class="w">
-                      </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_list_items"</span><span class="w">
-                      </span><span class="p">}</span><span class="w">
-                    </span><span class="p">]</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"included"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_list_items"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ASF"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_list_items"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GDD"</span><span class="w">
+                </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RepositoryListValue"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://server-name/api/v1/teams/1/inventories/1/columns?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://server-name/api/v1/teams/1/inventories/1/columns?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://&lt;server-name&gt;/api/v1/teams/1/inventories/1/columns?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://&lt;server-name&gt;/api/v1/teams/1/inventories/1/columns?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"prev"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://server-name/api/v1/teams/1/inventories/1/columns?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="w">
+        </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://&lt;server-name&gt;/api/v1/teams/1/inventories/1/columns?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves columns from specific inventory. Also by default includes list items for list type column.</p>
+<p>This endpoint retrieves columns from specific inventory.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/columns</code></p>
+<p><code>GET https://&lt;server-name&gt;/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/columns</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -951,7 +1013,7 @@ If submitted attributes are the same and no changes are made for the inventory, 
 <td>The ID of the inventory to retrieve column from</td>
 </tr>
 </tbody></table>
-<h2 id='get-column'>Get Column</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://server-name/api/v1/teams/1/inventories/1/columns/1"</span>
+<h2 id='get-column'>Get Column</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://&lt;server-name&gt;/api/v1/teams/1/inventories/1/columns/1"</span>
   -H <span class="s2">"Authorization: Bearer qwerty123456..."</span>
 </code></pre>
 <blockquote>
@@ -963,7 +1025,7 @@ If submitted attributes are the same and no changes are made for the inventory, 
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_columns"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sample type"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="w">
+            </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RepositoryListValue"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"inventory_list_items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -979,12 +1041,28 @@ If submitted attributes are the same and no changes are made for the inventory, 
                 </span><span class="p">]</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"included"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_list_items"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ASF"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_list_items"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GDD"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves specific column from inventory.</p>
+<p>This endpoint retrieves specific column from inventory. For list type columns (<code>RepositoryListValue</code>), related list items are also included.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/columns/&lt;ID&gt;</code></p>
+<p><code>GET https://&lt;server-name&gt;/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/columns/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1006,7 +1084,7 @@ If submitted attributes are the same and no changes are made for the inventory, 
 </tr>
 </tbody></table>
 <h2 id='create-column'>Create Column</h2><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
-  https://server-name/api/v1/teams/1/inventories/1/columns <span class="se">\</span>
+  https://&lt;server-name&gt;/api/v1/teams/1/inventories/1/columns <span class="se">\</span>
   -H <span class="s1">'Authorization: Bearer qwerty123456...'</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/vnd.api+json'</span> <span class="se">\</span>
   -d <span class="s1">'{
@@ -1028,19 +1106,14 @@ If submitted attributes are the same and no changes are made for the inventory, 
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_columns"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sample"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="w">
+            </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RepositoryTextValue"</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"inventory_list_items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint creates new column in the inventory.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>POST https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/columns</code></p>
+<p><code>POST https://&lt;server-name&gt;/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/columns</code></p>
 <h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1086,11 +1159,11 @@ If submitted attributes are the same and no changes are made for the inventory, 
 <tr>
 <td>data_type</td>
 <td>yes</td>
-<td>Data type of the column</td>
+<td>Data type of the column - one of the following: <code>RepositoryTextValue</code>, <code>RepositoryListValue</code> or <code>RepositoryFileValue</code></td>
 </tr>
 </tbody></table>
 <h2 id='update-column'>Update Column</h2><pre class="highlight shell tab-shell"><code>curl -X PATCH <span class="se">\</span>
-  https://server-name/api/v1/teams/1/inventories/1/columns/1 <span class="se">\</span>
+  https://&lt;server-name&gt;/api/v1/teams/1/inventories/1/columns/1 <span class="se">\</span>
   -H <span class="s1">'Authorization: Bearer qwerty123456...'</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/vnd.api+json'</span> <span class="se">\</span>
   -d <span class="s1">'{
@@ -1098,8 +1171,7 @@ If submitted attributes are the same and no changes are made for the inventory, 
         "id": "1",
         "type": "inventory_columns",
         "attributes": {
-            "name": "Sample 2",
-            "data_type": "RepositoryTextValue"
+            "name": "Sample 2"
         }
     }
   }'</span>
@@ -1113,20 +1185,15 @@ If submitted attributes are the same and no changes are made for the inventory, 
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_columns"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sample 2"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"inventory_list_items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
-            </span><span class="p">}</span><span class="w">
+            </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RepositoryTextValue"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint updates existing list item in selected inventory column.
+<p>This endpoint updates existing list item in selected inventory column. Updating of <code>data_type</code> attribute is not permitted.
 If submitted attributes are the same and no changes are made for the item, server returns empty body with response code 204.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>PATCH https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/columns/&lt;ID&gt;</code></p>
+<p><code>PATCH https://&lt;server-name&gt;/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/columns/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1152,8 +1219,7 @@ If submitted attributes are the same and no changes are made for the item, serve
         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_columns"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sample 2"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RepositoryTextValue"</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sample 2"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1170,14 +1236,9 @@ If submitted attributes are the same and no changes are made for the item, serve
 <td>no</td>
 <td>Name of the column</td>
 </tr>
-<tr>
-<td>data_type</td>
-<td>no</td>
-<td>Data type of the column</td>
-</tr>
 </tbody></table>
 <h2 id='delete-column'>Delete Column</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
-  https://server-name/api/v1/teams/1/inventories/1/columns/1 <span class="se">\</span>
+  https://&lt;server-name&gt;/api/v1/teams/1/inventories/1/columns/1 <span class="se">\</span>
   -H <span class="s2">"Authorization: Bearer qwerty123456..."</span>
 </code></pre>
 <blockquote>
@@ -1186,7 +1247,7 @@ If submitted attributes are the same and no changes are made for the item, serve
 
 <p>This endpoint deletes specific column from the inventory.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>DELETE https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/columns/&lt;ID&gt;</code></p>
+<p><code>DELETE https://&lt;server-name&gt;/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/columns/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-5'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1207,7 +1268,7 @@ If submitted attributes are the same and no changes are made for the item, serve
 <td>The ID of the column</td>
 </tr>
 </tbody></table>
-<h1 id='inventory-column-list-items'>Inventory Column List Items</h1><h2 id='get-list-items'>Get List Items</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://server-name/api/v1/teams/1/inventories/1/columns/1/list_items"</span>
+<h1 id='inventory-column-list-items'>Inventory Column List Items</h1><h2 id='get-list-items'>Get List Items</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://&lt;server-name&gt;/api/v1/teams/1/inventories/1/columns/1/list_items"</span>
   -H <span class="s2">"Authorization: Bearer qwerty123456..."</span>
 </code></pre>
 <blockquote>
@@ -1238,17 +1299,17 @@ If submitted attributes are the same and no changes are made for the item, serve
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://server-name/api/v1/teams/1/inventories/1/columns/1/list_items?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://server-name/api/v1/teams/1/inventories/1/columns/1/list_items?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://&lt;server-name&gt;/api/v1/teams/1/inventories/1/columns/1/list_items?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://&lt;server-name&gt;/api/v1/teams/1/inventories/1/columns/1/list_items?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"prev"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://server-name/api/v1/teams/1/inventories/1/columns/1/list_items?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="w">
+        </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://&lt;server-name&gt;/api/v1/teams/1/inventories/1/columns/1/list_items?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves list items from specific inventory column, only valid for columns with &#39;list&#39; data type.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/columns/&lt;COLUMN_ID&gt;/list_items</code></p>
+<p><code>GET https://&lt;server-name&gt;/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/columns/&lt;COLUMN_ID&gt;/list_items</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1269,7 +1330,7 @@ If submitted attributes are the same and no changes are made for the item, serve
 <td>The ID of the column(with list data type) in specified inventory to retrieve list items from</td>
 </tr>
 </tbody></table>
-<h2 id='get-list-item'>Get List Item</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://server-name/api/v1/teams/1/inventories/1/columns/1/list_items/1"</span>
+<h2 id='get-list-item'>Get List Item</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://&lt;server-name&gt;/api/v1/teams/1/inventories/1/columns/1/list_items/1"</span>
   -H <span class="s2">"Authorization: Bearer qwerty123456..."</span>
 </code></pre>
 <blockquote>
@@ -1287,7 +1348,7 @@ If submitted attributes are the same and no changes are made for the item, serve
 </span></code></pre>
 <p>This endpoint retrieves specific list item from inventory column, only valid for columns with &#39;list&#39; data type.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/columns/&lt;COLUMN_ID&gt;/list_items/&lt;ID&gt;</code></p>
+<p><code>GET https://&lt;server-name&gt;/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/columns/&lt;COLUMN_ID&gt;/list_items/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1313,7 +1374,7 @@ If submitted attributes are the same and no changes are made for the item, serve
 </tr>
 </tbody></table>
 <h2 id='create-list-item'>Create List Item</h2><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
-  https://server-name/api/v1/teams/1/inventories/1/columns/1/list_items <span class="se">\</span>
+  https://&lt;server-name&gt;/api/v1/teams/1/inventories/1/columns/1/list_items <span class="se">\</span>
   -H <span class="s1">'Authorization: Bearer qwerty123456...'</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/vnd.api+json'</span> <span class="se">\</span>
   -d <span class="s1">'{
@@ -1340,7 +1401,7 @@ If submitted attributes are the same and no changes are made for the item, serve
 </span></code></pre>
 <p>This endpoint creates new list item in selected inventory column, only valid for columns with &#39;list&#39; data type.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>POST https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/columns/&lt;COLUMN_ID&gt;/list_items</code></p>
+<p><code>POST https://&lt;server-name&gt;/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/columns/&lt;COLUMN_ID&gt;/list_items</code></p>
 <h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1385,7 +1446,7 @@ If submitted attributes are the same and no changes are made for the item, serve
 </tr>
 </tbody></table>
 <h2 id='update-list-item'>Update List Item</h2><pre class="highlight shell tab-shell"><code>curl -X PATCH <span class="se">\</span>
-  https://server-name/api/v1/teams/1/inventories/1/columns/1/list_items/1 <span class="se">\</span>
+  https://&lt;server-name&gt;/api/v1/teams/1/inventories/1/columns/1/list_items/1 <span class="se">\</span>
   -H <span class="s1">'Authorization: Bearer qwerty123456...'</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/vnd.api+json'</span> <span class="se">\</span>
   -d <span class="s1">'{
@@ -1414,7 +1475,7 @@ If submitted attributes are the same and no changes are made for the item, serve
 <p>This endpoint updates existing list item in selected inventory column.
 If submitted attributes are the same and no changes are made for the item, server returns empty body with response code 204.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>PATCH https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/columns/&lt;COLUMN_ID&gt;/list_items/&lt;ID&gt;</code></p>
+<p><code>PATCH https://&lt;server-name&gt;/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/columns/&lt;COLUMN_ID&gt;/list_items/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1464,7 +1525,7 @@ If submitted attributes are the same and no changes are made for the item, serve
 </tr>
 </tbody></table>
 <h2 id='delete-list-item'>Delete List Item</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
-  https://server-name/api/v1/teams/1/inventories/1/columns/1/list_items/1 <span class="se">\</span>
+  https://&lt;server-name&gt;/api/v1/teams/1/inventories/1/columns/1/list_items/1 <span class="se">\</span>
   -H <span class="s2">"Authorization: Bearer qwerty123456..."</span>
 </code></pre>
 <blockquote>
@@ -1473,7 +1534,7 @@ If submitted attributes are the same and no changes are made for the item, serve
 
 <p>This endpoint deletes specific list item from inventory column.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>DELETE https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/columns/&lt;COLUMN_ID&gt;/list_items/&lt;ID&gt;</code></p>
+<p><code>DELETE https://&lt;server-name&gt;/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/columns/&lt;COLUMN_ID&gt;/list_items/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-5'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1498,7 +1559,7 @@ If submitted attributes are the same and no changes are made for the item, serve
 <td>The ID of the list item</td>
 </tr>
 </tbody></table>
-<h1 id='inventory-items'>Inventory Items</h1><h2 id='get-items'>Get Items</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://server-name/api/v1/teams/1/inventories/1/items"</span>
+<h1 id='inventory-items'>Inventory Items</h1><h2 id='get-items'>Get Items</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://&lt;server-name&gt;/api/v1/teams/1/inventories/1/items"</span>
   -H <span class="s2">"Authorization: Bearer qwerty123456..."</span>
 </code></pre>
 <blockquote>
@@ -1511,11 +1572,6 @@ If submitted attributes are the same and no changes are made for the item, serve
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_items"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Item 1"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"inventory_cells"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
-                </span><span class="p">}</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
@@ -1539,44 +1595,20 @@ If submitted attributes are the same and no changes are made for the item, serve
                 </span><span class="p">}</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"included"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"inventory_list_item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"inventory_list_item_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tea leaves"</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="s2">"column_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#159B5E"</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="s2">"column_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
+    </span><span class="p">]</span><span class="w">
     </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://server-name/api/v1/teams/1/inventories/1/items?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://server-nam/api/v1/teams/1/inventories/1/items?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://&lt;server-name&gt;/api/v1/teams/1/inventories/1/items?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://&lt;server-name&gt;/api/v1/teams/1/inventories/1/items?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"prev"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://server-nam/api/v1/teams/1/inventories/1/items?page%5Bnumber%5D=2&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://server-nam/api/v1/teams/1/inventories/1/items?page%5Bnumber%5D=2&amp;page%5Bsize%5D=10"</span><span class="w">
+        </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://&lt;server-name&gt;/api/v1/teams/1/inventories/1/items?page%5Bnumber%5D=2&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://&lt;server-name&gt;/api/v1/teams/1/inventories/1/items?page%5Bnumber%5D=2&amp;page%5Bsize%5D=10"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves items from specific inventory. Also by default cells are included.</p>
+<p>This endpoint retrieves items from specific inventory. If <code>?include=inventory_cells</code> PATH parameter is provided,
+the inventory cells of the items are also included; otherwise, they are ignored.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/items</code></p>
+<p><code>GET https://&lt;server-name&gt;/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/items(?include=&lt;INCLUDE_CELLS&gt;)</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1592,8 +1624,12 @@ If submitted attributes are the same and no changes are made for the item, serve
 <td>INVENTORY_ID</td>
 <td>The ID of the inventory to retrieve items from</td>
 </tr>
+<tr>
+<td>INCLUDE_CELLS</td>
+<td>if set to <code>inventory_cells</code>, inventory cells of the items are also included</td>
+</tr>
 </tbody></table>
-<h2 id='get-item'>Get Item</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://server-name/api/v1/teams/1/inventories/1/items/1"</span>
+<h2 id='get-item'>Get Item</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://&lt;server-name&gt;/api/v1/teams/1/inventories/1/items/1"</span>
   -H <span class="s2">"Authorization: Bearer qwerty123456..."</span>
 </code></pre>
 <blockquote>
@@ -1616,7 +1652,12 @@ If submitted attributes are the same and no changes are made for the item, serve
                     </span><span class="p">{</span><span class="w">
                         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
                         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="w">
                     </span><span class="p">}</span><span class="w">
+                </span><span class="p">}</span><span class="w">
                 </span><span class="p">]</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -1626,7 +1667,7 @@ If submitted attributes are the same and no changes are made for the item, serve
             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RepositoryListValue"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                     </span><span class="s2">"inventory_list_item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"inventory_list_item_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Potato leaves"</span><span class="w">
@@ -1638,11 +1679,25 @@ If submitted attributes are the same and no changes are made for the item, serve
             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RepositoryTextValue"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                     </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#6C159E"</span><span class="w">
                 </span><span class="p">},</span><span class="w">
                 </span><span class="s2">"column_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RepositoryAssetValue"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"file_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"file_name"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;file-name&gt;</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"file_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">38157</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;file-url&gt;</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"column_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
@@ -1650,7 +1705,7 @@ If submitted attributes are the same and no changes are made for the item, serve
 </span></code></pre>
 <p>This endpoint retrieves specific item from the inventory. Cells are included by default.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/items/&lt;ID&gt;</code></p>
+<p><code>GET https://&lt;server-name&gt;/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/items/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1672,7 +1727,7 @@ If submitted attributes are the same and no changes are made for the item, serve
 </tr>
 </tbody></table>
 <h2 id='create-item'>Create Item</h2><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
-  https://server-name/api/v1/teams/1/inventories/1/items <span class="se">\</span>
+  https://&lt;server-name&gt;/api/v1/teams/1/inventories/1/items <span class="se">\</span>
   -H <span class="s1">'Authorization: Bearer qwerty123456...'</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/vnd.api+json'</span> <span class="se">\</span>
   -d <span class="s1">'{
@@ -1730,7 +1785,7 @@ If submitted attributes are the same and no changes are made for the item, serve
             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RepositoryListValue"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                     </span><span class="s2">"inventory_list_item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"inventory_list_item_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Potato leaves"</span><span class="w">
@@ -1742,7 +1797,7 @@ If submitted attributes are the same and no changes are made for the item, serve
             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RepositoryTextValue"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                     </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#6C159E"</span><span class="w">
                 </span><span class="p">},</span><span class="w">
@@ -1754,7 +1809,7 @@ If submitted attributes are the same and no changes are made for the item, serve
 </span></code></pre>
 <p>This endpoint creates new item in the inventory, cells can be also added in &#39;included&#39; section.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>POST https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/items</code></p>
+<p><code>POST https://&lt;server-name&gt;/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/items</code></p>
 <h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1833,7 +1888,7 @@ If submitted attributes are the same and no changes are made for the item, serve
 </tr>
 </tbody></table>
 <h2 id='update-item'>Update Item</h2><pre class="highlight shell tab-shell"><code>curl -X PATCH <span class="se">\</span>
-  https://server-name/api/v1/teams/1/inventories/1/items/1 <span class="se">\</span>
+  https://&lt;server-name&gt;/api/v1/teams/1/inventories/1/items/1 <span class="se">\</span>
   -H <span class="s1">'Authorization: Bearer qwerty123456...'</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/vnd.api+json'</span> <span class="se">\</span>
   -d <span class="s1">'{
@@ -1894,7 +1949,7 @@ If submitted attributes are the same and no changes are made for the item, serve
             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RepositoryListValue"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                     </span><span class="s2">"inventory_list_item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"inventory_list_item_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tea leaves (1)"</span><span class="w">
@@ -1906,7 +1961,7 @@ If submitted attributes are the same and no changes are made for the item, serve
             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RepositoryTextValue"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                     </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#6C159D"</span><span class="w">
                 </span><span class="p">},</span><span class="w">
@@ -1920,7 +1975,7 @@ If submitted attributes are the same and no changes are made for the item, serve
 Also existing cells can be updated by adding them to &#39;included&#39; section.
 If submitted attributes are the same and no changes are made for the item, server returns empty body with response code 204.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>PATCH https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/items/&lt;ID&gt;</code></p>
+<p><code>PATCH https://&lt;server-name&gt;/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/items/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -2006,7 +2061,7 @@ If submitted attributes are the same and no changes are made for the item, serve
 </tr>
 </tbody></table>
 <h2 id='delete-item'>Delete Item</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
-  https://server-name/api/v1/teams/1/inventories/1/items/1 <span class="se">\</span>
+  https://&lt;server-name&gt;/api/v1/teams/1/inventories/1/items/1 <span class="se">\</span>
   -H <span class="s2">"Authorization: Bearer qwerty123456..."</span>
 </code></pre>
 <blockquote>
@@ -2015,7 +2070,7 @@ If submitted attributes are the same and no changes are made for the item, serve
 
 <p>This endpoint deletes specific item from the inventory.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>DELETE https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/items/&lt;ID&gt;</code></p>
+<p><code>DELETE https://&lt;server-name&gt;/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/items/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-5'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -2036,7 +2091,373 @@ If submitted attributes are the same and no changes are made for the item, serve
 <td>The ID of the item</td>
 </tr>
 </tbody></table>
-<h1 id='results'>Results</h1><h2 id='get-results'>Get Results</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://server-name/api/v1/teams/1/projects/1/experiments/1/tasks/1/results"</span>
+<h1 id='inventory-cells'>Inventory Cells</h1><h2 id='get-cells'>Get Cells</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://server-name/api/v1/teams/1/inventories/1/items/1/cells"</span>
+  -H <span class="s2">"Authorization: Bearer qwerty123456..."</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"inventory_list_item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"inventory_list_item_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Potato bug (2)"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"column_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new text"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"column_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://server-name/api/v1/teams/1/inventories/1/items/1/cells?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://server-name/api/v1/teams/1/inventories/1/items/1/cells?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"prev"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://server-name/api/v1/teams/1/inventories/1/items/1/cells?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves cells from specific inventory. Cells can have such types: text, list, file.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/items/&lt;ITEM_ID&gt;/cells</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>TEAM_ID</td>
+<td>The ID of the team to retrieve inventory from</td>
+</tr>
+<tr>
+<td>INVENTORY_ID</td>
+<td>The ID of the inventory</td>
+</tr>
+<tr>
+<td>ITEM_ID</td>
+<td>The ID of the inventory item</td>
+</tr>
+</tbody></table>
+<h2 id='get-cell'>Get Cell</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://server-name/api/v1/teams/1/inventories/1/items/1/cells/1"</span>
+  -H <span class="s2">"Authorization: Bearer qwerty123456..."</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"inventory_list_item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"inventory_list_item_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Potato bug (2)"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"column_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves specific cell from the inventory item.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/items/&lt;ITEM_ID&gt;/cells/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>TEAM_ID</td>
+<td>The ID of the team to retrieve inventory from</td>
+</tr>
+<tr>
+<td>INVENTORY_ID</td>
+<td>The ID of the inventory</td>
+</tr>
+<tr>
+<td>ITEM_ID</td>
+<td>The ID of the inventory item</td>
+</tr>
+<tr>
+<td>ID</td>
+<td>The ID of the cell</td>
+</tr>
+</tbody></table>
+<h2 id='create-cell'>Create Cell</h2><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  https://server-name/api/v1/teams/1/inventories/1/items/1/cells <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer qwerty123456...'</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/vnd.api+json'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+   "data": {
+     "type": "inventory_cells",
+       "attributes": {
+           "value": "new text 1",
+           "column_id": 1
+       }
+    }
+  }'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new text 1"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"column_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint creates new cell in the inventory item.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/items/&lt;ITEM_ID&gt;/cells</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>TEAM_ID</td>
+<td>The ID of the team to retrieve inventory from</td>
+</tr>
+<tr>
+<td>INVENTORY_ID</td>
+<td>The ID of the inventory</td>
+</tr>
+<tr>
+<td>ITEM_ID</td>
+<td>The ID of the inventory item</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request body</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new text 1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"column_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='inventory-cell-attributes'>Inventory cell attributes</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>value</td>
+<td>yes</td>
+<td>value of the cell, type depends on the column.</td>
+</tr>
+<tr>
+<td>column_id</td>
+<td>yes</td>
+<td>ID of the column</td>
+</tr>
+</tbody></table>
+<h3 id='inventory-cell-value-attribute-format'>Inventory cell value attribute format</h3>
+<table><thead>
+<tr>
+<th>Column data type</th>
+<th>Format of the value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>text</td>
+<td>string containing textual value</td>
+</tr>
+<tr>
+<td>list</td>
+<td>id of the inventory list item from the selected column</td>
+</tr>
+<tr>
+<td>file</td>
+<td>hash containing 2 attributes: file_name and file_data. File data is base64 encoded file content in such format: &quot;data:text/plain;base64,dGVzdAo=&quot;, mime type should match file content.</td>
+</tr>
+</tbody></table>
+<h2 id='update-cell'>Update Cell</h2><pre class="highlight shell tab-shell"><code>curl -X PATCH <span class="se">\</span>
+  https://server-name/api/v1/teams/1/inventories/1/items/1/cells/1 <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer qwerty123456...'</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/vnd.api+json'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "data": {
+        "id": 1,
+        "type": "inventory_cells",
+        "attributes": {
+            "value": "new text 2",
+            "column_id": 1
+        }
+    }
+}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new text 2"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"column_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint updates existing cell in selected inventory item.
+If submitted attributes are the same and no changes are made for the cell, server returns empty body with response code 204.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>PATCH https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/items/&lt;ITEM_ID&gt;/cells/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-4'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>TEAM_ID</td>
+<td>The ID of the team to retrieve inventory from</td>
+</tr>
+<tr>
+<td>INVENTORY_ID</td>
+<td>The ID of the inventory</td>
+</tr>
+<tr>
+<td>ITEM_ID</td>
+<td>The ID of the inventory item</td>
+</tr>
+<tr>
+<td>ID</td>
+<td>The ID of the cell</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request body</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new text 2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"column_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='inventory-cell-attributes-2'>Inventory cell attributes</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>value</td>
+<td>yes</td>
+<td>value of the cell, type depends on the column.</td>
+</tr>
+<tr>
+<td>column_id</td>
+<td>yes</td>
+<td>ID of the column</td>
+</tr>
+</tbody></table>
+<h3 id='inventory-cell-value-attribute-format-2'>Inventory cell value attribute format</h3>
+<table><thead>
+<tr>
+<th>Column data type</th>
+<th>Format of the value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>text</td>
+<td>string containing textual value</td>
+</tr>
+<tr>
+<td>list</td>
+<td>id of the inventory list item from the selected column</td>
+</tr>
+<tr>
+<td>file</td>
+<td>hash containing 2 attributes: file_name and file_data. File data is base64 encoded file content in such format: &quot;data:text/plain;base64,dGVzdAo=&quot;, mime type should match file content.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-item'>Delete Item</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+  https://server-name/api/v1/teams/1/inventories/1/items/1/cells/1 <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer qwerty123456..."</span>
+</code></pre>
+<blockquote>
+<p>The above command returns empty body with status code 200</p>
+</blockquote>
+
+<p>This endpoint deletes specific cell from the inventory item.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>DELETE https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/items/&lt;ITEM_ID&gt;/cells/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-5'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>TEAM_ID</td>
+<td>The ID of the team to retrieve inventory from</td>
+</tr>
+<tr>
+<td>INVENTORY_ID</td>
+<td>The ID of the inventory to retrieve item from</td>
+</tr>
+<tr>
+<td>ITEM_ID</td>
+<td>The ID of the item</td>
+</tr>
+<tr>
+<td>ID</td>
+<td>The ID of the cell</td>
+</tr>
+</tbody></table>
+<h1 id='results'>Results</h1><h2 id='get-results'>Get Results</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://&lt;server-name&gt;/api/v1/teams/1/projects/1/experiments/1/tasks/1/results"</span>
   -H <span class="s2">"Authorization: Bearer qwerty123456..."</span>
 </code></pre>
 <blockquote>
@@ -2049,15 +2470,13 @@ If submitted attributes are the same and no changes are made for the item, serve
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"results"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Result 1"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"task_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+                </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"my_module"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tasks"</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="w">
                     </span><span class="p">}</span><span class="w">
                 </span><span class="p">},</span><span class="w">
                 </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2073,21 +2492,41 @@ If submitted attributes are the same and no changes are made for the item, serve
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"results"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Result 2"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"task_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+                </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"my_module"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tasks"</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="w">
                     </span><span class="p">}</span><span class="w">
                 </span><span class="p">},</span><span class="w">
-                </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"table"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"result_texts"</span><span class="w">
+                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"result_tables"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"results"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Result 3"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"file"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"result_files"</span><span class="w">
                     </span><span class="p">}</span><span class="w">
                 </span><span class="p">}</span><span class="w">
             </span><span class="p">}</span><span class="w">
@@ -2098,29 +2537,40 @@ If submitted attributes are the same and no changes are made for the item, serve
             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"result_texts"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Result text 1"</span><span class="w">
+                </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Result 1 Text"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"result_texts"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"result_tables"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Result text 2"</span><span class="w">
+                </span><span class="s2">"table_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"table_contents"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;table-contents&gt;</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"result_files"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"file_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"file_name"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;file-name&gt;</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"file_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">69</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;file-url&gt;</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://server-name/api/v1/teams/1/projects/1/experiments/1/tasks/1/results?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://server-name/api/v1/teams/1/projects/1/experiments/1/tasks/1/results?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://&lt;server-name&gt;/api/v1/teams/1/projects/1/experiments/1/tasks/1/results?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://&lt;server-name&gt;/api/v1/teams/1/projects/1/experiments/1/tasks/1/results?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"prev"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://server-name/api/v1/teams/1/projects/1/experiments/1/tasks/1/results?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="w">
+        </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://&lt;server-name&gt;/api/v1/teams/1/projects/1/experiments/1/tasks/1/results?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all results from the task. Texts, files and tables are included by default.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/projects/&lt;PROJECT_ID&gt;/experiments/&lt;EXPERIMENT_ID&gt;/tasks/&lt;TASK_ID&gt;/results</code></p>
+<p><code>GET https://&lt;server-name&gt;/api/v1/teams/&lt;TEAM_ID&gt;/projects/&lt;PROJECT_ID&gt;/experiments/&lt;EXPERIMENT_ID&gt;/tasks/&lt;TASK_ID&gt;/results</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -2145,7 +2595,7 @@ If submitted attributes are the same and no changes are made for the item, serve
 <td>The ID of the task</td>
 </tr>
 </tbody></table>
-<h2 id='get-result'>Get Result</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://server-name/api/v1/teams/1/projects/1/experiments/1/tasks/1/results/1"</span>
+<h2 id='get-result'>Get Result</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://&lt;server-name&gt;/api/v1/teams/1/projects/1/experiments/1/tasks/1/results/1"</span>
   -H <span class="s2">"Authorization: Bearer qwerty123456..."</span>
 </code></pre>
 <blockquote>
@@ -2157,15 +2607,13 @@ If submitted attributes are the same and no changes are made for the item, serve
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"results"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Result 1"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"task_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"my_module"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tasks"</span><span class="w">
+                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="w">
                 </span><span class="p">}</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2181,15 +2629,15 @@ If submitted attributes are the same and no changes are made for the item, serve
             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"result_texts"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Result text 1"</span><span class="w">
+                </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Result 1 Text"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves specific result. Texts, files and tables are included by default.</p>
+<p>This endpoint retrieves specific result. Text, file or table is included by default.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/projects/&lt;PROJECT_ID&gt;/experiments/&lt;EXPERIMENT_ID&gt;/tasks/&lt;TASK_ID&gt;/results/&lt;ID&gt;</code></p>
+<p><code>GET https://&lt;server-name&gt;/api/v1/teams/&lt;TEAM_ID&gt;/projects/&lt;PROJECT_ID&gt;/experiments/&lt;EXPERIMENT_ID&gt;/tasks/&lt;TASK_ID&gt;/results/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -2219,7 +2667,7 @@ If submitted attributes are the same and no changes are made for the item, serve
 </tr>
 </tbody></table>
 <h2 id='create-result'>Create Result</h2><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
-  https://server-name/api/v1/teams/1/projects/1/experiments/1/tasks/1/results <span class="se">\</span>
+  https://&lt;server-name&gt;/api/v1/teams/1/projects/1/experiments/1/tasks/1/results <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/vnd.api+json'</span> <span class="se">\</span>
   -d <span class="s1">'{
     "data": {
@@ -2255,15 +2703,13 @@ If submitted attributes are the same and no changes are made for the item, serve
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"results"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Result 1"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"task_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"my_module"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tasks"</span><span class="w">
+                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="w">
                 </span><span class="p">}</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2290,7 +2736,7 @@ If submitted attributes are the same and no changes are made for the item, serve
 <p>Images should be base64 encoded in such format: <code>data:image/png;base64,&lt;FILE_CONTENT&gt;</code>, where FILE_CONTENT is base64 encoded image file. It should be referenced inside result text with unique token using this format: <code>[~tiny_mce_id:&lt;TOKEN&gt;]</code>.
 Token should be string without special symbols.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>POST https://server-name/api/v1/teams/&lt;TEAM_ID&gt;/projects/&lt;PROJECT_ID&gt;/experiments/&lt;EXPERIMENT_ID&gt;/tasks/&lt;TASK_ID&gt;/results</code></p>
+<p><code>POST https://&lt;server-name&gt;/api/v1/teams/&lt;TEAM_ID&gt;/projects/&lt;PROJECT_ID&gt;/experiments/&lt;EXPERIMENT_ID&gt;/tasks/&lt;TASK_ID&gt;/results</code></p>
 <h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
 <tr>
