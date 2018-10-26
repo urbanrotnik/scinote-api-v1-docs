@@ -9,6 +9,8 @@ toc_footers:
 
 includes:
   - teams
+  - users
+  - user_identities
   - projects
   - project_users
   - project_activities
