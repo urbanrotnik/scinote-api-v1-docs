@@ -11,12 +11,28 @@ includes:
   - teams
   - users
   - user_identities
+  - projects
+  - project_users
+  - project_activities
+  - project_comments
+  - experiments
+  - task_groups
+  - task_connections
+  - task_inputs
+  - task_outputs
+  - tasks
+  - task_protocols
+  - task_users
+  - task_activities
+  - task_tags
+  - task_inventory_items
+  - results
+  - reports
   - inventories
   - inventory_columns
   - inventory_column_list_items
   - inventory_items
   - inventory_cells
-  - results
   - errors
 
 search: true
