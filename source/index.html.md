@@ -104,6 +104,16 @@ SciNote expects for the API access token to be included in all API requests to t
 You must replace <code>qwerty123456...</code> with your API access token.
 </aside>
 
+### JWT payload claims
+
+By default tokens include such set of claims:
+
+Claim | Description
+--------- | -----------
+iss | Text identifier of the token issuer
+exp | Token expiration time
+sub | The ID of the current authenticated user
+
 # Pagination
 
 SciNote API uses pagination as specified here [JSON API](http://jsonapi.org/format/#fetching-pagination)
