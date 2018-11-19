@@ -34,6 +34,7 @@ includes:
   - inventory_items
   - inventory_cells
   - errors
+  - status
 
 search: true
 ---
