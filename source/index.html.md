@@ -18,8 +18,6 @@ includes:
   - experiments
   - task_groups
   - task_connections
-  - task_inputs
-  - task_outputs
   - tasks
   - task_protocols
   - task_users
