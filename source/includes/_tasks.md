@@ -21,6 +21,16 @@ curl "http://<server-name>/api/v1/teams/1/projects/1/experiments/1/tasks"
         "description": null,
         "state": "uncompleted",
         "archived": false
+      },
+      "relationships": {
+        "outputs": {
+          "data": [
+            {
+              "id": "2",
+              "type": "tasks"
+            }
+          ]
+        }
       }
     },
     {
@@ -32,6 +42,24 @@ curl "http://<server-name>/api/v1/teams/1/projects/1/experiments/1/tasks"
         "description": null,
         "state": "uncompleted",
         "archived": false
+      },
+      "relationships": {
+        "outputs": {
+          "data": [
+            {
+              "id": "3",
+              "type": "tasks"
+            }
+          ]
+        },
+        "inputs": {
+          "data": [
+            {
+              "id": "1",
+              "type": "tasks"
+            }
+          ]
+        }
       }
     },
     {
@@ -43,6 +71,16 @@ curl "http://<server-name>/api/v1/teams/1/projects/1/experiments/1/tasks"
         "description": null,
         "state": "uncompleted",
         "archived": false
+      },
+      "relationships": {
+        "inputs": {
+          "data": [
+            {
+              "id": "2",
+              "type": "tasks"
+            }
+          ]
+        }
       }
     }
   ],
@@ -56,7 +94,7 @@ curl "http://<server-name>/api/v1/teams/1/projects/1/experiments/1/tasks"
 }
 ```
 
-This endpoint retrieves all tasks from a specific experiment.
+This endpoint retrieves all tasks from a specific experiment. Task inputs/outputs can be included as relationships.
 
 ### HTTP Request
 
@@ -90,12 +128,22 @@ curl "http://<server-name>/api/v1/teams/1/projects/1/experiments/1/tasks/1"
       "description": null,
       "state": "uncompleted",
       "archived": false
+    },
+    "relationships": {
+      "outputs": {
+        "data": [
+          {
+            "id": "2",
+            "type": "tasks"
+          }
+        ]
+      }
     }
   }
 }
 ```
 
-This endpoint retrieves a specific task from a specific experiment.
+This endpoint retrieves a specific task from a specific experiment. Task inputs/outputs can be included as relationships.
 
 ### HTTP Request
 
