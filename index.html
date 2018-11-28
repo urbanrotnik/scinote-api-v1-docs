@@ -351,22 +351,6 @@
               </ul>
           </li>
           <li>
-            <a href="#task-inputs" class="toc-h1 toc-link" data-title="Task Inputs">Task Inputs</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#get-task-inputs" class="toc-h2 toc-link" data-title="Get Task Inputs">Get Task Inputs</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#task-outputs" class="toc-h1 toc-link" data-title="Task Outputs">Task Outputs</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#get-task-outputs" class="toc-h2 toc-link" data-title="Get Task Outputs">Get Task Outputs</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
             <a href="#tasks" class="toc-h1 toc-link" data-title="Tasks">Tasks</a>
               <ul class="toc-list-h2">
                   <li>
@@ -553,6 +537,17 @@
           </li>
           <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+          <li>
+            <a href="#status" class="toc-h1 toc-link" data-title="Status">Status</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#status-2" class="toc-h2 toc-link" data-title="Status">Status</a>
+                  </li>
+                  <li>
+                    <a href="#health" class="toc-h2 toc-link" data-title="Health">Health</a>
+                  </li>
+              </ul>
           </li>
       </ul>
         <ul class="toc-footer">
@@ -1856,118 +1851,6 @@ If submitted attributes are the same and no changes are made for the identity ma
 <td>The ID of the connection to retrieve</td>
 </tr>
 </tbody></table>
-<h1 id='task-inputs'>Task Inputs</h1><h2 id='get-task-inputs'>Get Task Inputs</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://&lt;server-name&gt;/api/v1/teams/1/projects/1/experiments/1/tasks/2/inputs"</span>
-  -H <span class="s2">"Authorization: Bearer qwerty123456..."</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tasks"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"attributes"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Experiment design"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"due_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-25T13:30:54.315Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uncompleted"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="s2">"links"</span><span class="p">:{</span><span class="w">
-    </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://&lt;server-name&gt;/api/v1/teams/1/projects/1/experiments/1/tasks/2/inputs?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://&lt;server-name&gt;/api/v1/teams/1/projects/1/experiments/1/tasks/2/inputs?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"prev"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://&lt;server-name&gt;/api/v1/teams/1/projects/1/experiments/1/tasks/2/inputs?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves all inputs from a specified task.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://&lt;server-name&gt;/api/v1/teams/&lt;TEAM_ID&gt;/projects/&lt;PROJECT_ID&gt;/experiments/&lt;EXPERIMENT_ID&gt;/tasks/&lt;TASK_ID&gt;/inputs</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>TEAM_ID</td>
-<td>The ID of the team to retrieve project from</td>
-</tr>
-<tr>
-<td>PROJECT_ID</td>
-<td>The ID of the project to retrieve experiment from</td>
-</tr>
-<tr>
-<td>EXPERIMENT_ID</td>
-<td>The ID of the experiment to retrieve task from</td>
-</tr>
-<tr>
-<td>TASK_ID</td>
-<td>The ID of the task to retrieve inputs from</td>
-</tr>
-</tbody></table>
-<h1 id='task-outputs'>Task Outputs</h1><h2 id='get-task-outputs'>Get Task Outputs</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://&lt;server-name&gt;/api/v1/teams/1/projects/1/experiments/1/tasks/2/outputs"</span>
-  -H <span class="s2">"Authorization: Bearer qwerty123456..."</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tasks"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"attributes"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RNA isolation"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"due_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-22T13:30:54.594Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uncompleted"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="s2">"links"</span><span class="p">:{</span><span class="w">
-    </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://&lt;server-name&gt;/api/v1/teams/1/projects/1/experiments/1/tasks/2/outputs?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://&lt;server-name&gt;/api/v1/teams/1/projects/1/experiments/1/tasks/2/outputs?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"prev"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://&lt;server-name&gt;/api/v1/teams/1/projects/1/experiments/1/tasks/2/outputs?page%5Bnumber%5D=1&amp;page%5Bsize%5D=10"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves all outputs from a specified task.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://&lt;server-name&gt;/api/v1/teams/&lt;TEAM_ID&gt;/projects/&lt;PROJECT_ID&gt;/experiments/&lt;EXPERIMENT_ID&gt;/tasks/&lt;TASK_ID&gt;/outputs</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>TEAM_ID</td>
-<td>The ID of the team to retrieve project from</td>
-</tr>
-<tr>
-<td>PROJECT_ID</td>
-<td>The ID of the project to retrieve experiment from</td>
-</tr>
-<tr>
-<td>EXPERIMENT_ID</td>
-<td>The ID of the experiment to retrieve task from</td>
-</tr>
-<tr>
-<td>TASK_ID</td>
-<td>The ID of the task to retrieve outputs from</td>
-</tr>
-</tbody></table>
 <h1 id='tasks'>Tasks</h1><h2 id='get-tasks'>Get Tasks</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://&lt;server-name&gt;/api/v1/teams/1/projects/1/experiments/1/tasks"</span>
   -H <span class="s2">"Authorization: Bearer qwerty123456..."</span>
 </code></pre>
@@ -1985,6 +1868,16 @@ If submitted attributes are the same and no changes are made for the identity ma
         </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uncompleted"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"outputs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tasks"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -1996,6 +1889,24 @@ If submitted attributes are the same and no changes are made for the identity ma
         </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uncompleted"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"outputs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tasks"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"inputs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tasks"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -2007,6 +1918,16 @@ If submitted attributes are the same and no changes are made for the identity ma
         </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uncompleted"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"inputs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tasks"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
@@ -2019,7 +1940,7 @@ If submitted attributes are the same and no changes are made for the identity ma
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves all tasks from a specific experiment.</p>
+<p>This endpoint retrieves all tasks from a specific experiment. Task inputs/outputs can be included as relationships.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET https://&lt;server-name&gt;/api/v1/teams/&lt;TEAM_ID&gt;/projects/&lt;PROJECT_ID&gt;/experiments/&lt;EXPERIMENT_ID&gt;/tasks</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
@@ -2058,11 +1979,21 @@ If submitted attributes are the same and no changes are made for the identity ma
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uncompleted"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"outputs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tasks"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves a specific task from a specific experiment.</p>
+<p>This endpoint retrieves a specific task from a specific experiment. Task inputs/outputs can be included as relationships.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://&lt;server-name&gt;/api/v1/teams/&lt;TEAM_ID&gt;/projects/&lt;PROJECT_ID&gt;/experiments/&lt;EXPERIMENT_ID&gt;/tasks/&lt;TASK_ID&gt;</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
@@ -4986,6 +4917,35 @@ If submitted attributes are the same and no changes are made for the cell, serve
 <td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
 </tr>
 </tbody></table>
+<h1 id='status'>Status</h1><h2 id='status-2'>Status</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://&lt;server-name&gt;/api/status"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"Ok"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"versions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"baseUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/api/v1/"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint returns status of API and index of all running API versions.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://&lt;server-name&gt;/api/status</code></p>
+<h2 id='health'>Health</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://&lt;server-name&gt;/api/health"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a plain text:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>RUNNING
+</code></pre>
+<p>This endpoint returns <code>RUNNING</code> response along with the 200 status code
+if the API is running.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://&lt;server-name&gt;/api/health</code></p>
 
       </div>
       <div class="dark-box">
