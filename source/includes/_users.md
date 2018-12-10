@@ -17,7 +17,10 @@ curl "https://<server-name>/api/v1/users/1"
         "attributes": {
             "full_name": "Sample User",
             "initials": "SU",
-            "email": "sample@example.com"
+            "email": "sample@example.com",
+            "avatar_url" : "http://example.com/avatar.png",
+            "avatar_file_size" : 16181,
+            "avatar_file_name" : "avatar.png"
         }
     }
 }
