@@ -264,7 +264,7 @@ list | id of the inventory list item from the selected column
 file | hash containing 2 attributes: file_name and file_data. File data is base64 encoded file content in such format: "data:text/plain;base64,dGVzdAo=", mime type should match file content.
 
 
-## Delete Item
+## Delete Cell
 
 ```shell
 curl -X DELETE \
