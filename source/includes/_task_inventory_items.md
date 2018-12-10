@@ -133,7 +133,7 @@ curl "http://<server-name>/api/v1/teams/1/projects/1/experiments/1/tasks/2/items
       "id": "1",
       "type": "inventory_cells",
       "attributes":{
-        "value_type": "RepositoryListValue",
+        "value_type": "list",
         "value":{
           "inventory_list_item_id": 1,
           "inventory_list_item_name": "Potato leaves"
@@ -145,7 +145,7 @@ curl "http://<server-name>/api/v1/teams/1/projects/1/experiments/1/tasks/2/items
       "id": "2",
       "type": "inventory_cells",
       "attributes":{
-        "value_type": "RepositoryListValue",
+        "value_type": "list",
         "value":{
           "inventory_list_item_id": 6,
           "inventory_list_item_name": "Seed"

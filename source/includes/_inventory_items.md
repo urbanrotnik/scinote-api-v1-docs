@@ -108,7 +108,7 @@ curl "https://<server-name>/api/v1/teams/1/inventories/1/items/1"
             "id": "1",
             "type": "inventory_cells",
             "attributes": {
-                "value_type": "RepositoryListValue",
+                "value_type": "list",
                 "value": {
                     "inventory_list_item_id": 1,
                     "inventory_list_item_name": "Potato leaves"
@@ -120,7 +120,7 @@ curl "https://<server-name>/api/v1/teams/1/inventories/1/items/1"
             "id": "2",
             "type": "inventory_cells",
             "attributes": {
-                "value_type": "RepositoryTextValue",
+                "value_type": "text",
                 "value": {
                     "text": "#6C159E"
                 },
@@ -131,7 +131,7 @@ curl "https://<server-name>/api/v1/teams/1/inventories/1/items/1"
             "id": "3",
             "type": "inventory_cells",
             "attributes": {
-                "value_type": "RepositoryAssetValue",
+                "value_type": "file",
                 "value": {
                     "file_id": 1,
                     "file_name": <file-name>,
@@ -222,7 +222,7 @@ curl -X POST \
             "id": "1",
             "type": "inventory_cells",
             "attributes": {
-                "value_type": "RepositoryListValue",
+                "value_type": "list",
                 "value": {
                     "inventory_list_item_id": 1,
                     "inventory_list_item_name": "Potato leaves"
@@ -234,7 +234,7 @@ curl -X POST \
             "id": "2",
             "type": "inventory_cells",
             "attributes": {
-                "value_type": "RepositoryTextValue",
+                "value_type": "text",
                 "value": {
                     "text": "#6C159E"
                 },
@@ -366,7 +366,7 @@ curl -X PATCH \
             "id": "1",
             "type": "inventory_cells",
             "attributes": {
-                "value_type": "RepositoryListValue",
+                "value_type": "list",
                 "value": {
                     "inventory_list_item_id": 2,
                     "inventory_list_item_name": "Tea leaves (1)"
@@ -378,7 +378,7 @@ curl -X PATCH \
             "id": "2",
             "type": "inventory_cells",
             "attributes": {
-                "value_type": "RepositoryTextValue",
+                "value_type": "text",
                 "value": {
                     "text": "#6C159D"
                 },

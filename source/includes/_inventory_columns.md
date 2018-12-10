@@ -17,7 +17,7 @@ curl "https://<server-name>/api/v1/teams/1/inventories/1/columns"
             "type": "inventory_columns",
             "attributes": {
                 "name": "Text Column",
-                "data_type": "RepositoryTextValue"
+                "data_type": "text"
             },
         },
         {
@@ -25,7 +25,7 @@ curl "https://<server-name>/api/v1/teams/1/inventories/1/columns"
             "type": "inventory_columns",
             "attributes": {
                 "name": "File Column",
-                "data_type": "RepositoryAssetValue"
+                "data_type": "file"
             },
         },
         {
@@ -33,7 +33,7 @@ curl "https://<server-name>/api/v1/teams/1/inventories/1/columns"
             "type": "inventory_columns",
             "attributes": {
                 "name": "List Column",
-                "data_type": "RepositoryListValue"
+                "data_type": "list"
             }
         }
     ],
@@ -76,7 +76,7 @@ curl "https://<server-name>/api/v1/teams/1/inventories/1/columns/1"
         "type": "inventory_columns",
         "attributes": {
             "name": "Sample type",
-            "data_type": "RepositoryListValue"
+            "data_type": "list"
         },
         "relationships": {
             "inventory_list_items": {
@@ -112,7 +112,7 @@ curl "https://<server-name>/api/v1/teams/1/inventories/1/columns/1"
 }
 ```
 
-This endpoint retrieves specific column from inventory. For list type columns (`RepositoryListValue`), related list items are also included.
+This endpoint retrieves specific column from inventory. For list type columns (`list`), related list items are also included.
 
 ### HTTP Request
 
@@ -138,7 +138,7 @@ curl -X POST \
         "type": "inventory_columns",
         "attributes": {
             "name": "Sample",
-            "data_type": "RepositoryTextValue"
+            "data_type": "text"
         }
     }
   }'
@@ -153,7 +153,7 @@ curl -X POST \
         "type": "inventory_columns",
         "attributes": {
             "name": "Sample",
-            "data_type": "RepositoryTextValue"
+            "data_type": "text"
         },
     }
 }
@@ -180,7 +180,7 @@ INVENTORY_ID | The ID of the inventory to retrieve column from
         "type": "inventory_columns",
         "attributes": {
             "name": "Sample",
-            "data_type": "RepositoryTextValue"
+            "data_type": "text"
         }
     }
 }
@@ -191,7 +191,7 @@ INVENTORY_ID | The ID of the inventory to retrieve column from
 Attribute | Mandatory| Description
 --------- | -------- | -----------
 name | yes | Name of the column
-data_type | yes | Data type of the column - one of the following: `RepositoryTextValue`, `RepositoryListValue` or `RepositoryFileValue`
+data_type | yes | Data type of the column - one of the following: `text`, `list` or `file`
 
 ## Update Column
 
@@ -220,7 +220,7 @@ curl -X PATCH \
         "type": "inventory_columns",
         "attributes": {
             "name": "Sample 2",
-            "data_type": "RepositoryTextValue"
+            "data_type": "text"
         }
     }
 }
