@@ -531,7 +531,7 @@
                     <a href="#update-cell" class="toc-h2 toc-link" data-title="Update Cell">Update Cell</a>
                   </li>
                   <li>
-                    <a href="#delete-item" class="toc-h2 toc-link" data-title="Delete Item">Delete Item</a>
+                    <a href="#delete-cell" class="toc-h2 toc-link" data-title="Delete Cell">Delete Cell</a>
                   </li>
               </ul>
           </li>
@@ -561,6 +561,8 @@
 <p>Welcome to the SciNote V1 API! You can use our API to access SciNote API endpoints.</p>
 
 <p>This API documentation page was created with <a href="https://github.com/lord/slate">Slate</a>.</p>
+
+<p><em>By accessing or using SciNote API, you agree to <a href="https://scinote.net/wp-content/uploads/2018/12/SCINOTE_API_TERMS.pdf">SciNote API Terms</a>.</em> </p>
 <h1 id='authentication'>Authentication</h1>
 <p>SciNote uses JWT tokens to allow access to the API and OAuth 2 protocol for token generation using authorization code flow.</p>
 
@@ -781,7 +783,10 @@ You must replace <code>qwerty123456...</code> with your API access token.
         </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sample User"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"initials"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SU"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sample@example.com"</span><span class="w">
+            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sample@example.com"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"avatar_url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/avatar.png"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"avatar_file_size"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">16181</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"avatar_file_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"avatar.png"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1073,7 +1078,7 @@ If submitted attributes are the same and no changes are made for the identity ma
       </span><span class="s2">"attributes"</span><span class="p">:{</span><span class="w">
         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demo project - qPCR"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hidden"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"due_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -1116,7 +1121,7 @@ If submitted attributes are the same and no changes are made for the identity ma
     </span><span class="s2">"attributes"</span><span class="p">:{</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demo project - qPCR"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hidden"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"due_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -1172,7 +1177,10 @@ If submitted attributes are the same and no changes are made for the identity ma
       </span><span class="s2">"attributes"</span><span class="p">:{</span><span class="w">
         </span><span class="s2">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Admin"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"initials"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin@scinote.net"</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin@scinote.net"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"avatar_url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/avatar.png"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"avatar_file_size"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">16181</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"avatar_file_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"avatar.png"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
@@ -1233,7 +1241,10 @@ If submitted attributes are the same and no changes are made for the identity ma
       </span><span class="s2">"attributes"</span><span class="p">:{</span><span class="w">
         </span><span class="s2">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Admin"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"initials"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin@scinote.net"</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin@scinote.net"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"avatar_url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/avatar.png"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"avatar_file_size"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">16181</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"avatar_file_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"avatar.png"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -1424,7 +1435,10 @@ If submitted attributes are the same and no changes are made for the identity ma
       </span><span class="s2">"attributes"</span><span class="p">:{</span><span class="w">
         </span><span class="s2">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Admin"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"initials"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin@scinote.net"</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin@scinote.net"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"avatar_url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/avatar.png"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"avatar_file_size"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">16181</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"avatar_file_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"avatar.png"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -2089,7 +2103,10 @@ If submitted attributes are the same and no changes are made for the identity ma
       </span><span class="s2">"attributes"</span><span class="p">:{</span><span class="w">
         </span><span class="s2">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Admin"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"initials"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin@scinote.net"</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin@scinote.net"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"avatar_url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/avatar.png"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"avatar_file_size"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">16181</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"avatar_file_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"avatar.png"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
@@ -2142,7 +2159,10 @@ If submitted attributes are the same and no changes are made for the identity ma
     </span><span class="s2">"attributes"</span><span class="p">:{</span><span class="w">
       </span><span class="s2">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Admin"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"initials"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin@scinote.net"</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin@scinote.net"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"avatar_url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/avatar.png"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"avatar_file_size"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">16181</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"avatar_file_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"avatar.png"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2206,6 +2226,12 @@ If submitted attributes are the same and no changes are made for the identity ma
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tasks"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"experiment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"experiments"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
         </span><span class="s2">"user"</span><span class="p">:{</span><span class="w">
           </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
@@ -2233,6 +2259,12 @@ If submitted attributes are the same and no changes are made for the identity ma
             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tasks"</span><span class="w">
           </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"experiment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"experiments"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"user"</span><span class="p">:{</span><span class="w">
           </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
@@ -2518,7 +2550,7 @@ If submitted attributes are the same and no changes are made for the identity ma
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"attributes"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RepositoryListValue"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"value"</span><span class="p">:{</span><span class="w">
           </span><span class="s2">"inventory_list_item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
           </span><span class="s2">"inventory_list_item_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Potato leaves"</span><span class="w">
@@ -2530,7 +2562,7 @@ If submitted attributes are the same and no changes are made for the identity ma
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"attributes"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RepositoryListValue"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"value"</span><span class="p">:{</span><span class="w">
           </span><span class="s2">"inventory_list_item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
           </span><span class="s2">"inventory_list_item_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Seed"</span><span class="w">
@@ -3054,7 +3086,10 @@ Token should be string without special symbols.</p>
       </span><span class="s2">"attributes"</span><span class="p">:{</span><span class="w">
         </span><span class="s2">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Admin"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"initials"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin@scinote.net"</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin@scinote.net"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"avatar_url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/avatar.png"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"avatar_file_size"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">16181</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"avatar_file_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"avatar.png"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -3391,7 +3426,7 @@ If submitted attributes are the same and no changes are made for the inventory, 
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_columns"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Text Column"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RepositoryTextValue"</span><span class="w">
+                </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="w">
             </span><span class="p">},</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
@@ -3399,7 +3434,7 @@ If submitted attributes are the same and no changes are made for the inventory, 
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_columns"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"File Column"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RepositoryAssetValue"</span><span class="w">
+                </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"file"</span><span class="w">
             </span><span class="p">},</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
@@ -3407,7 +3442,7 @@ If submitted attributes are the same and no changes are made for the inventory, 
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_columns"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"List Column"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RepositoryListValue"</span><span class="w">
+                </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
@@ -3451,7 +3486,7 @@ If submitted attributes are the same and no changes are made for the inventory, 
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_columns"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sample type"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RepositoryListValue"</span><span class="w">
+            </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"inventory_list_items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3486,7 +3521,7 @@ If submitted attributes are the same and no changes are made for the inventory, 
     </span><span class="p">],</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves specific column from inventory. For list type columns (<code>RepositoryListValue</code>), related list items are also included.</p>
+<p>This endpoint retrieves specific column from inventory. For list type columns (<code>list</code>), related list items are also included.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://&lt;server-name&gt;/api/v1/teams/&lt;TEAM_ID&gt;/inventories/&lt;INVENTORY_ID&gt;/columns/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
@@ -3518,7 +3553,7 @@ If submitted attributes are the same and no changes are made for the inventory, 
         "type": "inventory_columns",
         "attributes": {
             "name": "Sample",
-            "data_type": "RepositoryTextValue"
+            "data_type": "text"
         }
     }
   }'</span>
@@ -3532,7 +3567,7 @@ If submitted attributes are the same and no changes are made for the inventory, 
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_columns"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sample"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RepositoryTextValue"</span><span class="w">
+            </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="w">
         </span><span class="p">},</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3565,7 +3600,7 @@ If submitted attributes are the same and no changes are made for the inventory, 
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_columns"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sample"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RepositoryTextValue"</span><span class="w">
+            </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3585,7 +3620,7 @@ If submitted attributes are the same and no changes are made for the inventory, 
 <tr>
 <td>data_type</td>
 <td>yes</td>
-<td>Data type of the column - one of the following: <code>RepositoryTextValue</code>, <code>RepositoryListValue</code> or <code>RepositoryFileValue</code></td>
+<td>Data type of the column - one of the following: <code>text</code>, <code>list</code> or <code>file</code></td>
 </tr>
 </tbody></table>
 <h2 id='update-column'>Update Column</h2><pre class="highlight shell tab-shell"><code>curl -X PATCH <span class="se">\</span>
@@ -3611,7 +3646,7 @@ If submitted attributes are the same and no changes are made for the inventory, 
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_columns"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sample 2"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RepositoryTextValue"</span><span class="w">
+            </span><span class="s2">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -4093,7 +4128,7 @@ the inventory cells of the items are also included; otherwise, they are ignored.
             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RepositoryListValue"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                     </span><span class="s2">"inventory_list_item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"inventory_list_item_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Potato leaves"</span><span class="w">
@@ -4105,7 +4140,7 @@ the inventory cells of the items are also included; otherwise, they are ignored.
             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RepositoryTextValue"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                     </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#6C159E"</span><span class="w">
                 </span><span class="p">},</span><span class="w">
@@ -4116,7 +4151,7 @@ the inventory cells of the items are also included; otherwise, they are ignored.
             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RepositoryAssetValue"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"file"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                     </span><span class="s2">"file_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"file_name"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;file-name&gt;</span><span class="p">,</span><span class="w">
@@ -4211,7 +4246,7 @@ the inventory cells of the items are also included; otherwise, they are ignored.
             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RepositoryListValue"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                     </span><span class="s2">"inventory_list_item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"inventory_list_item_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Potato leaves"</span><span class="w">
@@ -4223,7 +4258,7 @@ the inventory cells of the items are also included; otherwise, they are ignored.
             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RepositoryTextValue"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                     </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#6C159E"</span><span class="w">
                 </span><span class="p">},</span><span class="w">
@@ -4375,7 +4410,7 @@ the inventory cells of the items are also included; otherwise, they are ignored.
             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RepositoryListValue"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                     </span><span class="s2">"inventory_list_item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"inventory_list_item_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tea leaves (1)"</span><span class="w">
@@ -4387,7 +4422,7 @@ the inventory cells of the items are also included; otherwise, they are ignored.
             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_cells"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RepositoryTextValue"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                     </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#6C159D"</span><span class="w">
                 </span><span class="p">},</span><span class="w">
@@ -4848,7 +4883,7 @@ If submitted attributes are the same and no changes are made for the cell, serve
 <td>hash containing 2 attributes: file_name and file_data. File data is base64 encoded file content in such format: &quot;data:text/plain;base64,dGVzdAo=&quot;, mime type should match file content.</td>
 </tr>
 </tbody></table>
-<h2 id='delete-item'>Delete Item</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+<h2 id='delete-cell'>Delete Cell</h2><pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
   https://server-name/api/v1/teams/1/inventories/1/items/1/cells/1 <span class="se">\</span>
   -H <span class="s2">"Authorization: Bearer qwerty123456..."</span>
 </code></pre>
