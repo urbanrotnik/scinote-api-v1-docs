@@ -32,6 +32,12 @@ curl "http://<server-name>/api/v1/teams/1/projects/1/experiments/1/tasks/1/activ
             "type": "tasks"
           }
         },
+        "experiment" : {
+            "data" : {
+              "id" : "1",
+              "type" : "experiments"
+            }
+        },
         "user":{
           "data":{
             "id": "1",
@@ -59,6 +65,12 @@ curl "http://<server-name>/api/v1/teams/1/projects/1/experiments/1/tasks/1/activ
             "id": "1",
             "type": "tasks"
           }
+        },
+        "experiment" : {
+            "data" : {
+              "id" : "1",
+              "type" : "experiments"
+            }
         },
         "user":{
           "data":{

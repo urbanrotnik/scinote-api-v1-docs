@@ -17,7 +17,7 @@ curl "http://<server-name>/api/v1/teams/1/projects"
       "attributes":{
         "name": "Demo project - qPCR",
         "visibility": "hidden",
-        "due_date": null,
+        "start_date": null,
         "archived": false
       }
     }
@@ -62,7 +62,7 @@ curl "http://<server-name>/api/v1/teams/1/projects/1"
     "attributes":{
       "name": "Demo project - qPCR",
       "visibility": "hidden",
-      "due_date": null,
+      "start_date": null,
       "archived": false
     }
   }

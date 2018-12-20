@@ -84,7 +84,10 @@ curl "http://<server-name>/api/v1/teams/1/projects/1/comments/1"
       "attributes":{
         "full_name": "Admin",
         "initials": "A",
-        "email": "admin@scinote.net"
+        "email": "admin@scinote.net",
+        "avatar_url" : "http://example.com/avatar.png",
+        "avatar_file_size" : 16181,
+        "avatar_file_name" : "avatar.png"
       }
     }
   ]
