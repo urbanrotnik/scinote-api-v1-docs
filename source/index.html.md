@@ -43,6 +43,8 @@ Welcome to the SciNote V1 API! You can use our API to access SciNote API endpoin
 
 This API documentation page was created with [Slate](https://github.com/lord/slate).
 
+_By accessing or using SciNote API, you agree to [SciNote API Terms](https://scinote.net/wp-content/uploads/2018/12/SCINOTE_API_TERMS.pdf)._ 
+
 # Authentication
 
 SciNote uses JWT tokens to allow access to the API and OAuth 2 protocol for token generation using authorization code flow.
