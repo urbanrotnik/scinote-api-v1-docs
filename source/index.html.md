@@ -125,5 +125,5 @@ Default page size is 10.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-page | 1 | Number of requested page.
+page_number | 1 | Number of requested page.
 page_size | 10 | Number of items returned per page.
