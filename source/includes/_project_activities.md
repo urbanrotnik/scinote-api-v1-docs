@@ -15,19 +15,25 @@ curl "http://<server-name>/api/v1/teams/1/projects/1/activities"
     {
       "id": "1",
       "type": "activities",
-      "attributes":{
-        "type_of": "create_project",
-        "message": "<i>Admin</i> created project <strong>Demo project - qPCR</strong>."
+      "attributes": {
+        "type_of": "create_module",
+         "message": "<p>Admin created task New task.</p>"
       },
-      "relationships":{
-        "project":{
-          "data":{
+      "relationships": {
+        "project": {
+          "data": {
             "id": "1",
             "type": "projects"
           }
         },
-        "user":{
-          "data":{
+        "subject": {
+          "data": {
+            "id": "10",
+            "type": "tasks"
+          }
+        },
+        "user": {
+          "data": {
             "id": "1",
             "type": "users"
           }
@@ -37,19 +43,25 @@ curl "http://<server-name>/api/v1/teams/1/projects/1/activities"
     {
       "id": "2",
       "type": "activities",
-      "attributes":{
-        "type_of": "add_comment_to_project",
-        "message": "<i>Admin</i> commented on project <strong>Demo project - qPCR</strong>."
+      "attributes": {
+        "type_of": "update_protocol_in_task_from_repository",
+        "message": "<p>Admin updated protocol on task New Task with version from Protocol repository Main Repository.</p>"
       },
-      "relationships":{
-        "project":{
-          "data":{
+      "relationships": {
+        "project": {
+          "data": {
             "id": "1",
             "type": "projects"
           }
         },
-        "user":{
-          "data":{
+        "subject": {
+          "data": {
+            "id": "11",
+            "type": "protocols"
+          }
+        },
+        "user": {
+          "data": {
             "id": "1",
             "type": "users"
           }
