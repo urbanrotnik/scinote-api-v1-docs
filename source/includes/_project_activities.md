@@ -17,7 +17,7 @@ curl "http://<server-name>/api/v1/teams/1/projects/1/activities"
       "type": "activities",
       "attributes": {
         "type_of": "create_module",
-         "message": "<p>Admin created task New task.</p>"
+        "message": "<p>Admin created task New task.</p>"
       },
       "relationships": {
         "project": {
