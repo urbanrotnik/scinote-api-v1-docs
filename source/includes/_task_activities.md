@@ -15,31 +15,25 @@ curl "http://<server-name>/api/v1/teams/1/projects/1/experiments/1/tasks/1/activ
     {
       "id": "3",
       "type": "activities",
-      "attributes":{
-        "type_of": "create_module",
-        "message": "<i>Admin</i> created task <strong>Experiment design</strong>."
+      "attributes": {
+        "type_of": "export_protocol_from_task",
+        "message": "<p>Admin exported protocol from task Sampling biological material</p>"
       },
-      "relationships":{
-        "project":{
-          "data":{
+      "relationships": {
+        "project": {
+          "data": {
             "id": "1",
             "type": "projects"
           }
         },
-        "task":{
-          "data":{
-            "id": "1",
+        "subject": {
+          "data": {
+            "id": "2",
             "type": "tasks"
           }
         },
-        "experiment" : {
-            "data" : {
-              "id" : "1",
-              "type" : "experiments"
-            }
-        },
-        "user":{
-          "data":{
+        "user": {
+          "data": {
             "id": "1",
             "type": "users"
           }
@@ -49,31 +43,25 @@ curl "http://<server-name>/api/v1/teams/1/projects/1/experiments/1/tasks/1/activ
     {
       "id": "4",
       "type": "activities",
-      "attributes":{
-        "type_of": "assign_user_to_module",
-        "message": "<i>Admin</i> was added to task <strong>Experiment design</strong> by <i>Admin</i>."
+      "attributes": {
+        "type_of": "add_result",
+        "message": "<p>Admin added file result (example.png).</p>"
       },
-      "relationships":{
-        "project":{
-          "data":{
+      "relationships": {
+        "project": {
+          "data": {
             "id": "1",
             "type": "projects"
           }
         },
-        "task":{
-          "data":{
-            "id": "1",
-            "type": "tasks"
+        "subject": {
+          "data": {
+            "id": "12",
+            "type": "results"
           }
         },
-        "experiment" : {
-            "data" : {
-              "id" : "1",
-              "type" : "experiments"
-            }
-        },
-        "user":{
-          "data":{
+        "user": {
+          "data": {
             "id": "1",
             "type": "users"
           }
