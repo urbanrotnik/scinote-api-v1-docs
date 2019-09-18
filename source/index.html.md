@@ -20,6 +20,7 @@ includes:
   - task_connections
   - tasks
   - task_protocols
+  - protocol_steps
   - task_users
   - task_activities
   - task_tags
