@@ -194,6 +194,8 @@ ID | The ID of the result
 
 ## Create Result
 
+### with Text Result and TinyMCE images
+
 ```shell
 curl -X POST \
   https://<server-name>/api/v1/teams/1/projects/1/experiments/1/tasks/1/results \
@@ -267,6 +269,75 @@ This endpoint creates new result, also result text can be added inside "included
 Images should be base64 encoded in such format: `data:image/png;base64,<FILE_CONTENT>`, where FILE_CONTENT is base64 encoded image file. It should be referenced inside result text with unique token using this format: `[~tiny_mce_id:<TOKEN>]`.
 Token should be string without special symbols.
 
+### with File Result
+
+
+```shell
+curl -X POST \
+  https://<server-name>/api/v1/teams/1/projects/1/experiments/1/tasks/1/results \
+  -H 'Content-Type: application/vnd.api+json' \
+  -d '{
+    "data": {
+      "type": "results",
+      "attributes": {
+        "name": "Result 1"
+      }
+    },
+    "included": [
+      {
+        "type": "result_files",
+        "attributes": {
+          "file": FILE
+        }
+      }
+    ]
+  }'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": {
+        "id": "1",
+        "type": "results",
+        "attributes": {
+            "name": "Result 1",
+            "archived": false
+        },
+        "relationships": {
+            "user": {
+                "data": {
+                    "id": "1",
+                    "type": "users"
+                }
+            },
+            "file": {
+                "data": {
+                    "id": "1",
+                    "type": "result_files"
+                }
+            }
+        }
+    },
+    "included": [
+        {
+            "id": "1",
+            "type": "result_files",
+            "attributes": {
+                "file_id": "1",
+                "file_name": "my_file.txt",
+                "file_size": "4213",
+                "url": "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBidz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5c7010e1f76e1c0774a9235a2ccbdcb0ca026e58/my_file?disposition=attachment"
+            }
+        }
+    ]
+}
+```
+
+This endpoint creates new result, also result file can be added inside "included" section in the same request. Please reference to the sample request.
+
+
 ### HTTP Request
 
 `POST https://<server-name>/api/v1/teams/<TEAM_ID>/projects/<PROJECT_ID>/experiments/<EXPERIMENT_ID>/tasks/<TASK_ID>/results`
@@ -280,7 +351,7 @@ PROJECT_ID | The ID of the project
 EXPERIMENT_ID | The ID of the experiment
 TASK_ID | The ID of the task
 
-> Request body
+> Request body with ResultText
 
 ```json
 {
@@ -309,6 +380,27 @@ TASK_ID | The ID of the task
 }
 ```
 
+> Request body with ResultFile
+
+```json
+{
+  "data": {
+    "type": "results",
+    "attributes": {
+      "name": "Result 1"
+    }
+  },
+  "included": [
+    {
+      "type": "result_files",
+      "attributes": {
+        "file": FILE
+      }
+    }
+  ]
+}
+```
+
 ### Result attributes
 
 Attribute | Mandatory| Description
@@ -328,3 +420,128 @@ Attribute | Mandatory| Description
 file_data | yes | Image file encoded in the string, "data:image/png;base64,<BASE64_ENCODED_FILE>"
 file_token | yes | Unique token used for referencing inside result text
 file_name | yes | Name of the file
+
+
+### Result file attributes
+
+Attribute | Mandatory| Description
+--------- | -------- | -----------
+file | yes | File attached to the result
+
+
+## Update Result
+
+### with File Result
+
+```shell
+curl -X PUT \
+  https://<server-name>/api/v1/teams/1/projects/1/experiments/1/tasks/1/results/1 \
+  -H 'Content-Type: application/vnd.api+json' \
+  -d '{
+    "data": {
+      "type": "results",
+      "attributes": {
+        "name": "Result with new name"
+      }
+    },
+    "included": [
+      {
+        "type": "result_files",
+        "attributes": {
+          "file": FILE
+        }
+      }
+    ]
+  }'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": {
+        "id": "1",
+        "type": "results",
+        "attributes": {
+            "name": "Result with new name",
+            "archived": false
+        },
+        "relationships": {
+            "user": {
+                "data": {
+                    "id": "1",
+                    "type": "users"
+                }
+            },
+            "file": {
+                "data": {
+                    "id": "1",
+                    "type": "result_files"
+                }
+            }
+        }
+    },
+    "included": [
+        {
+            "id": "1",
+            "type": "result_files",
+            "attributes": {
+                "file_id": "1",
+                "file_name": "my_file.txt",
+                "file_size": "4213",
+                "url": "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBidz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5c7010e1f76e1c0774a9235a2ccbdcb0ca026e58/my_file?disposition=attachment"
+            }
+        }
+    ]
+}
+```
+
+This endpoint updates result, also result file can be added inside "included" section in the same request. Please reference to the sample request.
+
+
+### HTTP Request
+
+`POST https://<server-name>/api/v1/teams/<TEAM_ID>/projects/<PROJECT_ID>/experiments/<EXPERIMENT_ID>/tasks/<TASK_ID>/results/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+TEAM_ID | The ID of the team
+PROJECT_ID | The ID of the project
+EXPERIMENT_ID | The ID of the experiment
+TASK_ID | The ID of the task
+ID | The ID of the result
+
+> Request body 
+
+```json
+{
+  "data": {
+    "type": "results",
+    "attributes": {
+      "name": "Result with new name"
+    }
+  },
+  "included": [
+    {
+      "type": "result_files",
+      "attributes": {
+        "file": FILE
+      }
+    }
+  ]
+}
+```
+
+### Result attributes
+
+Attribute | Mandatory| Description
+--------- | -------- | -----------
+name | yes | Name of the result
+
+### Result file attributes
+
+Attribute | Mandatory| Description
+--------- | -------- | -----------
+file | no | File attached to the result
