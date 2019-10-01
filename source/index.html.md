@@ -21,6 +21,7 @@ includes:
   - tasks
   - task_protocols
   - protocol_steps
+  - attachments
   - task_users
   - task_activities
   - task_tags
