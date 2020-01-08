@@ -59,7 +59,7 @@ Parameter | Description
 --------- | -----------
 TEAM_ID | The ID of the team to retrieve inventory from
 INVENTORY_ID | The ID of the inventory to retrieve column from
-COLUMN_ID | The ID of the column(with list data type) in specified inventory to retrieve list items from
+COLUMN_ID | The ID of the column(with status data type) in specified inventory to retrieve status items from
 
 ## Get Status Item
 
@@ -131,7 +131,7 @@ curl -X POST \
 }
 ```
 
-This endpoint creates new status item in selected inventory column, only valid for columns with 'list' data type.
+This endpoint creates new status item in selected inventory column, only valid for columns with 'status' data type.
 
 ### HTTP Request
 
@@ -143,7 +143,7 @@ Parameter | Description
 --------- | -----------
 TEAM_ID | The ID of the team to retrieve inventory from
 INVENTORY_ID | The ID of the inventory to retrieve column from
-COLUMN_ID | The ID of the column(with list data type) in specified inventory to retrieve list items from
+COLUMN_ID | The ID of the column(with status data type) in specified inventory to retrieve status items from
 
 ### Request body
 
