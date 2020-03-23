@@ -191,7 +191,7 @@ INVENTORY_ID | The ID of the inventory to retrieve column from
 Attribute | Mandatory| Description
 --------- | -------- | -----------
 name | yes | Name of the column
-data_type | yes | Data type of the column - one of the following: `text`, `list` or `file`
+data_type | yes | Data type of the column - one of the following: `text`, `number`, `file`, `list`, `checklist`, `status`, `date`, `time`, `date_time`, `date_range`, `time_range`, `date_time_range`
 
 ## Update Column
 
