@@ -32,6 +32,7 @@ includes:
   - inventory_columns
   - inventory_column_list_items
   - inventory_column_status_items
+  - inventory_column_checklist_items
   - inventory_items
   - inventory_cells
   - errors
@@ -46,7 +47,7 @@ Welcome to the SciNote V1 API! You can use our API to access SciNote API endpoin
 
 This API documentation page was created with [Slate](https://github.com/lord/slate).
 
-_By accessing or using SciNote API, you agree to [SciNote API Terms](https://scinote.net/wp-content/uploads/2018/12/SCINOTE_API_TERMS.pdf)._ 
+_By accessing or using SciNote API, you agree to [SciNote API Terms](https://scinote.net/wp-content/uploads/2018/12/SCINOTE_API_TERMS.pdf)._
 
 # Authentication
 
