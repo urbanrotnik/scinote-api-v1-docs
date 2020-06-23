@@ -51,7 +51,7 @@ curl "https://<server-name>/api/v1/teams/1/inventories/1/items"
 }
 ```
 
-This endpoint retrieves items from specific inventory. If `?include=inventory_cells` PATH parameter is provided,
+This endpoint retrieves **active** items from specific inventory. If `?include=inventory_cells` PATH parameter is provided,
 the inventory cells of the items are also included; otherwise, they are ignored.
 
 ### HTTP Request
