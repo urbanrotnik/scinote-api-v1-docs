@@ -52,7 +52,7 @@ curl "https://<server-name>/api/v1/teams/1/inventories"
 }
 ```
 
-This endpoint retrieves all inventories from the specified team.
+This endpoint retrieves all **active** inventories from the specified team.
 
 ### HTTP Request
 
