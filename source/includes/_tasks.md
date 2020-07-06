@@ -17,6 +17,7 @@ curl "http://<server-name>/api/v1/teams/1/projects/1/experiments/1/tasks"
       "type": "tasks",
       "attributes":{
         "name": "Experiment design",
+        "started_on": null,
         "due_date": "2018-10-25T13:30:54.315Z",
         "description": null,
         "state": "uncompleted",
@@ -38,6 +39,7 @@ curl "http://<server-name>/api/v1/teams/1/projects/1/experiments/1/tasks"
       "type": "tasks",
       "attributes":{
         "name": "Sampling biological material",
+        "started_on": null,
         "due_date": "2018-11-08T13:30:54.520Z",
         "description": null,
         "state": "uncompleted",
@@ -67,6 +69,7 @@ curl "http://<server-name>/api/v1/teams/1/projects/1/experiments/1/tasks"
       "type": "tasks",
       "attributes":{
         "name": "RNA isolation",
+        "started_on": null,
         "due_date": "2018-11-22T13:30:54.594Z",
         "description": null,
         "state": "uncompleted",
@@ -95,6 +98,7 @@ curl "http://<server-name>/api/v1/teams/1/projects/1/experiments/1/tasks"
 ```
 
 This endpoint retrieves all tasks from a specific experiment. Task inputs/outputs can be included as relationships.
+Optional URL parameter 'render_rte=true' can be added in order to request rendering of RTE fields(embedded images, smart annotations).
 
 ### HTTP Request
 
@@ -124,6 +128,7 @@ curl "http://<server-name>/api/v1/teams/1/projects/1/experiments/1/tasks/1"
     "type": "tasks",
     "attributes":{
       "name": "Experiment design",
+      "started_on": null,
       "due_date": "2018-10-25T13:30:54.315Z",
       "description": null,
       "state": "uncompleted",
@@ -144,6 +149,7 @@ curl "http://<server-name>/api/v1/teams/1/projects/1/experiments/1/tasks/1"
 ```
 
 This endpoint retrieves a specific task from a specific experiment. Task inputs/outputs can be included as relationships.
+Optional URL parameter 'render_rte=true' can be added in order to request rendering of RTE fields(embedded images, smart annotations).
 
 ### HTTP Request
 
@@ -188,6 +194,7 @@ curl -X POST \
     "type": "tasks",
     "attributes": {
       "name": "My task 1",
+      "started_on": null,
       "due_date": null,
       "description": "Description of the task",
       "state": "uncompleted",
@@ -236,7 +243,7 @@ EXPERIMENT_ID | The ID of the experiment
 }
 ```
 
-### Inventory attributes
+### Task attributes
 
 Attribute   | Mandatory | Description
 ----------- | --------- | -----------
@@ -244,3 +251,92 @@ name        | yes       | Name of the task
 description | no        | Description of the task
 x           | yes       | x position on canvas
 y           | yes       | y position on canvas
+
+## Update Task
+
+```shell
+curl -X PATCH \
+  https://<server-name>/api/v1/teams/1/projects/1/experiments/1/tasks/1 \
+  -H 'Authorization: Bearer qwerty123456...' \
+  -H 'Content-Type: application/vnd.api+json' \
+  -d '{
+        "data": {
+          "id": "1",
+          "type": "tasks",
+          "attributes": {
+            "name": "Task 2",
+            "description": "Task 2 description",
+            "state": "completed"
+          }
+      }
+  }'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": {
+      "id": "1",
+      "type": "tasks",
+      "attributes": {
+          "name": "Task 2",
+          "started_on": null,
+          "due_date": null,
+          "description": "Task 2 description",
+          "state": "completed",
+          "archived": false
+      },
+      "relationships": {
+        "outputs": {
+          "data": []
+        },
+        "inputs": {
+          "data": []
+        }
+      }
+    }
+}
+```
+
+This endpoint updates existing task in the selected experiment.
+If submitted attributes are the same and no changes are made for the task, server returns empty body with response code 204.
+
+### HTTP Request
+
+`PATCH https://<server-name>/api/v1/teams/<TEAM_ID>/projects/<PROJECT_ID>/experiments/<EXPERIMENT_ID>/tasks/<ID>`
+
+### URL Parameters
+
+Parameter       | Description
+--------------- | -----------
+TEAM_ID         | The ID of the team to retrieve project from
+PROJECT_ID      | The ID of the project to retrieve experiment from
+EXPERIMENT_ID   | The ID of the experiment to retrieve task from
+ID              | The ID of the task
+
+### Request body
+
+```json
+{
+  "data": {
+    "id": "1",
+    "type": "tasks",
+    "attributes": {
+      "name": "Task 2",
+      "description": "Task 2 description",
+      "state": "completed"
+    }
+  }
+}
+```
+
+### Task attributes
+
+Attribute   | Mandatory | Description
+----------- | --------- | -----------
+name        | yes       | Name of the task
+description | no        | Description of the task
+x           | no        | x position on canvas
+y           | no        | y position on canvas
+state       | no        | State of the task (uncompleted/completed)
