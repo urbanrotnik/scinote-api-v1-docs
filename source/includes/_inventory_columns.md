@@ -138,7 +138,10 @@ curl -X POST \
         "type": "inventory_columns",
         "attributes": {
             "name": "Sample",
-            "data_type": "text"
+            "data_type": "number",
+            "metadata": {
+                "decimals": "2"
+            }
         }
     }
   }'
@@ -153,7 +156,10 @@ curl -X POST \
         "type": "inventory_columns",
         "attributes": {
             "name": "Sample",
-            "data_type": "text"
+            "data_type": "number",
+            "metadata": {
+                "decimals": "2"
+            }
         },
     }
 }
@@ -192,6 +198,14 @@ Attribute | Mandatory| Description
 --------- | -------- | -----------
 name | yes | Name of the column
 data_type | yes | Data type of the column - one of the following: `text`, `number`, `file`, `list`, `checklist`, `status`, `date`, `time`, `date_time`, `date_range`, `time_range`, `date_time_range`
+metadata | no | Metadata for specific data type (now available only for number data_type)
+
+### Inventory column metadata attribute for number data_type
+
+Attribute | Mandatory| Description
+--------- | -------- | -----------
+decimals | no | Number of decimals (only for number data_type)
+
 
 ## Update Column
 
@@ -205,7 +219,10 @@ curl -X PATCH \
         "id": "1",
         "type": "inventory_columns",
         "attributes": {
-            "name": "Sample 2"
+            "name": "Sample 2",
+            "metadata": {
+                "decimals": "2"
+            }
         }
     }
   }'
@@ -220,7 +237,7 @@ curl -X PATCH \
         "type": "inventory_columns",
         "attributes": {
             "name": "Sample 2",
-            "data_type": "text"
+            "data_type": "number"
         }
     }
 }
@@ -260,6 +277,13 @@ ID | The ID of the column
 Attribute | Mandatory| Description
 --------- | -------- | -----------
 name | no | Name of the column
+metadata | no | Metadata for specific data type (now available only for number data_type)
+
+### Inventory column metadata attribute for number data_type
+
+Attribute | Mandatory| Description
+--------- | -------- | -----------
+decimals | no | Number of decimals (only for number data_type)
 
 ## Delete Column
 
