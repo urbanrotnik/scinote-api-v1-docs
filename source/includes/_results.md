@@ -278,17 +278,19 @@ curl -X POST \
   -H 'Content-Type: application/vnd.api+json' \
   -d '{
     "data": {
-      "type": "results",
       "attributes": {
-        "name": "Result 1"
-      }
+        "name": "My Result"
+      },
+      "type": "results"
     },
     "included": [
       {
-        "type": "result_files",
         "attributes": {
-          "file": FILE
-        }
+          "file_name": "my_file.png",
+          "file_type": "image/png",
+          "file_data": "iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAE0lEQVQIHWP8//8/AwMDExADAQAkBgMBOOSShwAAAABJRU5ErkJggg=='\''"
+        },
+        "type": "result_files"
       }
     ]
   }'
@@ -302,7 +304,7 @@ curl -X POST \
         "id": "1",
         "type": "results",
         "attributes": {
-            "name": "Result 1",
+            "name": "My Result",
             "archived": false
         },
         "relationships": {
@@ -326,7 +328,7 @@ curl -X POST \
             "type": "result_files",
             "attributes": {
                 "file_id": "1",
-                "file_name": "my_file.txt",
+                "file_name": "my_file.png",
                 "file_size": "4213",
                 "url": "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBidz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5c7010e1f76e1c0774a9235a2ccbdcb0ca026e58/my_file?disposition=attachment"
             }
@@ -385,17 +387,19 @@ TASK_ID | The ID of the task
 ```json
 {
   "data": {
-    "type": "results",
     "attributes": {
-      "name": "Result 1"
-    }
+      "name": "Result1"
+    },
+    "type": "results"
   },
   "included": [
     {
-      "type": "result_files",
       "attributes": {
-        "file": FILE
-      }
+        "file_name": "my_file.png",
+        "file_type": "image/png",
+        "file_data": "Base64EncodedData"
+      },
+      "type": "result_files"
     }
   ]
 }
@@ -424,10 +428,11 @@ file_name | yes | Name of the file
 
 ### Result file attributes
 
-Attribute | Mandatory| Description
---------- | -------- | -----------
-file | yes | File attached to the result
-
+Attribute   | Mandatory| Description
+---------   | -------- | -----------
+file_name   | yes      | File name
+file_type   | yes      | MIME content type
+file_data   | yes      | Base64 Encoded data
 
 ## Update Result
 
@@ -438,21 +443,23 @@ curl -X PUT \
   https://<server-name>/api/v1/teams/1/projects/1/experiments/1/tasks/1/results/1 \
   -H 'Content-Type: application/vnd.api+json' \
   -d '{
-    "data": {
-      "type": "results",
-      "attributes": {
-        "name": "Result with new name"
-      }
-    },
-    "included": [
-      {
-        "type": "result_files",
+      "data": {
         "attributes": {
-          "file": FILE
+          "name": "Result with new name"
+        },
+        "type": "results"
+      },
+      "included": [
+        {
+          "attributes": {
+            "file_name": "new_file.png",
+            "file_type": "image/png",
+            "file_data": "iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAE0lEQVQIHWP8//8/AwMDExADAQAkBgMBOOSShwAAAABJRU5ErkJggg=='\''"
+          },
+          "type": "result_files"
         }
-      }
-    ]
-  }'
+      ]
+    }'
 ```
 
 > The above command returns JSON structured like this:
@@ -487,7 +494,7 @@ curl -X PUT \
             "type": "result_files",
             "attributes": {
                 "file_id": "1",
-                "file_name": "my_file.txt",
+                "file_name": "new_file.png",
                 "file_size": "4213",
                 "url": "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBidz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5c7010e1f76e1c0774a9235a2ccbdcb0ca026e58/my_file?disposition=attachment"
             }
@@ -518,17 +525,19 @@ ID | The ID of the result
 ```json
 {
   "data": {
-    "type": "results",
     "attributes": {
-      "name": "Result with new name"
-    }
+      "name": "Result with ne name"
+    },
+    "type": "results"
   },
   "included": [
     {
-      "type": "result_files",
       "attributes": {
-        "file": FILE
-      }
+        "file_name": "new_file.png",
+        "file_type": "image/png",
+        "file_data": "Base64EncodedData"
+      },
+      "type": "result_files"
     }
   ]
 }
@@ -542,6 +551,8 @@ name | yes | Name of the result
 
 ### Result file attributes
 
-Attribute | Mandatory| Description
---------- | -------- | -----------
-file | no | File attached to the result
+Attribute   | Mandatory| Description
+---------   | -------- | -----------
+file_name   | yes      | File name
+file_type   | yes      | MIME content type
+file_data   | yes      | Base64 Encoded data
