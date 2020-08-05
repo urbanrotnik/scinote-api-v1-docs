@@ -150,9 +150,17 @@ ID              | The ID of the attachment
 curl -X POST \
   https://<server-name>/api/v1/teams/1/projects/1/experiments/1/tasks/1/protocols/1/steps/1/attachments \
   -H 'Authorization: Bearer qwerty123456...' \
-  -H 'Content-Type: multipart/form-data' \
-  -F 'data[attributes][file]=@/path/to/the/file/my_image1.png' \
-  -F 'data[type]=attachments'
+  -H 'Content-Type: application/json' \
+  -d'{
+    "data": {
+      "attributes": {
+        "file_name": "my_file.png",
+        "file_type": "image/png",
+        "file_data": "iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAE0lEQVQIHWP8//8/AwMDExADAQAkBgMBOOSShwAAAABJRU5ErkJggg=='\''"
+      },
+      "type": "attachments"
+    }
+  }'
 ```
 
 > The above command returns JSON structured like this:
@@ -205,7 +213,9 @@ STEP_ID         | The ID of the step to retrieve attachments from
   "data": {
     "type": "attachments",
     "attributes": {
-      "file": FILE
+      "file_name": "my_file.png",
+      "file_type": "image/png",
+      "file_data": "Base64EncodedData"
     }
   }
 }
@@ -215,4 +225,6 @@ STEP_ID         | The ID of the step to retrieve attachments from
 
 Attribute   | Mandatory| Description
 ---------   | -------- | -----------
-file        | yes      | File for upload
+file_name   | yes      | File name
+file_type   | yes      | MIME content type
+file_data   | yes      | Base64 Encoded data
