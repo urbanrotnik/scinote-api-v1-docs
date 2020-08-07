@@ -1,6 +1,6 @@
 # Step checklist items
 
-## Get Checklist items
+## Get Checklist Items
 
 ```shell
 curl "https://<server-name>/api/v1/teams/1/projects/1/experiments/1/tasks/1/protocols/1/steps/1/checklists/1/items"
@@ -59,7 +59,7 @@ PROTOCOL_ID     | The ID of the protocol to retrieve step from
 STEP_ID         | The ID of the step to retrieve checklists from
 CHECKLIST_ID    | The ID of the checklist to retrieve items from
 
-## Get Checklist item
+## Get Checklist Item
 
 ```shell
 curl "https://<server-name>/api/v1/teams/1/projects/1/experiments/1/tasks/1/protocols/1/steps/1/checklists/1/items/1"
@@ -102,7 +102,7 @@ STEP_ID         | The ID of the step to retrieve checklist from
 CHECKLIST_ID    | The ID of the checklist to retrieve item from
 ID              | The ID of the checklist
 
-## Create Checklist
+## Create Checklist Item
 
 ```shell
 curl -X POST \
@@ -178,7 +178,7 @@ text        | yes      | Label text of the item
 checked     | no       | Item checked or unchecked
 position    | no       | Position of the item in the checklist
 
-## Update Checklist item
+## Update Checklist Item
 
 ```shell
 curl -X PATCH \
