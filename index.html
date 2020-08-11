@@ -506,16 +506,16 @@
             <a href="#step-checklist-items" class="toc-h1 toc-link" data-title="Step checklist items">Step checklist items</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-checklist-items" class="toc-h2 toc-link" data-title="Get Checklist items">Get Checklist items</a>
+                    <a href="#get-checklist-items" class="toc-h2 toc-link" data-title="Get Checklist Items">Get Checklist Items</a>
                   </li>
                   <li>
-                    <a href="#get-checklist-item" class="toc-h2 toc-link" data-title="Get Checklist item">Get Checklist item</a>
+                    <a href="#get-checklist-item" class="toc-h2 toc-link" data-title="Get Checklist Item">Get Checklist Item</a>
                   </li>
                   <li>
-                    <a href="#create-checklist" class="toc-h2 toc-link" data-title="Create Checklist">Create Checklist</a>
+                    <a href="#create-checklist-item" class="toc-h2 toc-link" data-title="Create Checklist Item">Create Checklist Item</a>
                   </li>
                   <li>
-                    <a href="#update-checklist-item" class="toc-h2 toc-link" data-title="Update Checklist item">Update Checklist item</a>
+                    <a href="#update-checklist-item" class="toc-h2 toc-link" data-title="Update Checklist Item">Update Checklist Item</a>
                   </li>
                   <li>
                     <a href="#delete-checklist-item" class="toc-h2 toc-link" data-title="Delete Checklist Item">Delete Checklist Item</a>
@@ -3432,7 +3432,7 @@ If submitted attributes are the same and no changes are made for the checklist, 
 <td>The ID of the checklist</td>
 </tr>
 </tbody></table>
-<h1 id='step-checklist-items'>Step checklist items</h1><h2 id='get-checklist-items'>Get Checklist items</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://&lt;server-name&gt;/api/v1/teams/1/projects/1/experiments/1/tasks/1/protocols/1/steps/1/checklists/1/items"</span>
+<h1 id='step-checklist-items'>Step checklist items</h1><h2 id='get-checklist-items'>Get Checklist Items</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://&lt;server-name&gt;/api/v1/teams/1/projects/1/experiments/1/tasks/1/protocols/1/steps/1/checklists/1/items"</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer qwerty123456..."</span>
 </code></pre></div>
 <blockquote>
@@ -3507,7 +3507,7 @@ If submitted attributes are the same and no changes are made for the checklist, 
 <td>The ID of the checklist to retrieve items from</td>
 </tr>
 </tbody></table>
-<h2 id='get-checklist-item'>Get Checklist item</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://&lt;server-name&gt;/api/v1/teams/1/projects/1/experiments/1/tasks/1/protocols/1/steps/1/checklists/1/items/1"</span>
+<h2 id='get-checklist-item'>Get Checklist Item</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://&lt;server-name&gt;/api/v1/teams/1/projects/1/experiments/1/tasks/1/protocols/1/steps/1/checklists/1/items/1"</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer qwerty123456..."</span>
 
 </code></pre></div>
@@ -3569,7 +3569,7 @@ If submitted attributes are the same and no changes are made for the checklist, 
 <td>The ID of the checklist</td>
 </tr>
 </tbody></table>
-<h2 id='create-checklist'>Create Checklist</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="se">\</span>
+<h2 id='create-checklist-item'>Create Checklist Item</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="se">\</span>
   https://&lt;server-name&gt;/api/v1/teams/1/projects/1/experiments/1/tasks/1/protocols/1/steps/1/checklists/1/items <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer qwerty123456...'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/vnd.api+json'</span> <span class="se">\</span>
@@ -3676,7 +3676,7 @@ If submitted attributes are the same and no changes are made for the checklist, 
 <td>Position of the item in the checklist</td>
 </tr>
 </tbody></table>
-<h2 id='update-checklist-item'>Update Checklist item</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PATCH <span class="se">\</span>
+<h2 id='update-checklist-item'>Update Checklist Item</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PATCH <span class="se">\</span>
   https://&lt;server-name&gt;/api/v1/teams/1/projects/1/experiments/1/tasks/1/protocols/1/steps/1/checklists/1 <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer qwerty123456...'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/vnd.api+json'</span> <span class="se">\</span>
