@@ -21,6 +21,9 @@ includes:
   - tasks
   - task_protocols
   - protocol_steps
+  - checklists
+  - checklist_items
+  - tables
   - attachments
   - task_users
   - task_activities
