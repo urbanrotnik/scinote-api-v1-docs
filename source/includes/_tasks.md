@@ -21,7 +21,13 @@ curl "http://<server-name>/api/v1/teams/1/projects/1/experiments/1/tasks"
         "due_date": "2018-10-25T13:30:54.315Z",
         "description": null,
         "state": "uncompleted",
-        "archived": false
+        "archived": false,
+        "status_id": 2,
+        "status_name": "In progress",
+        "prev_status_id": 1,
+        "prev_status_name": "Backlog",
+        "next_status_id": 3,
+        "next_status_name": "Completed"
       },
       "relationships": {
         "outputs": {
@@ -43,7 +49,13 @@ curl "http://<server-name>/api/v1/teams/1/projects/1/experiments/1/tasks"
         "due_date": "2018-11-08T13:30:54.520Z",
         "description": null,
         "state": "uncompleted",
-        "archived": false
+        "archived": false,
+        "status_id": 3,
+        "status_name": "Completed",
+        "prev_status_id": 2,
+        "prev_status_name": "Backlog",
+        "next_status_id": 4,
+        "next_status_name": "In review"
       },
       "relationships": {
         "outputs": {
@@ -73,7 +85,13 @@ curl "http://<server-name>/api/v1/teams/1/projects/1/experiments/1/tasks"
         "due_date": "2018-11-22T13:30:54.594Z",
         "description": null,
         "state": "uncompleted",
-        "archived": false
+        "archived": false,
+        "status_id": 2,
+        "status_name": "In progress",
+        "prev_status_id": 1,
+        "prev_status_name": "Backlog",
+        "next_status_id": 3,
+        "next_status_name": "Completed"
       },
       "relationships": {
         "inputs": {
@@ -132,7 +150,13 @@ curl "http://<server-name>/api/v1/teams/1/projects/1/experiments/1/tasks/1"
       "due_date": "2018-10-25T13:30:54.315Z",
       "description": null,
       "state": "uncompleted",
-      "archived": false
+      "archived": false,
+      "status_id": 2,
+      "status_name": "In progress",
+      "prev_status_id": 1,
+      "prev_status_name": "Backlog",
+      "next_status_id": 3,
+      "next_status_name": "Completed"
     },
     "relationships": {
       "outputs": {
@@ -266,7 +290,7 @@ curl -X PATCH \
           "attributes": {
             "name": "Task 2",
             "description": "Task 2 description",
-            "state": "completed"
+            "my_module_status_id": "2"
           }
       }
   }'
@@ -285,7 +309,13 @@ curl -X PATCH \
           "due_date": null,
           "description": "Task 2 description",
           "state": "completed",
-          "archived": false
+          "archived": false,
+          "status_id": 2,
+          "status_name": "in progress",
+          "prev_status_id": 1,
+          "prev_status_name": "backlog",
+          "next_status_id": 3,
+          "next_status_name": "review"
       },
       "relationships": {
         "outputs": {
@@ -325,7 +355,7 @@ ID              | The ID of the task
     "attributes": {
       "name": "Task 2",
       "description": "Task 2 description",
-      "state": "completed"
+      "my_module_status_id": "2"
     }
   }
 }
@@ -333,10 +363,10 @@ ID              | The ID of the task
 
 ### Task attributes
 
-Attribute   | Mandatory | Description
------------ | --------- | -----------
-name        | yes       | Name of the task
-description | no        | Description of the task
-x           | no        | x position on canvas
-y           | no        | y position on canvas
-state       | no        | State of the task (uncompleted/completed)
+Attribute               | Mandatory | Description
+----------------------- | --------- | -----------
+name                    | yes       | Name of the task
+description             | no        | Description of the task
+x                       | no        | x position on canvas
+y                       | no        | y position on canvas
+my_module_status_id     | no        | New status ID

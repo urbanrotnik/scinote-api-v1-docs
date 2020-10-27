@@ -38,6 +38,8 @@ includes:
   - inventory_column_checklist_items
   - inventory_items
   - inventory_cells
+  - workflows
+  - workflow_statuses
   - errors
   - status
 
