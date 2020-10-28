@@ -81,3 +81,150 @@ Parameter | Description
 --------- | -----------
 TEAM_ID | The ID of the team to retrieve project from
 PROJECT_ID | The ID of the project to retrieve
+
+## Create Project
+
+```shell
+curl -X POST \
+  https://<server-name>/api/v1/teams/1/projects \
+  -H 'Authorization: Bearer qwerty123456...' \
+  -H 'Content-Type: application/vnd.api+json' \
+  -d '{
+    "data": {
+      "type": "projects",
+      "attributes": {
+        "name": "My project 1",
+        "visibility": "visible",
+        "archived": false
+      }
+    }
+  }'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": {
+    "id": "1",
+    "type": "projects",
+    "attributes": {
+      "name": "My project 1",
+      "visibility": "visible",
+      "start_date": "01/01/2020 10:30",
+      "archived": false
+    }
+  }
+}
+
+```
+
+This endpoint creates a new project in the team.
+
+### HTTP Request
+
+`POST https://<server-name>/api/v1/teams/<TEAM_ID>/projects`
+
+### URL Parameters
+
+Parameter     | Description
+------------- | -----------
+TEAM_ID       | The ID of the team to retrieve projects from
+
+> Request body
+
+```json
+{
+  "data": {
+    "type": "projects",
+    "attributes": {
+      "name": "My project 1",
+      "visibility": "visible",
+      "archived": false
+    }
+  }
+}
+```
+
+### Project attributes
+
+Attribute   | Mandatory | Description
+----------- | --------- | -----------
+name        | yes       | Name of the project
+visibility  | no        | Visibility of the project
+archived    | no        | Archived flag
+
+## Update Project
+
+```shell
+curl -X PATCH \
+  https://<server-name>/api/v1/teams/1/projects/1 \
+  -H 'Authorization: Bearer qwerty123456...' \
+  -H 'Content-Type: application/vnd.api+json' \
+  -d '{
+        "data": {
+          "id": "1",
+          "type": "projects",
+          "attributes": {
+            "name": "Project 2",
+            "visibility": "hidden",
+            "archived": true
+          }
+      }
+  }'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": {
+      "id": "1",
+      "type": "projects",
+      "attributes": {
+        "name": "Project 2",
+        "visibility": "hidden",
+        "start_date": "01/01/2020 10:30",
+        "archived": true
+      }
+    }
+}
+```
+
+This endpoint updates existing project in the selected team.
+If submitted attributes are the same and no changes are made for the project, server returns empty body with response code 204.
+
+### HTTP Request
+
+`PATCH https://<server-name>/api/v1/teams/<TEAM_ID>/projects/<ID>`
+
+### URL Parameters
+
+Parameter       | Description
+--------------- | -----------
+TEAM_ID         | The ID of the team to retrieve project from
+ID              | The ID of the project
+
+### Request body
+
+```json
+{
+  "data": {
+    "id": "1",
+    "type": "projects",
+    "attributes": {
+      "name": "Project 2",
+      "visibility": "hidden",
+      "archived": true
+    }
+  }
+}
+```
+
+### Project attributes
+
+Attribute   | Mandatory | Description
+----------- | --------- | -----------
+name        | yes       | Name of the project
+visibility  | no        | Visibility of the project
+archived    | no        | Archived flag
