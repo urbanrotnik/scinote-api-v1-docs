@@ -29,6 +29,9 @@ curl "http://<server-name>/api/v1/teams/1/project_folders"
         },
         "projects": {
           "data": []
+        },
+        "project_folders": {
+          "data": []
         }
       }
     }
@@ -84,6 +87,9 @@ curl "http://<server-name>/api/v1/teams/1/project_folders/1"
         "data": null
       },
       "projects": {
+        "data": []
+      },
+      "project_folders": {
         "data": []
       }
     }
@@ -146,6 +152,9 @@ curl -X POST \
         }
       },
       "projects": {
+        "data": []
+      },
+      "project_folders": {
         "data": []
       }
     }
@@ -230,6 +239,9 @@ curl -X PATCH \
         }
       },
       "projects": {
+        "data": []
+      },
+      "project_folders": {
         "data": []
       }
     }
